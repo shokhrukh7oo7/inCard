@@ -1,0 +1,277 @@
+<template>
+    <aside class="sidebar">
+        <div class="logo-wrapper">
+            <img src="../assets/images/logo.svg" alt="Logo" />
+        </div>
+
+        <!-- === Главная (отдельно сверху) === -->
+        <div class="menu-item">
+            <RouterLink to="/" class="menu-link" :class="{ active: isActive('/') }">
+                <div class="menu-left">
+                    <img src="../assets/images/sidebar/home.svg" alt="home" />
+                    <span>Главная</span>
+                </div>
+            </RouterLink>
+        </div>
+
+        <!-- === Погашения === -->
+        <div class="section">
+            <div class="section-title">
+                <div class="line"></div>
+                <p>Погашения</p>
+            </div>
+
+            <div v-for="(item, i) in payments" :key="i" class="menu-item">
+                <div class="menu-link" :class="{ active: isActive(item.route) }"
+                    @click="item.children ? toggle(i, 'payments') : goTo(item.route)">
+                    <div class="menu-left">
+                        <img :src="item.icon" alt="" />
+                        <span>{{ item.label }}</span>
+                    </div>
+                    <img v-if="item.children" class="arrow"
+                        :class="{ open: openGroup === 'payments' && openIndex === i }"
+                        src="../assets/images/sidebar/arrow-down.svg" alt="arrow" />
+                </div>
+
+                <transition name="dropdown">
+                    <div v-if="item.children && openGroup === 'payments' && openIndex === i" class="submenu">
+                        <RouterLink v-for="(sub, j) in item.children" :key="j" :to="sub.route" class="submenu-link"
+                            :class="{ active: isActive(sub.route) }">
+                            <img v-if="sub.icon" :src="sub.icon" alt="" class="submenu-icon" />
+                            {{ sub.label }}
+                        </RouterLink>
+                    </div>
+                </transition>
+            </div>
+        </div>
+
+        <!-- === Система === -->
+        <div class="section">
+            <div class="section-title">
+                <div class="line"></div>
+                <p>Система</p>
+            </div>
+
+            <div v-for="(item, i) in system" :key="i" class="menu-item">
+                <div class="menu-link" :class="{ active: isActive(item.route) }"
+                    @click="item.children ? toggle(i, 'system') : goTo(item.route)">
+                    <div class="menu-left">
+                        <img :src="item.icon" alt="" />
+                        <span>{{ item.label }}</span>
+                    </div>
+                    <img v-if="item.children" class="arrow" :class="{ open: openGroup === 'system' && openIndex === i }"
+                        src="../assets/images/sidebar/arrow-down.svg" alt="arrow" />
+                </div>
+
+                <transition name="dropdown">
+                    <div v-if="item.children && openGroup === 'system' && openIndex === i" class="submenu">
+                        <RouterLink v-for="(sub, j) in item.children" :key="j" :to="sub.route" class="submenu-link"
+                            :class="{ active: isActive(sub.route) }">
+                            <img v-if="sub.icon" :src="sub.icon" alt="" class="submenu-icon" />
+                            {{ sub.label }}
+                        </RouterLink>
+                    </div>
+                </transition>
+            </div>
+        </div>
+
+        <!-- === Партнерство === -->
+        <div class="section">
+            <div class="section-title">
+                <div class="line"></div>
+                <p>Партнерство</p>
+            </div>
+
+            <div v-for="(item, i) in partner" :key="i" class="menu-item">
+                <div class="menu-link" :class="{ active: isActive(item.route) }"
+                    @click="item.children ? toggle(i, 'partner') : goTo(item.route)">
+                    <div class="menu-left">
+                        <img :src="item.icon" alt="" />
+                        <span>{{ item.label }}</span>
+                    </div>
+                    <img v-if="item.children" class="arrow"
+                        :class="{ open: openGroup === 'partner' && openIndex === i }"
+                        src="../assets/images/sidebar/arrow-down.svg" alt="arrow" />
+                </div>
+
+                <transition name="dropdown">
+                    <div v-if="item.children && openGroup === 'partner' && openIndex === i" class="submenu">
+                        <RouterLink v-for="(sub, j) in item.children" :key="j" :to="sub.route" class="submenu-link"
+                            :class="{ active: isActive(sub.route) }">
+                            <img v-if="sub.icon" :src="sub.icon" alt="" class="submenu-icon" />
+                            {{ sub.label }}
+                        </RouterLink>
+                    </div>
+                </transition>
+            </div>
+        </div>
+    </aside>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import { useRouter, useRoute, RouterLink } from 'vue-router'
+import '../assets/css/main.css'
+
+const router = useRouter()
+const route = useRoute()
+
+const openIndex = ref(null)
+const openGroup = ref(null)
+
+const toggle = (index, group) => {
+    if (openGroup.value === group && openIndex.value === index) {
+        openGroup.value = null
+        openIndex.value = null
+    } else {
+        openGroup.value = group
+        openIndex.value = index
+    }
+}
+
+const goTo = (path) => {
+    if (path) router.push(path)
+}
+
+const isActive = (path) => route.path === path
+
+// === Данные меню ===
+const payments = [
+    {
+        label: 'Платильщики',
+        icon: new URL('../assets/images/sidebar/people.svg', import.meta.url).href,
+        children: [
+            {
+                label: 'Платильщики и Контракты',
+                icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+                route: '/payers/contracts'
+            },
+            {
+                label: 'О персональных данных',
+                icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+                route: '/payers/privacy'
+            },
+            {
+                label: 'Белый лист',
+                icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+                route: '/payers/whitelist'
+            },
+        ],
+    },
+    {
+        label: 'Оплата',
+        icon: new URL('../assets/images/sidebar/credit-card.svg', import.meta.url).href,
+        children: [{
+            label: 'История оплат',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/payments/history'
+        }],
+    },
+    {
+        label: 'Платежные карты',
+        icon: new URL('../assets/images/sidebar/credit-card-front.svg', import.meta.url).href,
+        children: [{
+            label: 'Список карт',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/cards/list'
+        }],
+    },
+    { label: 'Импорт', icon: new URL('../assets/images/sidebar/import.svg', import.meta.url).href, route: '/import' },
+    { label: 'Транзакции', icon: new URL('../assets/images/sidebar/char.svg', import.meta.url).href, route: '/transactions' },
+    {
+        label: 'Операции',
+        icon: new URL('../assets/images/sidebar/operation.svg', import.meta.url).href,
+        children: [
+            {
+                label: 'Создать',
+                icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+                route: '/operations/create'
+            },
+            {
+                label: 'Архив',
+                icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+                route: '/operations/archive'
+            },
+        ],
+    },
+]
+
+const system = [
+    {
+        label: 'Организации', icon: new URL('../assets/images/sidebar/organization.svg', import.meta.url).href,
+        children: [{
+            label: 'Список',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/org/list'
+        }, {
+            label: 'Добавить',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/org/add'
+        }]
+    },
+    {
+        label: 'Банк', icon: new URL('../assets/images/sidebar/bank.svg', import.meta.url).href,
+        children: [{
+            label: 'Банковские счета',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/bank/accounts'
+        }]
+    },
+    {
+        label: 'Платный запрос', icon: new URL('../assets/images/sidebar/request.svg', import.meta.url).href,
+        children: [{
+            label: 'Список запросов',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/requests'
+        }]
+    },
+    {
+        label: 'События', icon: new URL('../assets/images/sidebar/star.svg', import.meta.url).href,
+        children: [{
+            label: 'История событий',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/events'
+        }]
+    },
+    {
+        label: 'Взаимо расчет', icon: new URL('../assets/images/sidebar/diagram.svg', import.meta.url).href,
+        children: [{
+            label: 'Отчеты',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/balance/reports'
+        }, {
+            label: 'Долги',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/balance/debts'
+        }]
+    },
+    {
+        label: 'Настройки', icon: new URL('../assets/images/sidebar/settings.svg', import.meta.url).href,
+        children: [{
+            label: 'Система',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href, route: '/settings/system'
+        }, {
+            label: 'Права доступа',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/settings/access'
+        }]
+    },
+]
+
+const partner = [
+    {
+        label: 'Партнеры', icon: new URL('../assets/images/sidebar/partner.svg', import.meta.url).href,
+        children: [{
+            label: 'Список партнёров',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/partners/list'
+        }, {
+            label: 'Добавить партнёра',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/partners/add'
+        }]
+    },
+]
+</script>
+
+<style scoped></style>
