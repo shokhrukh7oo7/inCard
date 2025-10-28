@@ -77,6 +77,17 @@ body {
   background: var(--bg-main);
   color: var(--grey);
   transition: transform 0.3s ease;
+  overflow-x: auto;
+}
+
+::-webkit-scrollbar {
+  background: var(--hover-bg-link);
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--linear);
+  border-radius: 4px;
 }
 
 .sidebar .section {
