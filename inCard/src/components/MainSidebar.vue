@@ -68,7 +68,7 @@ const payments = [
         label: 'Оплата',
         icon: new URL('../assets/images/sidebar/credit-card.svg', import.meta.url).href,
         children: [{
-            label: 'История оплат',
+            label: 'Автоплатежи',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
             route: '/payments/history'
         }],
@@ -76,25 +76,52 @@ const payments = [
     {
         label: 'Платежные карты',
         icon: new URL('../assets/images/sidebar/credit-card-front.svg', import.meta.url).href,
-        children: [{
-            label: 'Список карт',
-            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/cards/list'
-        }],
+        children: [
+            {
+                label: 'Все карты',
+                icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+                route: '/cards/list'
+            },
+            {
+                label: 'Добавленные карты',
+                icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+                route: '/cards/list'
+            },
+            {
+                label: 'Отклоненные карты',
+                icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+                route: '/cards/list'
+            },
+            {
+                label: 'Неопознанные карты',
+                icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+                route: '/cards/list'
+            }
+        ],
     },
-    { label: 'Импорт', icon: new URL('../assets/images/sidebar/import.svg', import.meta.url).href, route: '/import' },
+    {
+        label: 'Импорт',
+        icon: new URL('../assets/images/sidebar/import.svg', import.meta.url).href,
+        children: [
+            {
+                label: 'Импортированные файлы',
+                icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+                route: '/imports/files'
+            },
+        ],
+    },
     { label: 'Транзакции', icon: new URL('../assets/images/sidebar/char.svg', import.meta.url).href, route: '/transactions' },
     {
         label: 'Операции',
         icon: new URL('../assets/images/sidebar/operation.svg', import.meta.url).href,
         children: [
             {
-                label: 'Создать',
+                label: 'Возврат средств',
                 icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
                 route: '/operations/create'
             },
             {
-                label: 'Архив',
+                label: 'Синхронизация ABS',
                 icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
                 route: '/operations/archive'
             },
@@ -106,19 +133,46 @@ const system = [
     {
         label: 'Организации', icon: new URL('../assets/images/sidebar/organization.svg', import.meta.url).href,
         children: [{
-            label: 'Список',
+            label: 'Организация',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
             route: '/org/list'
-        }, {
-            label: 'Добавить',
+        },
+        {
+            label: 'Пользователи',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
             route: '/org/add'
-        }]
+        },
+        {
+            label: 'Терминалы',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/org/add'
+        },
+        {
+            label: 'Лимит настройка',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/org/add'
+        },
+        {
+            label: 'Система организации',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/org/add'
+        },
+        {
+            label: 'Интеграции по API',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/org/add'
+        },
+        {
+            label: 'Телеграм-бот',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/org/add'
+        },
+        ]
     },
     {
         label: 'Банк', icon: new URL('../assets/images/sidebar/bank.svg', import.meta.url).href,
         children: [{
-            label: 'Банковские счета',
+            label: 'Пользователи',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
             route: '/bank/accounts'
         }]
@@ -126,38 +180,46 @@ const system = [
     {
         label: 'Платный запрос', icon: new URL('../assets/images/sidebar/request.svg', import.meta.url).href,
         children: [{
-            label: 'Список запросов',
+            label: 'Запросы',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
             route: '/requests'
-        }]
+        },
+        {
+            label: 'Настройки',
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/requests'
+        }
+        ]
     },
     {
         label: 'События', icon: new URL('../assets/images/sidebar/star.svg', import.meta.url).href,
         children: [{
-            label: 'История событий',
+            label: 'Список событий',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
             route: '/events'
         }]
     },
     {
         label: 'Взаимо расчет', icon: new URL('../assets/images/sidebar/diagram.svg', import.meta.url).href,
-        children: [{
-            label: 'Отчеты',
-            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/balance/reports'
-        }, {
-            label: 'Долги',
-            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/balance/debts'
-        }]
+        children: [
+            {
+                label: 'Отчеты',
+                icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+                route: '/balance/debts'
+            }, {
+                label: 'Отчеты',
+                icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+                route: '/balance/reports'
+            }
+        ]
     },
     {
         label: 'Настройки', icon: new URL('../assets/images/sidebar/settings.svg', import.meta.url).href,
         children: [{
-            label: 'Система',
+            label: 'Интеграции систем',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href, route: '/settings/system'
         }, {
-            label: 'Права доступа',
+            label: 'Администраторы',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
             route: '/settings/access'
         }]
