@@ -1,123 +1,19 @@
-<template>
-    <aside class="sidebar">
-        <div class="logo-wrapper">
-            <img src="../assets/images/logo.svg" alt="Logo" />
-        </div>
-
-        <!-- === Главная (отдельно сверху) === -->
-        <div class="menu-item">
-            <RouterLink to="/" class="menu-link" :class="{ active: isActive('/') }">
-                <div class="menu-left">
-                    <img src="../assets/images/sidebar/home.svg" alt="home" />
-                    <span>Главная</span>
-                </div>
-            </RouterLink>
-        </div>
-
-        <!-- === Погашения === -->
-        <div class="section">
-            <div class="section-title">
-                <div class="line"></div>
-                <p>Погашения</p>
-            </div>
-
-            <div v-for="(item, i) in payments" :key="i" class="menu-item">
-                <div class="menu-link" :class="{ active: isActive(item.route) }"
-                    @click="item.children ? toggle(i, 'payments') : goTo(item.route)">
-                    <div class="menu-left">
-                        <img :src="item.icon" alt="" />
-                        <span>{{ item.label }}</span>
-                    </div>
-                    <img v-if="item.children" class="arrow"
-                        :class="{ open: openGroup === 'payments' && openIndex === i }"
-                        src="../assets/images/sidebar/arrow-down.svg" alt="arrow" />
-                </div>
-
-                <transition name="dropdown">
-                    <div v-if="item.children && openGroup === 'payments' && openIndex === i" class="submenu">
-                        <RouterLink v-for="(sub, j) in item.children" :key="j" :to="sub.route" class="submenu-link"
-                            :class="{ active: isActive(sub.route) }">
-                            <img v-if="sub.icon" :src="sub.icon" alt="" class="submenu-icon" />
-                            {{ sub.label }}
-                        </RouterLink>
-                    </div>
-                </transition>
-            </div>
-        </div>
-
-        <!-- === Система === -->
-        <div class="section">
-            <div class="section-title">
-                <div class="line"></div>
-                <p>Система</p>
-            </div>
-
-            <div v-for="(item, i) in system" :key="i" class="menu-item">
-                <div class="menu-link" :class="{ active: isActive(item.route) }"
-                    @click="item.children ? toggle(i, 'system') : goTo(item.route)">
-                    <div class="menu-left">
-                        <img :src="item.icon" alt="" />
-                        <span>{{ item.label }}</span>
-                    </div>
-                    <img v-if="item.children" class="arrow" :class="{ open: openGroup === 'system' && openIndex === i }"
-                        src="../assets/images/sidebar/arrow-down.svg" alt="arrow" />
-                </div>
-
-                <transition name="dropdown">
-                    <div v-if="item.children && openGroup === 'system' && openIndex === i" class="submenu">
-                        <RouterLink v-for="(sub, j) in item.children" :key="j" :to="sub.route" class="submenu-link"
-                            :class="{ active: isActive(sub.route) }">
-                            <img v-if="sub.icon" :src="sub.icon" alt="" class="submenu-icon" />
-                            {{ sub.label }}
-                        </RouterLink>
-                    </div>
-                </transition>
-            </div>
-        </div>
-
-        <!-- === Партнерство === -->
-        <div class="section">
-            <div class="section-title">
-                <div class="line"></div>
-                <p>Партнерство</p>
-            </div>
-
-            <div v-for="(item, i) in partner" :key="i" class="menu-item">
-                <div class="menu-link" :class="{ active: isActive(item.route) }"
-                    @click="item.children ? toggle(i, 'partner') : goTo(item.route)">
-                    <div class="menu-left">
-                        <img :src="item.icon" alt="" />
-                        <span>{{ item.label }}</span>
-                    </div>
-                    <img v-if="item.children" class="arrow"
-                        :class="{ open: openGroup === 'partner' && openIndex === i }"
-                        src="../assets/images/sidebar/arrow-down.svg" alt="arrow" />
-                </div>
-
-                <transition name="dropdown">
-                    <div v-if="item.children && openGroup === 'partner' && openIndex === i" class="submenu">
-                        <RouterLink v-for="(sub, j) in item.children" :key="j" :to="sub.route" class="submenu-link"
-                            :class="{ active: isActive(sub.route) }">
-                            <img v-if="sub.icon" :src="sub.icon" alt="" class="submenu-icon" />
-                            {{ sub.label }}
-                        </RouterLink>
-                    </div>
-                </transition>
-            </div>
-        </div>
-    </aside>
-</template>
-
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useRouter, useRoute, RouterLink } from 'vue-router'
 import '../assets/css/main.css'
+
 
 const router = useRouter()
 const route = useRoute()
 
 const openIndex = ref(null)
 const openGroup = ref(null)
+const theme = ref(localStorage.getItem('theme') || 'light')
+
+defineProps({
+    isOpen: Boolean,
+})
 
 const toggle = (index, group) => {
     if (openGroup.value === group && openIndex.value === index) {
@@ -134,6 +30,16 @@ const goTo = (path) => {
 }
 
 const isActive = (path) => route.path === path
+
+onMounted(() => {
+    window.addEventListener('theme-changed', (e) => {
+        theme.value = e.detail
+    })
+})
+
+onBeforeUnmount(() => {
+    window.removeEventListener('theme-changed', () => { })
+})
 
 // === Данные меню ===
 const payments = [
@@ -273,5 +179,120 @@ const partner = [
     },
 ]
 </script>
+
+<template>
+    <aside class="sidebar" :class="{ open: isOpen }">
+        <div class="logo-wrapper">
+            <img v-if="theme === 'dark'" src="../assets/images/logo-white.png" alt="image" />
+            <img v-else src="../assets/images/logo.svg" alt="image" />
+        </div>
+
+        <!-- === Главная (отдельно сверху) === -->
+        <div class="menu-item">
+            <RouterLink to="/" class="menu-link" :class="{ active: isActive('/') }">
+                <div class="menu-left">
+                    <img src="../assets/images/sidebar/home.svg" alt="home" />
+                    <span>Главная</span>
+                </div>
+            </RouterLink>
+        </div>
+
+        <!-- === Погашения === -->
+        <div class="section">
+            <div class="section-title">
+                <div class="line"></div>
+                <p>Погашения</p>
+            </div>
+
+            <div v-for="(item, i) in payments" :key="i" class="menu-item">
+                <div class="menu-link" :class="{ active: isActive(item.route) }"
+                    @click="item.children ? toggle(i, 'payments') : goTo(item.route)">
+                    <div class="menu-left">
+                        <img :src="item.icon" alt="" />
+                        <span>{{ item.label }}</span>
+                    </div>
+                    <img v-if="item.children" class="arrow"
+                        :class="{ open: openGroup === 'payments' && openIndex === i }"
+                        src="../assets/images/sidebar/arrow-down.svg" alt="arrow" />
+                </div>
+
+                <transition name="dropdown">
+                    <div v-if="item.children && openGroup === 'payments' && openIndex === i" class="submenu">
+                        <RouterLink v-for="(sub, j) in item.children" :key="j" :to="sub.route" class="submenu-link"
+                            :class="{ active: isActive(sub.route) }">
+                            <img v-if="sub.icon" :src="sub.icon" alt="" class="submenu-icon" />
+                            {{ sub.label }}
+                        </RouterLink>
+                    </div>
+                </transition>
+            </div>
+        </div>
+
+        <!-- === Система === -->
+        <div class="section">
+            <div class="section-title">
+                <div class="line"></div>
+                <p>Система</p>
+            </div>
+
+            <div v-for="(item, i) in system" :key="i" class="menu-item">
+                <div class="menu-link" :class="{ active: isActive(item.route) }"
+                    @click="item.children ? toggle(i, 'system') : goTo(item.route)">
+                    <div class="menu-left">
+                        <img :src="item.icon" alt="" />
+                        <span>{{ item.label }}</span>
+                    </div>
+                    <img v-if="item.children" class="arrow" :class="{ open: openGroup === 'system' && openIndex === i }"
+                        src="../assets/images/sidebar/arrow-down.svg" alt="arrow" />
+                </div>
+
+                <transition name="dropdown">
+                    <div v-if="item.children && openGroup === 'system' && openIndex === i" class="submenu">
+                        <RouterLink v-for="(sub, j) in item.children" :key="j" :to="sub.route" class="submenu-link"
+                            :class="{ active: isActive(sub.route) }">
+                            <img v-if="sub.icon" :src="sub.icon" alt="" class="submenu-icon" />
+                            {{ sub.label }}
+                        </RouterLink>
+                    </div>
+                </transition>
+            </div>
+        </div>
+
+        <!-- === Партнерство === -->
+        <div class="section">
+            <div class="section-title">
+                <div class="line"></div>
+                <p>Партнерство</p>
+            </div>
+
+            <div v-for="(item, i) in partner" :key="i" class="menu-item">
+                <div class="menu-link" :class="{ active: isActive(item.route) }"
+                    @click="item.children ? toggle(i, 'partner') : goTo(item.route)">
+                    <div class="menu-left">
+                        <img :src="item.icon" alt="" />
+                        <span>{{ item.label }}</span>
+                    </div>
+                    <img v-if="item.children" class="arrow"
+                        :class="{ open: openGroup === 'partner' && openIndex === i }"
+                        src="../assets/images/sidebar/arrow-down.svg" alt="arrow" />
+                </div>
+
+                <transition name="dropdown">
+                    <div v-if="item.children && openGroup === 'partner' && openIndex === i" class="submenu">
+                        <RouterLink v-for="(sub, j) in item.children" :key="j" :to="sub.route" class="submenu-link"
+                            :class="{ active: isActive(sub.route) }">
+                            <img v-if="sub.icon" :src="sub.icon" alt="" class="submenu-icon" />
+                            {{ sub.label }}
+                        </RouterLink>
+                    </div>
+                </transition>
+            </div>
+        </div>
+
+        <div v-if="isOpen && isMobile" class="overlay" @click="$emit('close')"></div>
+    </aside>
+</template>
+
+
 
 <style scoped></style>

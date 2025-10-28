@@ -1,16 +1,15 @@
 <template>
   <button @click="toggleTheme" class="theme-btn">
-    <i :class="icon"></i>
+    <img v-if="theme === 'dark'" src="../assets/images/sidebar/sun.svg" alt="image" class="theme-icon" />
+    <img v-else src="../assets/images/sidebar/moon.svg" alt="image" class="theme-icon" />
   </button>
 </template>
 
 <script setup>
-import { ref, computed, watchEffect } from 'vue'
+import { ref, watchEffect } from 'vue'
 
 const theme = ref(localStorage.getItem('theme') || 'light')
-const icon = computed(() =>
-  theme.value === 'dark' ? 'ri-sun-line' : 'ri-moon-line'
-)
+
 
 const toggleTheme = () => {
   theme.value = theme.value === 'dark' ? 'light' : 'dark'
@@ -19,15 +18,8 @@ const toggleTheme = () => {
 
 watchEffect(() => {
   document.documentElement.classList.toggle('dark', theme.value === 'dark')
+  window.dispatchEvent(new CustomEvent('theme-changed', { detail: theme.value }))
 })
 </script>
 
-<style scoped>
-.theme-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.4rem;
-  color: var(--text);
-}
-</style>
+<style scoped></style>
