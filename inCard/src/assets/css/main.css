@@ -121,6 +121,7 @@ body {
 .dark .base-select-wrapper .select-wrapper .select-trigger,
 .dark .base-select-wrapper .select-wrapper .select-dropdown,
 .dark .home-transactions-wrapper .autopayment-wrapper,
+.dark .header .avatar-menu .dropdown,
 .dark .home-transactions-wrapper .base-mini-card-wrapper .card-wrapper .icon-wrapper {
   background: var(--header-bg);
   box-shadow:
@@ -633,7 +634,7 @@ body {
   position: absolute;
   right: 0;
   top: 45px;
-  background: var(--header-bg);
+  background: var(--white);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   overflow: hidden;
