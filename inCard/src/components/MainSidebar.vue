@@ -1,8 +1,7 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
 import { useRouter, useRoute, RouterLink } from 'vue-router'
 import '../assets/css/main.css'
-
 
 const router = useRouter()
 const route = useRoute()
@@ -14,6 +13,7 @@ const theme = ref(localStorage.getItem('theme') || 'light')
 defineProps({
     isOpen: Boolean,
 })
+const isMobile = computed(() => window.innerWidth < 1200)
 
 const toggle = (index, group) => {
     if (openGroup.value === group && openIndex.value === index) {
