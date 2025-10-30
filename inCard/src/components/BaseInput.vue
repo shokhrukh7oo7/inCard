@@ -4,7 +4,7 @@
 
         <div class="input-wrapper">
             <input :id="id" :type="showPassword ? 'text' : type" :placeholder="placeholder" v-model="model"
-                class="base-input" :autocomplete="autocomplete" />
+                class="base-input" :autocomplete="resolvedAutocomplete" />
 
             <!-- иконка для типа password -->
             <button v-if="type === 'password'" type="button" class="toggle-password" @click="togglePassword">
@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue"
+import { ref, watch, computed } from "vue"
 
 const props = defineProps({
     id: String,
@@ -27,10 +27,7 @@ const props = defineProps({
     },
     placeholder: String,
     modelValue: String,
-    autocomplete: {
-        type: String,
-        default: "",
-    },
+    autocomplete: String,
 })
 
 const emit = defineEmits(["update:modelValue"])
@@ -43,6 +40,15 @@ watch(model, (val) => emit("update:modelValue", val))
 const togglePassword = () => {
     showPassword.value = !showPassword.value
 }
+
+// если пользователь не передал autocomplete — ставим дефолт в зависимости от типа
+const resolvedAutocomplete = computed(() => {
+    if (props.autocomplete) return props.autocomplete
+    if (props.type === "password") return "current-password"
+    if (props.type === "email") return "email"
+    if (props.type === "tel") return "tel"
+    return "off"
+})
 </script>
 
 <style scoped>

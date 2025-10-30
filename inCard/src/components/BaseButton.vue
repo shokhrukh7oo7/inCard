@@ -1,10 +1,11 @@
 <template>
-    <button class="base-btn" :class="variant" :type="type" @click="$emit('click')">
+    <button class="base-btn" :class="variant" :type="type" :disabled="disabled" @click="onClick">
         <slot />
     </button>
 </template>
 
 <script setup>
+const emit = defineEmits(["click"])
 defineProps({
     type: {
         type: String,
@@ -14,7 +15,13 @@ defineProps({
         type: String,
         default: "primary", // варианты: primary / secondary / outline
     },
+    disabled: { type: Boolean, default: false },
 })
+// Функция-обёртка
+function onClick(event) {
+    event.stopPropagation()
+    emit("click", event)
+}
 </script>
 
 <style scoped>

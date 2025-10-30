@@ -9,6 +9,36 @@ const newPassword = ref('')
 const confirmPassword = ref('')
 
 const activeTab = ref('account')
+// изображение профиля
+const defaultImage = new URL("../assets/images/sidebar/user.png", import.meta.url).href
+const profileImage = ref(localStorage.getItem('profileImage') || defaultImage)
+
+// ссылка на input
+const fileInput = ref(null)
+
+// при клике на кнопку — открываем окно выбора файла
+const selectImage = () => {
+    fileInput.value?.click()
+}
+
+// обработка выбора файла
+const onFileChange = (e) => {
+    const file = e.target.files[0]
+    if (file && file.type.startsWith("image/")) {
+        const reader = new FileReader()
+        reader.onload = (event) => {
+            profileImage.value = event.target.result
+        }
+        reader.readAsDataURL(file)
+    }
+}
+
+// сброс фото
+const resetImage = () => {
+    profileImage.value = defaultImage
+    if (fileInput.value) fileInput.value.value = ""
+}
+
 </script>
 
 <template>
@@ -28,13 +58,16 @@ const activeTab = ref('account')
             <div class="card">
                 <div class="card-header">
                     <div class="image-wrapper">
-                        <img src="../assets/images/sidebar/user.png" alt="image">
+                        <img :src="profileImage" alt="image">
                     </div>
 
                     <div class="image-setting-wrapper">
                         <div class="change-image-wrapper">
-                            <BaseButton>Загрузите новое фото</BaseButton>
-                            <BaseButton variant="secondary">Сбросить</BaseButton>
+                            <input type="file" accept="image/*" ref="fileInput" @change="onFileChange"
+                                style="display: none" />
+
+                            <BaseButton type="button" @click.stop="selectImage">Загрузите новое фото</BaseButton>
+                            <BaseButton type="button" variant="secondary" @click="resetImage">Сбросить</BaseButton>
                         </div>
                         <p class="format-content">Допускаются JPG, GIF или PNG.</p>
                     </div>
@@ -67,11 +100,11 @@ const activeTab = ref('account')
                     <form>
                         <div class="form-wrapper">
                             <BaseInput id="user-password" label="Текущий пароль" type="password"
-                                placeholder="Введите пароль" v-model="currentPassword" />
+                                placeholder="Введите пароль" v-model="currentPassword" autocomplete="currentPassword" />
                             <BaseInput id="new-password" label="Новый пароль" type="password"
-                                placeholder="Введите пароль" v-model="newPassword" />
+                                placeholder="Введите пароль" v-model="newPassword" autocomplete="new-password" />
                             <BaseInput id="confirm-password" label="Подтвердите пароль" type="password"
-                                placeholder="Введите пароль" v-model="confirmPassword" />
+                                placeholder="Введите пароль" v-model="confirmPassword" autocomplete="new-password" />
                         </div>
 
                         <div class="form-btn-wrapper">
