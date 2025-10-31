@@ -22,6 +22,8 @@ const toggleMenu = () => (menuOpen.value = !menuOpen.value)
 
 const logout = () => {
   // Очистка данных, токенов и т.д.
+  localStorage.clear()
+  menuOpen.value = false
   router.push('/login')
 }
 </script>

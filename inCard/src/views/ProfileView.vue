@@ -100,7 +100,7 @@ const resetImage = () => {
                     <form>
                         <div class="form-wrapper">
                             <BaseInput id="user-password" label="Текущий пароль" type="password"
-                                placeholder="Введите пароль" v-model="currentPassword" autocomplete="currentPassword" />
+                                placeholder="Введите пароль" v-model="currentPassword" autocomplete="new-password" />
                             <BaseInput id="new-password" label="Новый пароль" type="password"
                                 placeholder="Введите пароль" v-model="newPassword" autocomplete="new-password" />
                             <BaseInput id="confirm-password" label="Подтвердите пароль" type="password"

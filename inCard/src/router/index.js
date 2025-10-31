@@ -6,6 +6,14 @@ import HomeView from '@/views/HomeView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // 🔹 Страница логина — отдельный маршрут без Layout
+    {
+      path: '/login',
+      name: 'MainLogin',
+      component: () => import('@/layouts/MainLogin.vue'),
+    },
+
+    // 🔹 Остальные страницы — с общим Layout
     {
       path: '/',
       component: Layout, // общий layout
