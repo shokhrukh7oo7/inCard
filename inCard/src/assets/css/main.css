@@ -198,7 +198,8 @@ body {
 .sidebar .section .section-title .line {
   position: absolute;
   border-bottom: 1px solid var(--hr-color);
-  width: calc(100% - 32px);
+  /* width: calc(100% - 32px); */
+  width: 100%;
   top: 50%;
 }
 
@@ -208,7 +209,7 @@ body {
   padding: 5px 10px;
   position: relative;
   z-index: 1;
-  margin-left: 1.2rem;
+  margin-left: 1.2rem !important;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -923,6 +924,10 @@ body {
   }
   .sidebar.open {
     transform: translateX(0);
+    border-right: 1px solid var(--hr-color);
+  }
+  .dark .sidebar.open {
+    border-right-color: var(--white);
   }
   .overlay {
     position: fixed;
@@ -1014,6 +1019,9 @@ body {
   .table-component tbody td:last-child {
     padding-top: 10px;
   }
+  .table-wrapper .table-component .export-wrapper {
+    padding: 0.5rem 0;
+  }
 }
 @media (max-width: 768px) {
   .home-wrapper .home-card-wrapper {
@@ -1036,9 +1044,6 @@ body {
   .tabs-demo .tab-content .card .card-header .image-wrapper {
     width: 150px;
     height: 150px;
-  }
-  .table-wrapper .table-component .export-wrapper {
-    padding: 0.5rem 0;
   }
 }
 
