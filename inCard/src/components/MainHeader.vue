@@ -7,7 +7,7 @@
 
     <div class="right">
       <ThemeToggle />
-      <LanguageSwitcher />
+      <!-- <LanguageSwitcher /> -->
       <AvatarMenu />
     </div>
   </header>
@@ -17,7 +17,7 @@
 import '../assets/css/main.css'
 
 import ThemeToggle from './ThemeToggle.vue'
-import LanguageSwitcher from './LanguageSwitcher.vue'
+// import LanguageSwitcher from './LanguageSwitcher.vue'
 import AvatarMenu from './AvatarMenu.vue'
 
 defineProps({

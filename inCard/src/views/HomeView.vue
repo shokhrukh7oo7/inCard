@@ -16,7 +16,7 @@ import BaseMiniCard from "@/components/BaseMiniCard.vue"
 // CHART
 import { useRadialChart } from '@/chart.js'
 
-const selectedFruit = ref("")
+const selectedCompany = ref("")
 const all = [
     { value: "Все", label: "Все" },
     { value: "ACCENT LINE OOO (BOSCH)", label: "ACCENT LINE OOO (BOSCH)" },
@@ -99,7 +99,7 @@ const { series, chartOptions } = useRadialChart('Всего', 95)
     <div class="home-wrapper">
         <div class="select-wrapper">
             <!-- without label -->
-            <BaseSelect v-model="selectedFruit" :options="all" placeholder="Все" />
+            <BaseSelect v-model="selectedCompany" :options="all" placeholder="Все" />
             <!-- with label -->
             <!-- <BaseSelect v-model="selectedFruit" :options="all" label="Выберите фрукт" placeholder="Все" /> -->
         </div>

@@ -28,11 +28,11 @@ const router = createRouter({
           name: 'Profile',
           component: () => import('@/views/ProfileView.vue'),
         },
-        // {
-        //   path: 'about',
-        //   name: 'about',
-        //   component: AboutView,
-        // },
+        {
+          path: 'payers/contracts',
+          name: 'PayersContract',
+          component: () => import('@/views/payers/PayersContract.vue'),
+        },
       ],
     },
   ],

@@ -3,10 +3,8 @@ import { RouterView } from 'vue-router'
 </script>
 
 <template>
-  <div class="container">
-    <div class="bg-main">
-      <RouterView />
-    </div>
+  <div class="bg-main">
+    <RouterView />
   </div>
 </template>
 

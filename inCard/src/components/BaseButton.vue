@@ -26,7 +26,7 @@ function onClick(event) {
 
 <style scoped>
 .base-btn {
-    padding: 0.7rem 1rem;
+    padding: 0.3rem 1rem;
     border-radius: 8px;
     font-size: 14px;
     text-transform: uppercase;
