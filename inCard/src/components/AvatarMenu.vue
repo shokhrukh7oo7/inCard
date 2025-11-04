@@ -6,6 +6,14 @@
       <RouterLink to="/profile" class="dropdown-item">Profile</RouterLink>
       <!-- <a href="#">Profile</a> -->
       <button @click="logout" class="dropdown-item">Logout</button>
+      <!-- 
+        url:http://localhost:8080/api/auth/logout
+
+        body берилмайди.
+        authorization берилади.
+        Bearer {{ Token }} худди шу малумот header ичида берилади.
+        header номи authorization булади.
+      -->
       <!-- <a href="#">Logout</a> -->
     </div>
   </div>

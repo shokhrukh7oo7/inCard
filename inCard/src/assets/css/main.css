@@ -816,6 +816,8 @@ body {
 .payers-contact-wrappper .filter-wrapper .accordion .accordion-button {
   padding: 0.5rem 1rem;
   align-items: start;
+  font-weight: 500;
+  font-size: 18px;
 }
 .payers-contact-wrappper .filter-wrapper .accordion .accordion-button:focus {
   box-shadow: none;
@@ -904,8 +906,81 @@ body {
 .table-component table tbody img {
   width: 20px;
 }
-
 /* PAYER AND CONTRACTS END */
+
+/* PAYER DETAIL START */
+.payer-details-wrapper .user-detail-wrapper .user-detail-content {
+  background: var(--white);
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+  border-radius: 4px;
+  vertical-align: top;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 1rem;
+}
+
+.payer-details-wrapper .user-detail-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.payer-details-wrapper .user-detail-wrapper .user-detail-content .payer-detail-header-wrapper {
+  border-bottom: 1px solid var(--hr-color);
+  padding-bottom: 1rem;
+}
+
+.payer-details-wrapper .user-detail-wrapper .user-detail-content .payer-detail-header-wrapper h1 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 2rem;
+  letter-spacing: 0.0125em;
+  color: var(--blue);
+}
+
+.payer-details-wrapper
+  .user-detail-wrapper
+  .user-detail-content
+  .payer-detail-content-wrapper
+  .detail-items {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  gap: 15px;
+}
+
+.payer-details-wrapper
+  .user-detail-wrapper
+  .user-detail-content
+  .payer-detail-content-wrapper
+  .detail-items
+  strong {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 2rem;
+  letter-spacing: 0.0125em;
+  color: var(--grey);
+}
+.payer-details-wrapper
+  .user-detail-wrapper
+  .user-detail-content
+  .payer-detail-content-wrapper
+  .detail-items
+  p {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 2rem;
+  letter-spacing: 0.0125em;
+  color: var(--grey);
+}
+
+.payer-details-wrapper .user-detail-wrapper button {
+  text-transform: none;
+  color: var(--blue);
+}
+/* PAYER DETAIL END */
 
 /* RESPONSIVE START */
 @media (max-width: 1400px) {
@@ -1001,7 +1076,7 @@ body {
   .table-component tbody td {
     display: flex;
     justify-content: space-between;
-    padding: 6px 8px;
+    padding: 0.2rem 1rem !important;
     font-size: 13px;
     border: none;
   }
@@ -1016,9 +1091,9 @@ body {
   }
 
   /* чтобы иконка “перейти” не съезжала */
-  .table-component tbody td:last-child {
+  /* .table-component tbody td:last-child {
     padding-top: 10px;
-  }
+  } */
   .table-wrapper .table-component .export-wrapper {
     padding: 0.5rem 0;
   }

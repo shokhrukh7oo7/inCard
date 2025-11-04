@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import BaseButton from '@/components/BaseButton.vue';
 import BaseInput from '@/components/BaseInput.vue';
+import BaseTabs from '@/components/BaseTabs.vue';
 
 // Добавляем состояния для паролей
 const currentPassword = ref('')
@@ -43,18 +44,86 @@ const resetImage = () => {
 
 <template>
     <div class="tabs-demo">
+
+        <BaseTabs v-model="activeTab" :tabs="[
+            { name: 'account', label: 'Аккаунт' },
+            { name: 'security', label: 'Безопасность' },
+        ]">
+
+            <template #default="{ activeTab }">
+                <div v-if="activeTab === 'account'">
+                    <!-- Твоя разметка аккаунта -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="image-wrapper">
+                                <img :src="profileImage" alt="image" />
+                            </div>
+
+                            <div class="image-setting-wrapper">
+                                <input type="file" accept="image/*" ref="fileInput" @change="onFileChange"
+                                    style="display: none" />
+                                <BaseButton @click.stop="selectImage">Загрузить фото</BaseButton>
+                                <BaseButton variant="secondary" @click="resetImage">Сбросить</BaseButton>
+                                <p class="format-content">Допускаются JPG, GIF или PNG.</p>
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <form>
+                                <div class="form-wrapper">
+                                    <BaseInput id="login" label="Логин" />
+                                    <BaseInput id="first-name" label="Имя" />
+                                    <BaseInput id="last-name" label="Фамилия" />
+                                    <BaseInput id="surname" label="Отчество" />
+                                    <BaseInput id="email" type="email" label="Email" />
+                                    <BaseInput id="phone" type="tel" label="Телефон" />
+                                </div>
+
+                                <div class="form-btn-wrapper">
+                                    <BaseButton>Сохранить</BaseButton>
+                                    <BaseButton variant="outline">Отменить</BaseButton>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-else-if="activeTab === 'security'">
+                    <div class="card">
+                        <div class="card-content">
+                            <form>
+                                <div class="form-wrapper">
+                                    <BaseInput id="user-password" v-model="currentPassword" label="Текущий пароль"
+                                        type="password" autocomplete="new-password" />
+                                    <BaseInput id="new-password" v-model="newPassword" label="Новый пароль"
+                                        type="password" autocomplete="new-password" />
+                                    <BaseInput id="confirm-password" v-model="confirmPassword"
+                                        label="Подтверждение пароля" type="password" autocomplete="new-password" />
+                                </div>
+
+                                <div class="form-btn-wrapper">
+                                    <BaseButton>Сохранить</BaseButton>
+                                    <BaseButton variant="outline">Отменить</BaseButton>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </BaseTabs>
+
         <!-- Tabs header -->
-        <div class="tabs-list">
+        <!-- <div class="tabs-list">
             <button class="tabs-trigger" :class="{ active: activeTab === 'account' }" @click="activeTab = 'account'">
                 Аккаунт
             </button>
             <button class="tabs-trigger" :class="{ active: activeTab === 'security' }" @click="activeTab = 'security'">
                 Безопасность
             </button>
-        </div>
+        </div> -->
 
         <!-- Account tab -->
-        <div v-if="activeTab === 'account'" class="tab-content">
+        <!-- <div v-if="activeTab === 'account'" class="tab-content">
             <div class="card">
                 <div class="card-header">
                     <div class="image-wrapper">
@@ -91,10 +160,10 @@ const resetImage = () => {
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Security tab -->
-        <div v-if="activeTab === 'security'" class="tab-content">
+        <!-- <div v-if="activeTab === 'security'" class="tab-content">
             <div class="card">
                 <div class="card-content">
                     <form>
@@ -114,7 +183,7 @@ const resetImage = () => {
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 

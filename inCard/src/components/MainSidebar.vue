@@ -50,7 +50,7 @@ const payments = [
             {
                 label: 'Платильщики и Контракты',
                 icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-                route: '/payers/contracts'
+                route: '/payers/list'
             },
             {
                 label: 'О персональных данных',

@@ -29,9 +29,15 @@ const router = createRouter({
           component: () => import('@/views/ProfileView.vue'),
         },
         {
-          path: 'payers/contracts',
+          path: 'payers/list',
           name: 'PayersContract',
           component: () => import('@/views/payers/PayersContract.vue'),
+        },
+        {
+          path: 'payers/:id',
+          name: 'PayersContractItem',
+          component: () => import('@/views/payers/payers_contract_item/PayersContractItem.vue'),
+          props: true,
         },
       ],
     },
