@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import BaseButton from '@/components/BaseButton.vue';
 import BaseInput from '@/components/BaseInput.vue';
 import BaseTabs from '@/components/BaseTabs.vue';
@@ -40,6 +40,84 @@ const resetImage = () => {
     if (fileInput.value) fileInput.value.value = ""
 }
 
+
+// connect with api
+const form = ref({
+    userName: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+})
+
+const BASEURL = 'http://localhost:8080'
+
+const userProfile = async () => {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await fetch(`${BASEURL}/api/auth/get-me`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+        })
+
+        const data = await response.json()
+        console.log('test', data);
+
+        if (data.success === true) {
+            form.value.userName = data.result.username || ''
+            form.value.firstName = data.result.firstName || ''
+            form.value.lastName = data.result.lastName || ''
+            form.value.email = data.result.email || ''
+            form.value.phone = data.result.phone || ''
+        }
+        console.log('test2', form.value);
+
+    } catch (err) {
+        err.value = 'Ошибка'
+    }
+}
+
+const saveProfile = async () => {
+    try {
+        const token = localStorage.getItem('token')
+
+        const updatedData = {
+            userName: form.value.userName,
+            firstName: form.value.firstName,
+            lastName: form.value.lastName,
+            email: form.value.email,
+            phone: form.value.phone,
+        }
+
+        const response = await fetch(`${BASEURL}/api/auth/update-me`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(updatedData),
+        })
+
+        const data = await response.json()
+        console.log('update:', data)
+
+        if (data.success) {
+            alert('Профиль успешно обновлён!')
+        } else {
+            alert('Не удалось обновить профиль.')
+        }
+    } catch (err) {
+        console.error('Ошибка при обновлении профиля', err)
+    }
+}
+
+
+onMounted(() => {
+    userProfile()
+})
 </script>
 
 <template>
@@ -71,17 +149,17 @@ const resetImage = () => {
                         <div class="card-content">
                             <form>
                                 <div class="form-wrapper">
-                                    <BaseInput id="login" label="Логин" />
-                                    <BaseInput id="first-name" label="Имя" />
-                                    <BaseInput id="last-name" label="Фамилия" />
+                                    <BaseInput v-model="form.userName" id="login" label="Логин" />
+                                    <BaseInput v-model="form.firstName" id="first-name" label="Имя" />
+                                    <BaseInput v-model="form.lastName" id="last-name" label="Фамилия" />
                                     <BaseInput id="surname" label="Отчество" />
-                                    <BaseInput id="email" type="email" label="Email" />
-                                    <BaseInput id="phone" type="tel" label="Телефон" />
+                                    <BaseInput v-model="form.email" id="email" type="email" label="Email" />
+                                    <BaseInput v-model="form.phone" id="phone" type="tel" label="Телефон" />
                                 </div>
 
                                 <div class="form-btn-wrapper">
-                                    <BaseButton>Сохранить</BaseButton>
-                                    <BaseButton variant="outline">Отменить</BaseButton>
+                                    <BaseButton type="button" @click="saveProfile">Сохранить</BaseButton>
+                                    <BaseButton variant="outline" type="button">Отменить</BaseButton>
                                 </div>
                             </form>
                         </div>

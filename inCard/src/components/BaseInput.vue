@@ -3,8 +3,8 @@
         <label v-if="label" :for="id" class="base-label">{{ label }}</label>
 
         <div class="input-wrapper">
-            <input :id="id" :type="showPassword ? 'text' : type" :placeholder="placeholder" v-model="model"
-                class="base-input" :autocomplete="resolvedAutocomplete" />
+            <input :id="id" :type="showPassword ? 'text' : type" :placeholder="placeholder" class="base-input"
+                :autocomplete="resolvedAutocomplete" :value="model" @input="updateValue" />
 
             <!-- иконка для типа password -->
             <button v-if="type === 'password'" type="button" class="toggle-password" @click="togglePassword">
@@ -16,7 +16,10 @@
 </template>
 
 <script setup>
+
 import { ref, watch, computed } from "vue"
+
+const model = defineModel();
 
 const props = defineProps({
     id: String,
@@ -26,12 +29,16 @@ const props = defineProps({
         default: "text",
     },
     placeholder: String,
-    modelValue: String,
+    // modelValue: String,
     autocomplete: String,
 })
 
+function updateValue(event) {
+    model.value = event.target.value;
+}
+
 const emit = defineEmits(["update:modelValue"])
-const model = ref(props.modelValue)
+// const model = ref(props.modelValue)
 const showPassword = ref(false)
 
 watch(model, (val) => emit("update:modelValue", val))
