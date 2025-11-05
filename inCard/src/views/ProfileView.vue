@@ -1,8 +1,10 @@
 <script setup>
+import Swal from 'sweetalert2';
 import { ref, onMounted } from 'vue'
 import BaseButton from '@/components/BaseButton.vue';
 import BaseInput from '@/components/BaseInput.vue';
 import BaseTabs from '@/components/BaseTabs.vue';
+import api from '@/API/api';
 
 // Добавляем состояния для паролей
 const currentPassword = ref('')
@@ -40,7 +42,6 @@ const resetImage = () => {
     if (fileInput.value) fileInput.value.value = ""
 }
 
-
 // connect with api
 const form = ref({
     userName: '',
@@ -50,40 +51,52 @@ const form = ref({
     phone: '',
 })
 
-const BASEURL = 'http://localhost:8080'
+// const BASEURL = 'http://localhost:8080'
 
 const userProfile = async () => {
     try {
-        const token = localStorage.getItem('token');
-        const response = await fetch(`${BASEURL}/api/auth/get-me`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            },
-        })
-
-        const data = await response.json()
-        console.log('test', data);
-
-        if (data.success === true) {
+        const { data } = await api.get('/api/auth/get-me')
+        if (data.success) {
             form.value.userName = data.result.username || ''
             form.value.firstName = data.result.firstName || ''
             form.value.lastName = data.result.lastName || ''
             form.value.email = data.result.email || ''
             form.value.phone = data.result.phone || ''
         }
-        console.log('test2', form.value);
-
     } catch (err) {
-        err.value = 'Ошибка'
+        console.error('Ошибка при загрузке профиля:', err)
     }
+
+    // try {
+    //     const token = localStorage.getItem('token');
+    //     const response = await fetch(`${BASEURL}/api/auth/get-me`, {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Authorization': `Bearer ${token}`,
+    //         },
+    //     })
+
+    //     const data = await response.json()
+    //     console.log('test', data);
+
+    //     if (data.success === true) {
+    //         form.value.userName = data.result.username || ''
+    //         form.value.firstName = data.result.firstName || ''
+    //         form.value.lastName = data.result.lastName || ''
+    //         form.value.email = data.result.email || ''
+    //         form.value.phone = data.result.phone || ''
+    //     }
+    //     console.log('test2', form.value);
+
+    // } catch (err) {
+    //     err.value = 'Ошибка'
+    // }
 }
 
+// Сохранение профиля
 const saveProfile = async () => {
     try {
-        const token = localStorage.getItem('token')
-
         const updatedData = {
             userName: form.value.userName,
             firstName: form.value.firstName,
@@ -92,27 +105,70 @@ const saveProfile = async () => {
             phone: form.value.phone,
         }
 
-        const response = await fetch(`${BASEURL}/api/auth/update-me`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`,
-            },
-            body: JSON.stringify(updatedData),
-        })
-
-        const data = await response.json()
-        console.log('update:', data)
+        const { data } = await api.put('/api/auth/update-me', updatedData)
 
         if (data.success) {
-            alert('Профиль успешно обновлён!')
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Профиль успешно обновлён!",
+                showConfirmButton: false,
+                timer: 1500
+            });
         } else {
-            alert('Не удалось обновить профиль.')
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "Не удалось обновить профиль.",
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
     } catch (err) {
-        console.error('Ошибка при обновлении профиля', err)
+        console.error('Ошибка при обновлении профиля:', err)
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "Не удалось обновить профиль.",
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
 }
+
+// const saveProfile = async () => {
+//     try {
+//         const token = localStorage.getItem('token')
+
+//         const updatedData = {
+//             userName: form.value.userName,
+//             firstName: form.value.firstName,
+//             lastName: form.value.lastName,
+//             email: form.value.email,
+//             phone: form.value.phone,
+//         }
+
+//         const response = await fetch(`${BASEURL}/api/auth/update-me`, {
+//             method: 'PUT',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'Authorization': `Bearer ${token}`,
+//             },
+//             body: JSON.stringify(updatedData),
+//         })
+
+//         const data = await response.json()
+//         console.log('update:', data)
+
+//         if (data.success) {
+//             alert('Профиль успешно обновлён!')
+//         } else {
+//             alert('Не удалось обновить профиль.')
+//         }
+//     } catch (err) {
+//         console.error('Ошибка при обновлении профиля', err)
+//     }
+// }
 
 
 onMounted(() => {

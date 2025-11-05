@@ -1,13 +1,12 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router'
-
+import api from '@/API/api';
 
 import BaseButton from '@/components/BaseButton.vue';
 import BaseInput from '@/components/BaseInput.vue';
 
 const router = useRouter();
-const BASEURL = 'http://localhost:8080'
 
 const username = ref('')
 const password = ref('')
@@ -34,37 +33,32 @@ async function handleLogin() {
     loading.value = true
 
     try {
-        const response = await fetch(`${BASEURL}/api/auth/system/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                username: username.value,
-                password: password.value,
-            }),
+        const { data } = await api.post('/api/auth/system/login', {
+            username: username.value,
+            password: password.value
         })
-
-        const data = await response.json()
 
         if (data.success) {
             const result = data.result
-            // Сохраняем токены в localStorage
+
             localStorage.setItem('token', result.token)
             localStorage.setItem('refreshToken', result.refreshToken)
             localStorage.setItem('user', JSON.stringify(result))
-
             router.push({ name: 'HomeView' })
         } else {
             const backendMessage = data.error?.message || ''
+
             if (backendMessage.includes('validation')) {
-                errors.value.password = 'Пароль должен быть не короче 6 символов'
+                errors.value.password = "Пароль должен быть не короче 6 символов"
             } else if (backendMessage.includes('invalid username or password')) {
                 errorMessage.value = 'Неверный логин или пароль'
             } else {
                 errorMessage.value = 'Ошибка авторизации'
             }
         }
+
     } catch (err) {
-        err.value = 'Ошибка'
+        console.log(err);
     } finally {
         loading.value = false
     }

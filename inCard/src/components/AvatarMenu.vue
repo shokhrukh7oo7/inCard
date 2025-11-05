@@ -22,48 +22,87 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
+import api from '@/API/api'
 
 const router = useRouter();
 const menuOpen = ref(false)
 
 const toggleMenu = () => (menuOpen.value = !menuOpen.value)
-const BASEURL = 'http://localhost:8080'
+// const BASEURL = 'http://localhost:8080'
 
 const logout = async () => {
+
   try {
-    const token = localStorage.getItem('token');
-    const response = await fetch(`${BASEURL}/api/auth/get-me`, {
-      method: 'GET',
+    const token = localStorage.getItem('token')
+    if (!token) {
+      router.push({ name: 'MainLogin' })
+    }
+
+    const { data: userData } = await api.get('/api/auth/get-me', {
       headers: {
-        'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
     })
 
-    const data = await response.json()
-
-    if (data.success) {
-      const loginResponse = await fetch(`${BASEURL}/api/auth/logout`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-      })
-      const loginResponseData = await loginResponse.json()
-      if (loginResponseData.success) {
-        // Сохраняем токены в localStorage
+    if (userData.success) {
+      const { data: logoutData } = await api.post(
+        '/api/auth/logout',
+        {}, // тело пустое
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        }
+      )
+      if (logoutData.success) {
         localStorage.removeItem('token')
         localStorage.removeItem('refreshToken')
         localStorage.removeItem('user')
+
+        router.push({ name: 'MainLogin' })
       }
-      router.push({ name: 'MainLogin' })
     } else {
-      console.log('test');
+      console.warn('Ошибка при проверке пользователя')
     }
+
   } catch (err) {
-    err.value = 'Ошибка'
+    console.error('Ошибка при выходе:', err)
   }
+
+  // try {
+  //   const token = localStorage.getItem('token');
+  //   const response = await fetch(`${BASEURL}/api/auth/get-me`, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Authorization': `Bearer ${token}`,
+  //     },
+  //   })
+
+  //   const data = await response.json()
+
+  //   if (data.success) {
+  //     const loginResponse = await fetch(`${BASEURL}/api/auth/logout`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Authorization': `Bearer ${token}`,
+  //       },
+  //     })
+  //     const loginResponseData = await loginResponse.json()
+  //     if (loginResponseData.success) {
+  //       // Сохраняем токены в localStorage
+  //       localStorage.removeItem('token')
+  //       localStorage.removeItem('refreshToken')
+  //       localStorage.removeItem('user')
+  //     }
+  //     router.push({ name: 'MainLogin' })
+  //   } else {
+  //     console.log('test');
+  //   }
+  // } catch (err) {
+  //   err.value = 'Ошибка'
+  // }
 }
 
 

@@ -19,6 +19,7 @@
     "apexcharts": "^5.3.5",
     "axios": "^1.13.1",
     "bootstrap": "^5.3.8",
+    "sweetalert2": "^11.26.3",
     "vue": "^3.5.22",
     "vue-router": "^4.6.3",
     "vue3-apexcharts": "^1.10.0"
