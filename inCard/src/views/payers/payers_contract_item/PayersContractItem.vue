@@ -1,10 +1,11 @@
 <script setup>
-import { ref } from 'vue'
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import BaseButton from '@/components/BaseButton.vue'
 import BaseTabs from '@/components/BaseTabs.vue'
 import BaseFilter from '@/components/BaseFilter.vue'
+import BaseTable from '@/components/BaseTable.vue'
+
 
 // имитация данных (в реальности может быть запрос к API)
 // Table
@@ -27,6 +28,50 @@ const users = [
     },
 ]
 
+const contracts = [
+    { key: 'idContract', label: 'ID контракта' },
+    { key: 'contractSum', label: 'Сумма списаний' },
+    { key: 'company', label: 'ЕПОС' },
+    { key: 'added', label: 'Добавлен' },
+    { key: 'date', label: 'Дата регистрации' },
+]
+
+const transactions = [
+    { key: 'idPayment', label: 'ID платежа' },
+    { key: 'idContract', label: 'ID контракта' },
+    { key: 'sum', label: 'Сумма' },
+    { key: 'comission', label: 'Комиссия' },
+    { key: 'cardNumber', label: 'Номер карты' },
+    { key: 'idTerminal', label: 'ID терминала' },
+    { key: 'gateway', label: 'Шлюз' },
+    { key: 'date', label: 'Дата' },
+    { key: 'dateReversal', label: 'Дата реверсала' },
+]
+
+const dataContracts = ref([
+    {
+        idContract: 153134,
+        contractSum: 0,
+        company: 'ACCENT LINE GROUP',
+        added: 'Головной офис',
+        date: "16.07.2024 15:30:48",
+    }
+])
+
+const dataTransactions = ref([
+    {
+        idPayment: '',
+        idContract: '',
+        sum: '',
+        comission: '',
+        cardNumber: '',
+        idTerminal: '',
+        gateway: '',
+        date: '',
+        dateReversal: ''
+    }
+])
+
 const route = useRoute()
 const userId = Number(route.params.id)
 
@@ -43,12 +88,13 @@ const filterFields = [
     // { type: 'input', model: 'contract', props: { id: 'contract', placeholder: 'Контракт' } },
     { type: 'select', model: 'company', props: { options: idContract.value, placeholder: 'Выберите компанию' } }
 ]
+
 </script>
 
 <template>
     <div class="payer-details-wrapper">
         <div class="row">
-            <div class="col-12 col-lg-4 col-md-4">
+            <div class="col-12 col-lg-3 col-md-4">
                 <div class="user-detail-wrapper">
                     <div class="user-detail-content">
                         <div class="payer-detail-header-wrapper">
@@ -74,18 +120,54 @@ const filterFields = [
                 </div>
             </div>
 
-            <div class="col-12 col-lg-8 col-md-8">
+            <div class="col-12 col-lg-9 col-md-8">
                 <div class="payer-tabs-wrapper">
-                    <BaseTabs v-model="activeTab" :tabs="[
-                        { name: 'general', label: 'Обшие данные' },
-                        { name: 'cards', label: 'Карты' },
-                    ]">
-                        <template #default="{ activeTab }">
-                            <div v-if="activeTab === 'general'">
-                                <BaseFilter :fields="filterFields" title="Фильтры поиска">Фильты поиска</BaseFilter>
-                            </div>
-                        </template>
-                    </BaseTabs>
+                    <div class="tabs-demo">
+                        <BaseTabs v-model="activeTab" :tabs="[
+                            { name: 'general', label: 'Обшие данные' },
+                            { name: 'cards', label: 'Карты' },
+                        ]">
+                            <template #default="{ activeTab }">
+                                <div v-if="activeTab === 'general'">
+                                    <div class="payers-contract-tab-filter-wrapper">
+                                        <BaseFilter :fields="filterFields" title="Фильтры поиска">Фильтр поиска
+                                        </BaseFilter>
+                                    </div>
+
+                                    <!-- КОНТРАКТЫ -->
+                                    <div class="payers-contract-tab-table">
+                                        <h5 class="table-header">Контракты</h5>
+                                        <div class="table-wrapper">
+                                            <div class="table-component">
+                                                <BaseTable :columns="contracts" :data="dataContracts"></BaseTable>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- АВТОПЛАТЕЖИ -->
+                                    <div class="payers-contract-tab-table">
+                                        <h5 class="table-header">Автоплатежи</h5>
+                                        
+                                    </div>
+
+                                    <!-- ТРАНЗАКЦИИ -->
+                                    <div class="payers-contract-tab-table">
+                                        <h5 class="table-header">Транзакции</h5>
+                                        <div class="table-wrapper">
+                                            <div class="table-component">
+                                                <BaseTable :columns="transactions" :data="dataTransactions"></BaseTable>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div v-else-if="activeTab === 'cards'">
+                                    <p>restart</p>
+                                </div>
+
+                            </template>
+                        </BaseTabs>
+                    </div>
                 </div>
             </div>
         </div>
