@@ -120,7 +120,7 @@ const dataAutopayersCompleted = ref([
 ])
 
 // BASE PAY CARD
-const cards = [
+const uzcardCards = [
     {
         userName: 'Mominov Elmurodjon',
         cardName: 'Kapital Bank',
@@ -135,11 +135,26 @@ const cards = [
     }
 ]
 
+const humoCards = [
+    {
+        userName: 'Mominov Elmurodjon',
+        cardName: 'Kapital Bank',
+        cardNumber: '9600 32** **** 1123',
+        image: new URL('@/assets/images/card/logo_humo.png', import.meta.url).href
+    },
+    {
+        userName: 'John Doe',
+        cardName: 'Orient Finans Bank',
+        cardNumber: '9600 14** **** 9844',
+        image: new URL('@/assets/images/card/logo_humo.png', import.meta.url).href
+    }
+]
+
 function handleReject() {
     Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Профиль успешно обновлён!",
+        title: "Отклонена карта!",
         showConfirmButton: false,
         timer: 1500
     });
@@ -155,6 +170,7 @@ const user = computed(() => users.find(u => u.id === userId))
 // Tabs
 const activeTab = ref('general');
 const activeTabTable = ref('active')
+const activeCardTabs = ref('uzcard')
 
 const idContract = ref([
     { value: '1', label: 'Компания 1' },
@@ -295,12 +311,37 @@ const filterFields = [
                                     </div>
                                 </div>
 
-                                <div v-else-if="activeTab === 'cards'">
+                                <div v-else-if="activeTab === 'cards'" class="tab-cards-wrapper">
                                     <div class="pay-card-wrapper">
-                                        <BasePayCard v-for="card in cards" :key="card.cardNumber"
-                                            :user-name="card.userName" :card-name="card.cardName"
-                                            :card-number="card.cardNumber" :image="card.image"
-                                            @reject="handleReject(card)" />
+                                        <BaseTabs v-model="activeCardTabs" :tabs="[
+                                            { name: 'uzcard', label: 'Uzcard' },
+                                            { name: 'humo', label: 'Humo' },
+                                            { name: 'rejectedCard', label: 'Отклоненные Карты' },
+                                        ]">
+                                            <div v-if="activeCardTabs === 'uzcard'">
+                                                <div class="bank-card-wrapper">
+                                                    <BasePayCard v-for="card in uzcardCards" :key="card.cardNumber"
+                                                        :user-name="card.userName" :card-name="card.cardName"
+                                                        :card-number="card.cardNumber" :image="card.image"
+                                                        @reject="handleReject(card)" />
+                                                </div>
+                                            </div>
+
+                                            <div v-else-if="activeCardTabs === 'humo'">
+                                                <div class="bank-card-wrapper">
+                                                    <BasePayCard v-for="card in humoCards" :key="card.cardNumber"
+                                                        :user-name="card.userName" :card-name="card.cardName"
+                                                        :card-number="card.cardNumber" :image="card.image"
+                                                        @reject="handleReject(card)" />
+                                                </div>
+                                            </div>
+
+                                            <div v-else-if="activeCardTabs === 'rejectedCard'">
+                                                <div class="bank-card-wrapper">
+                                                    <p style="text-align: center;">Нет карт</p>
+                                                </div>
+                                            </div>
+                                        </BaseTabs>
                                     </div>
                                 </div>
 

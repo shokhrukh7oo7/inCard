@@ -747,8 +747,8 @@ body {
 }
 
 .tabs-demo .tabs-list .tabs-trigger {
-  flex: 1;
-  padding: 1rem 1rem;
+  /* flex: 1; */
+  padding: 0.5rem 1rem;
   background: transparent;
   border-top: none;
   border-left: none;
@@ -758,8 +758,8 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
-  width: 100%;
-  max-width: 300px;
+  /* width: 100%; */
+  /* max-width: 300px; */
   color: var(--grey);
   text-transform: uppercase;
 }
@@ -1078,7 +1078,7 @@ body {
 }
 
 .payer-tabs-wrapper .tabs-demo .tabs-list .tabs-trigger {
-  max-width: 170px;
+  /* max-width: 170px; */
   padding: 0.5rem;
 }
 
@@ -1116,9 +1116,21 @@ body {
   background-color: var(--white);
   border-radius: 4px;
   margin-top: 10px;
+}
+
+.bank-card-wrapper {
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+
+.payer-tabs-wrapper .base-tabs .tab-content .tab-cards-wrapper .tabs-list .tabs-trigger {
+  font-size: 13px;
+  padding: 0.25rem 0.5rem;
+}
+
+.pay-card-wrapper .base-tabs .tabs-list {
+  margin-bottom: 15px;
 }
 /* PAYER DETAIL END */
 
