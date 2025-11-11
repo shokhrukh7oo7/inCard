@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
+import Swal from 'sweetalert2'
 import { useRoute } from 'vue-router'
 import BaseButton from '@/components/BaseButton.vue'
 import BaseTabs from '@/components/BaseTabs.vue'
@@ -7,6 +8,7 @@ import BaseFilter from '@/components/BaseFilter.vue'
 import BaseTable from '@/components/BaseTable.vue'
 import BaseProgress from '@/components/BaseProgress.vue'
 import BaseBadge from '@/components/BaseBadge.vue'
+import BasePayCard from '@/components/BasePayCard.vue'
 
 // имитация данных (в реальности может быть запрос к API)
 // Table
@@ -116,6 +118,34 @@ const dataAutopayersCompleted = ref([
         end: "23.08.2024 16:32:30",
     }
 ])
+
+// BASE PAY CARD
+const cards = [
+    {
+        userName: 'Mominov Elmurodjon',
+        cardName: 'Kapital Bank',
+        cardNumber: '8600 03** **** 6528',
+        image: new URL('@/assets/images/card/uzcard-white.svg', import.meta.url).href
+    },
+    {
+        userName: 'John Doe',
+        cardName: 'Orient Finans Bank',
+        cardNumber: '8600 04** **** 7584',
+        image: new URL('@/assets/images/card/uzcard-white.svg', import.meta.url).href
+    }
+]
+
+function handleReject() {
+    Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Профиль успешно обновлён!",
+        showConfirmButton: false,
+        timer: 1500
+    });
+}
+
+
 
 const route = useRoute()
 const userId = Number(route.params.id)
@@ -266,7 +296,12 @@ const filterFields = [
                                 </div>
 
                                 <div v-else-if="activeTab === 'cards'">
-                                    <p>restart</p>
+                                    <div class="pay-card-wrapper">
+                                        <BasePayCard v-for="card in cards" :key="card.cardNumber"
+                                            :user-name="card.userName" :card-name="card.cardName"
+                                            :card-number="card.cardNumber" :image="card.image"
+                                            @reject="handleReject(card)" />
+                                    </div>
                                 </div>
 
                             </template>

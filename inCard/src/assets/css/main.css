@@ -67,18 +67,30 @@ body {
 
 /* DARK MODE START */
 .dark .sidebar .logo-wrapper,
-.dark .sidebar {
+.dark .sidebar,
+.dark .payer-details-wrapper .user-detail-wrapper .user-detail-content {
   background: var(--header-bg);
 }
 
-.dark .sidebar .section .section-title {
+.dark .sidebar .section .section-title,
+.dark .payer-tabs-wrapper,
+.dark .pay-card-wrapper {
   background: var(--header-bg);
 }
 .dark .sidebar .section .section-title p,
 .dark .payers-contact-wrappper .filter-wrapper .accordion .accordion-button,
 .dark .payers-contact-wrappper .filter-wrapper .accordion .accordion-body,
 .dark .payers-contact-wrappper .filter-wrapper .accordion .accordion-button:not(.collapsed),
-.dark .table-wrapper .table-component {
+.dark
+  .payers-contract-tab-filter-wrapper
+  .filter-wrapper
+  .accordion
+  .accordion-button:not(.collapsed),
+.dark .payers-contract-tab-filter-wrapper .filter-wrapper .accordion .accordion-body,
+.dark .table-wrapper .table-component,
+.dark .payers-contract-tab-table .table-header,
+.dark .payers-contract-tab-filter-wrapper .filter-wrapper .accordion .accordion-button,
+.dark .payers-contract-tab-table .tabs-demo .tabs-list {
   background: var(--header-bg);
   color: var(--white);
 }
@@ -107,9 +119,39 @@ body {
 .dark .base-select-wrapper .select-wrapper .select-trigger,
 .dark .tabs-demo .tabs-list .tabs-trigger,
 .dark .tabs-demo .tab-content .card .card-header .image-setting-wrapper .format-content,
-.dark .tabs-demo .tab-content .card .card-content .form-wrapper .base-input-wrapper label {
-  color: var(--white);
+.dark .tabs-demo .tab-content .card .card-content .form-wrapper .base-input-wrapper label,
+.dark
+  .payer-details-wrapper
+  .user-detail-wrapper
+  .user-detail-content
+  .payer-detail-header-wrapper
+  h1,
+.dark
+  .payer-details-wrapper
+  .user-detail-wrapper
+  .user-detail-content
+  .payer-detail-content-wrapper
+  .detail-items
+  p,
+.dark
+  .payer-details-wrapper
+  .user-detail-wrapper
+  .user-detail-content
+  .payer-detail-content-wrapper
+  .detail-items
+  strong,
+.dark .progress-text {
+  color: var(--white) !important;
 }
+
+.dark
+  .payer-details-wrapper
+  .user-detail-wrapper
+  .user-detail-content
+  .payer-detail-header-wrapper {
+  border-color: var(--white);
+}
+
 .dark .sidebar .menu-item .menu-link img,
 .dark .sidebar .menu-item .submenu .submenu-link img {
   filter: brightness(0) invert(1);
@@ -1064,6 +1106,20 @@ body {
   margin-bottom: 10px;
   max-width: 140px;
 }
+
+.pay-card-wrapper {
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+  padding: 15px;
+  background-color: var(--white);
+  border-radius: 4px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
 /* PAYER DETAIL END */
 
 /* RESPONSIVE START */
@@ -1186,6 +1242,10 @@ body {
   }
   .dark .table-component tbody td::before {
     color: var(--white);
+  }
+
+  .dark .payers-contract-tab-table .table-component {
+    background-color: transparent !important;
   }
 
   /* чтобы иконка “перейти” не съезжала */
