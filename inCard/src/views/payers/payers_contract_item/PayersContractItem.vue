@@ -5,7 +5,8 @@ import BaseButton from '@/components/BaseButton.vue'
 import BaseTabs from '@/components/BaseTabs.vue'
 import BaseFilter from '@/components/BaseFilter.vue'
 import BaseTable from '@/components/BaseTable.vue'
-
+import BaseProgress from '@/components/BaseProgress.vue'
+import BaseBadge from '@/components/BaseBadge.vue'
 
 // имитация данных (в реальности может быть запрос к API)
 // Table
@@ -28,6 +29,7 @@ const users = [
     },
 ]
 
+// CONTRACTS
 const contracts = [
     { key: 'idContract', label: 'ID контракта' },
     { key: 'contractSum', label: 'Сумма списаний' },
@@ -35,7 +37,17 @@ const contracts = [
     { key: 'added', label: 'Добавлен' },
     { key: 'date', label: 'Дата регистрации' },
 ]
+const dataContracts = ref([
+    {
+        idContract: 153134,
+        contractSum: 0,
+        company: 'ACCENT LINE GROUP',
+        added: 'Головной офис',
+        date: "16.07.2024 15:30:48",
+    }
+])
 
+// TRANSACTIONS
 const transactions = [
     { key: 'idPayment', label: 'ID платежа' },
     { key: 'idContract', label: 'ID контракта' },
@@ -47,17 +59,6 @@ const transactions = [
     { key: 'date', label: 'Дата' },
     { key: 'dateReversal', label: 'Дата реверсала' },
 ]
-
-const dataContracts = ref([
-    {
-        idContract: 153134,
-        contractSum: 0,
-        company: 'ACCENT LINE GROUP',
-        added: 'Головной офис',
-        date: "16.07.2024 15:30:48",
-    }
-])
-
 const dataTransactions = ref([
     {
         idPayment: '',
@@ -72,6 +73,50 @@ const dataTransactions = ref([
     }
 ])
 
+// AUTOPAYERSACTIVE
+const autopayersActive = [
+    { key: 'idContract', label: 'ID контракта' },
+    { key: 'sum', label: 'Сумма' },
+    { key: 'status', label: 'Статус' },
+    { key: 'progress', label: 'Прогресс' },
+    { key: 'payed', label: 'Опалчено' },
+    { key: 'start', label: 'Начало' },
+    { key: 'actions', label: 'Перейти' },
+]
+const dataAutopayersActive = ref([
+    {
+        idContract: 153134,
+        sum: '2 153 868,48',
+        status: 'Активна',
+        progress: 25,
+        payed: 0,
+        start: '16.07.2024 15:30:49',
+        end: "23.08.2024 16:32:30",
+    },
+])
+
+
+// AUTOPAYERSCOMPLETED
+const autopayersCompleted = [
+    { key: 'idContract', label: 'ID контракта' },
+    { key: 'sum', label: 'Сумма' },
+    { key: 'progress', label: 'Прогресс' },
+    { key: 'payed', label: 'Оплачено' },
+    { key: 'start', label: 'Начало' },
+    { key: 'end', label: 'Окончание' },
+    { key: 'actions', label: 'Перейти' },
+]
+const dataAutopayersCompleted = ref([
+    {
+        idContract: 153134,
+        sum: '2 153 868, 48',
+        progress: 25,
+        payed: 0,
+        start: '16.07.2024 15:30:49',
+        end: "23.08.2024 16:32:30",
+    }
+])
+
 const route = useRoute()
 const userId = Number(route.params.id)
 
@@ -79,6 +124,8 @@ const user = computed(() => users.find(u => u.id === userId))
 
 // Tabs
 const activeTab = ref('general');
+const activeTabTable = ref('active')
+
 const idContract = ref([
     { value: '1', label: 'Компания 1' },
     { value: '2', label: 'Компания 2' },
@@ -147,7 +194,64 @@ const filterFields = [
                                     <!-- АВТОПЛАТЕЖИ -->
                                     <div class="payers-contract-tab-table">
                                         <h5 class="table-header">Автоплатежи</h5>
-                                        
+
+                                        <div class="tabs-demo">
+                                            <BaseTabs v-model="activeTabTable" :tabs="[
+                                                { name: 'active', label: 'Активные' },
+                                                { name: 'completed', label: 'Завершенные' }
+                                            ]">
+                                                <template #default>
+                                                    <div v-if="activeTabTable === 'active'">
+                                                        <div class="table-wrapper">
+                                                            <div class="table-component">
+                                                                <BaseTable :columns="autopayersActive"
+                                                                    :data="dataAutopayersActive">
+                                                                    <template #status="{ value }">
+                                                                        <BaseBadge :badge="value"></BaseBadge>
+                                                                    </template>
+
+                                                                    <template #progress="{ value }">
+                                                                        <BaseProgress :percentage="value">
+                                                                        </BaseProgress>
+                                                                    </template>
+
+                                                                    <template #actions="{ row }">
+                                                                        <router-link :to="`/payers/${row.id}`"
+                                                                            title="Перейти">
+                                                                            <img src="@/assets/images/table/arrow-circle.svg"
+                                                                                alt="image" />
+                                                                        </router-link>
+                                                                    </template>
+                                                                </BaseTable>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div v-else-if="activeTabTable === 'completed'">
+                                                        <div class="table-wrapper">
+                                                            <div class="table-component">
+                                                                <BaseTable :columns="autopayersCompleted"
+                                                                    :data="dataAutopayersCompleted">
+                                                                    <template #progress="{ value }">
+                                                                        <BaseProgress :percentage="value">
+                                                                        </BaseProgress>
+                                                                    </template>
+
+                                                                    <template #actions="{ row }">
+                                                                        <router-link :to="`/payers/${row.id}`"
+                                                                            title="Перейти">
+                                                                            <img src="@/assets/images/table/arrow-circle.svg"
+                                                                                alt="image" />
+                                                                        </router-link>
+                                                                    </template>
+                                                                </BaseTable>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </template>
+                                            </BaseTabs>
+                                        </div>
+
                                     </div>
 
                                     <!-- ТРАНЗАКЦИИ -->
