@@ -74,7 +74,8 @@ body {
 
 .dark .sidebar .section .section-title,
 .dark .payer-tabs-wrapper,
-.dark .pay-card-wrapper {
+.dark .pay-card-wrapper,
+.dark .payer-details-wrapper .autopayer-content-wrapper {
   background: var(--header-bg);
 }
 .dark .sidebar .section .section-title p,
@@ -90,14 +91,24 @@ body {
 .dark .table-wrapper .table-component,
 .dark .payers-contract-tab-table .table-header,
 .dark .payers-contract-tab-filter-wrapper .filter-wrapper .accordion .accordion-button,
-.dark .payers-contract-tab-table .tabs-demo .tabs-list {
+.dark .payers-contract-tab-table .tabs-demo .tabs-list,
+.dark .autopayment-wrapper .autopayment-table-wrapper .header-wrapper p {
   background: var(--header-bg);
   color: var(--white);
+}
+.dark .autopayment-wrapper .autopayment-table-wrapper .header-wrapper p {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.dark .autopayment-wrapper .table-component {
+  background-color: var(--header-bg) !important;
+  border-radius: 0;
 }
 .dark .payers-contact-wrappper .filter-wrapper .accordion .accordion-button::after {
   filter: brightness(0) invert(1);
 }
-.dark .sidebar .section .section-title .line {
+.dark .sidebar .section .section-title .line,
+.dark .payer-details-wrapper .autopayer-content-wrapper .header-wrapper {
   border-color: var(--white);
 }
 
@@ -140,7 +151,10 @@ body {
   .payer-detail-content-wrapper
   .detail-items
   strong,
-.dark .progress-text {
+.dark .progress-text,
+.dark .payer-details-wrapper .autopayer-content-wrapper .base-label,
+.dark .payer-details-wrapper .autopayer-content-wrapper .header-detail-autopayment,
+.dark .personal-date-wrapper .personal-date-info-wrapper .base-label {
   color: var(--white) !important;
 }
 
@@ -1169,6 +1183,7 @@ body {
   font-size: 14px;
   background-color: var(--white);
 }
+
 .autopayment-wrapper .autopayment-table-wrapper {
   background: var(--white);
   box-shadow:
@@ -1189,6 +1204,15 @@ body {
   border-radius: 0.375rem;
 }
 /* AUTOPAY END */
+
+/* PERSONAL DATE START */
+
+.personal-date-wrapper .personal-date-info-wrapper input {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: var(--white);
+}
+/* PERSONAL DATE END */
 
 /* RESPONSIVE START */
 @media (max-width: 1400px) {

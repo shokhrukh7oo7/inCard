@@ -55,7 +55,7 @@ const payments = [
             {
                 label: 'О персональных данных',
                 icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-                route: '/payers/privacy'
+                route: '/payers/data'
             },
             {
                 label: 'Белый лист',

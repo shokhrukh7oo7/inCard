@@ -45,6 +45,12 @@ const router = createRouter({
           component: () => import('@/views/autopayers/AutopPayers.vue'),
           props: true,
         },
+        {
+          path: 'payers/data',
+          name: 'PersonalData',
+          component: () => import('@/views/personal-data/PersonalDate.vue'),
+          props: true,
+        },
       ],
     },
   ],
