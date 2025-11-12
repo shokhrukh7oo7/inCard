@@ -4,7 +4,7 @@
 
         <div class="input-wrapper">
             <input :id="id" :type="showPassword ? 'text' : type" :placeholder="placeholder" class="base-input"
-                :autocomplete="resolvedAutocomplete" :value="model" @input="updateValue" />
+                :autocomplete="resolvedAutocomplete" :value="model" :disabled="disabled" @input="updateValue" />
 
             <!-- иконка для типа password -->
             <button v-if="type === 'password'" type="button" class="toggle-password" @click="togglePassword">
@@ -31,6 +31,10 @@ const props = defineProps({
     placeholder: String,
     // modelValue: String,
     autocomplete: String,
+    disabled: {
+        type: Boolean,
+        default: false,
+    },
 })
 
 function updateValue(event) {

@@ -70,7 +70,7 @@ const payments = [
         children: [{
             label: 'Автоплатежи',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/payments/history'
+            route: '/payments/autopay'
         }],
     },
     {

@@ -15,20 +15,16 @@ import BasePayCard from '@/components/BasePayCard.vue'
 const users = [
     {
         id: 1,
-        pinfl: '30907861220093',
-        fullName: 'Elmurod Mominov',
-        contract: '153134',
+        name: 'Emlurodjon',
+        sureName: '',
+        lastName: 'Mominov',
+        birthDay: '',
+        pinfl: 30907861220093,
         passport: 'AA 4369116',
-        branch: 'Головной офис',
-    },
-    {
-        id: 2,
-        pinfl: '12345678901234',
-        fullName: 'Dilshod Karimov',
-        contract: '981234',
-        passport: 'AB 1234567',
-        branch: 'Филиал №2',
-    },
+        passportIssueDate: '',
+        passportExpirationDate: '',
+        inn: '',
+    }
 ]
 
 // CONTRACTS
@@ -181,7 +177,6 @@ const filterFields = [
     // { type: 'input', model: 'contract', props: { id: 'contract', placeholder: 'Контракт' } },
     { type: 'select', model: 'company', props: { options: idContract.value, placeholder: 'Выберите компанию' } }
 ]
-
 </script>
 
 <template>
@@ -196,12 +191,15 @@ const filterFields = [
 
                         <div class="payer-detail-content-wrapper">
                             <div v-if="user" class="detail-items">
-                                <p><strong>ID:</strong> {{ user.id }}</p>
-                                <p><strong>ФИО:</strong> {{ user.fullName }}</p>
+                                <p><strong>Имя:</strong> {{ user.name }}</p>
+                                <p><strong>Отчество:</strong> {{ user.sureName }}</p>
+                                <p><strong>Фамилия:</strong> {{ user.lastName }}</p>
+                                <p><strong>Дата рождения:</strong> {{ user.birthDay }}</p>
                                 <p><strong>ПИНФЛ:</strong> {{ user.pinfl }}</p>
-                                <p><strong>Контракт:</strong> {{ user.contract }}</p>
-                                <p><strong>Серия и Номер паспорта:</strong> {{ user.passport }}</p>
-                                <p><strong>Филиал:</strong> {{ user.branch }}</p>
+                                <p><strong>Серия и Номер пасспорта:</strong> {{ user.passport }}</p>
+                                <p><strong>Дата выдачи паспорта:</strong> {{ user.passportIssueDate }}</p>
+                                <p><strong>Дата истечения паспорта:</strong> {{ user.passportExpirationDate }}</p>
+                                <p><strong>ИНН:</strong> {{ user.inn }}</p>
                             </div>
                             <div v-else>
                                 <p>Пользователь не найден.</p>
@@ -262,7 +260,7 @@ const filterFields = [
                                                                     </template>
 
                                                                     <template #actions="{ row }">
-                                                                        <router-link :to="`/payers/${row.id}`"
+                                                                        <router-link :to="`/payers/${row.id}/autopay`"
                                                                             title="Перейти">
                                                                             <img src="@/assets/images/table/arrow-circle.svg"
                                                                                 alt="image" />
@@ -284,7 +282,7 @@ const filterFields = [
                                                                     </template>
 
                                                                     <template #actions="{ row }">
-                                                                        <router-link :to="`/payers/${row.id}`"
+                                                                        <router-link :to="`/payers/${row.id}/autopay`"
                                                                             title="Перейти">
                                                                             <img src="@/assets/images/table/arrow-circle.svg"
                                                                                 alt="image" />

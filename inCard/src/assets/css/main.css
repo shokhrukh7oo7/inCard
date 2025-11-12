@@ -1105,6 +1105,7 @@ body {
 .payers-contract-tab-table .tabs-demo .tabs-list .tabs-trigger {
   margin-bottom: 10px;
   max-width: 140px;
+  font-size: 14px;
 }
 
 .pay-card-wrapper {
@@ -1134,6 +1135,61 @@ body {
 }
 /* PAYER DETAIL END */
 
+/* AUTOPAY START */
+.payer-details-wrapper .autopayer-content-wrapper {
+  background: var(--white);
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+  border-radius: 4px;
+  vertical-align: top;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 1rem;
+}
+.payer-details-wrapper .autopayer-content-wrapper .header-wrapper {
+  border-bottom: 1px solid var(--hr-color);
+  padding-bottom: 0.5rem;
+}
+.payer-details-wrapper .autopayer-content-wrapper .header-detail-autopayment {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 2rem;
+  letter-spacing: 0.0125em;
+  color: var(--blue);
+}
+.payer-details-wrapper .autopayer-content-wrapper .form-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 10px;
+}
+.payer-details-wrapper .autopayer-content-wrapper .form-wrapper input {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: var(--white);
+}
+.autopayment-wrapper .autopayment-table-wrapper {
+  background: var(--white);
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+  border-radius: 4px;
+  margin-top: 20px;
+  vertical-align: top;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+.autopayment-wrapper .autopayment-table-wrapper .header-wrapper p {
+  padding: 0.5rem 1rem;
+  align-items: start;
+  font-weight: 500;
+  font-size: 18px;
+  background: var(--white);
+  border-radius: 0.375rem;
+}
+/* AUTOPAY END */
+
 /* RESPONSIVE START */
 @media (max-width: 1400px) {
   .home-transactions-wrapper .transactions-item-wrapper {
@@ -1156,11 +1212,11 @@ body {
   .dark .sidebar.open {
     border-right-color: var(--white);
   }
-  .overlay {
+  /* .overlay {
     position: fixed;
     inset: 0;
     z-index: 900;
-  }
+  } */
 
   .header {
     flex-direction: row-reverse;
@@ -1222,7 +1278,8 @@ body {
 
   .payers-contract-tab-table .table-component table,
   .payers-contract-tab-table .table-component thead,
-  .payers-contract-tab-table .table-component tbody {
+  .payers-contract-tab-table .table-component tbody,
+  .autopayment-wrapper .autopayment-table-wrapper tbody {
     padding: 5px 5px 0;
   }
 
@@ -1243,6 +1300,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 0.2rem 1rem !important;
+    align-items: center;
     font-size: 13px;
     border: none;
   }
@@ -1293,6 +1351,9 @@ body {
   .payer-tabs-wrapper {
     margin-top: 20px;
   }
+  .payer-details-wrapper .autopayer-content-wrapper {
+    margin-top: 15px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -1314,6 +1375,10 @@ body {
   }
   .base-select-wrapper .select-wrapper {
     max-width: 576px;
+  }
+  .payer-details-wrapper .autopayer-content-wrapper .form-wrapper {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 }
 

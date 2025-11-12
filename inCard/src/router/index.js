@@ -39,6 +39,12 @@ const router = createRouter({
           component: () => import('@/views/payers/payers_contract_item/PayersContractItem.vue'),
           props: true,
         },
+        {
+          path: 'payments/autopay',
+          name: 'AutoPayers',
+          component: () => import('@/views/autopayers/AutopPayers.vue'),
+          props: true,
+        },
       ],
     },
   ],
