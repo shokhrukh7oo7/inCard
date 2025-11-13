@@ -76,13 +76,14 @@ body {
 .dark .payer-tabs-wrapper,
 .dark .pay-card-wrapper,
 .dark .payer-details-wrapper .autopayer-content-wrapper,
-.dark .accordion-body {
+.dark .accordion-body,
+.dark .all-cards-wrapper .all-cards-table-wrapper,
+.dark .payers-contact-wrappper .table-wrapper .table-component {
   background: var(--header-bg);
 }
 .dark .sidebar .section .section-title p,
 .dark .payers-contact-wrappper .filter-wrapper .accordion .accordion-button,
 .dark .payers-contact-wrappper .filter-wrapper .accordion .accordion-body,
-.dark .payers-contact-wrappper .filter-wrapper .accordion .accordion-button:not(.collapsed),
 .dark .payers-contract-tab-filter-wrapper .filter-wrapper .accordion .accordion-body,
 .dark .table-wrapper .table-component,
 .dark .payers-contract-tab-table .table-header,
@@ -178,9 +179,14 @@ body {
 }
 .dark .tabs-demo .tab-content .card .card-content .form-wrapper .base-input-wrapper input,
 .dark .payers-contact-wrappper .filter-wrapper form input,
+.dark .white-list-wrapper .filter-wrapper form input,
+.dark .all-cards-wrapper .filter-wrapper form input,
 .dark .white-list-wrapper .white-list-table-wrapper,
 .dark .white-list-wrapper .accordion .accordion-button,
-.dark .payers-contact-wrappper .filter-wrapper form input::placeholder {
+.dark .all-cards-wrapper .accordion .accordion-button,
+.dark .payers-contact-wrappper .filter-wrapper form input::placeholder,
+.dark .white-list-wrapper .filter-wrapper form input::placeholder,
+.dark .all-cards-wrapper .filter-wrapper form input::placeholder {
   background: var(--header-bg);
   color: var(--white);
 }
@@ -213,6 +219,16 @@ body {
     0 0px 0px rgba(255, 255, 255, 0.7),
     0 0px 0px rgba(255, 255, 255, 0.7),
     0 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+.dark
+  .all-cards-wrapper
+  .all-cards-table-wrapper
+  .all-cards-select-wrapper
+  .base-select-wrapper
+  .select-wrapper
+  .select-trigger {
+  box-shadow: none;
 }
 /* DARK MODE END */
 
@@ -901,6 +917,9 @@ body {
   padding: 5px 15px;
   font-size: 13px;
 }
+.payers-contact-wrappper .table-wrapper .table-component {
+  background-color: var(--white);
+}
 
 .table-wrapper .table-component {
   background-color: var(--white);
@@ -1287,6 +1306,67 @@ body {
 }
 /* WHITE LIST END */
 
+/* ALL CARDS START */
+.all-cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.all-cards-wrapper .all-cards-table-wrapper {
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+.all-cards-wrapper .accordion .accordion-button {
+  padding: 0.5rem 1rem 0.7rem;
+  align-items: start;
+  font-weight: 500;
+  font-size: 18px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+.all-cards-wrapper .accordion .accordion-button:focus {
+  box-shadow: none !important;
+}
+.all-cards-wrapper .accordion .accordion-button:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: none;
+}
+.all-cards-wrapper .filter-wrapper .accordion-body form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+.all-cards-wrapper .filter-wrapper .accordion form input {
+  font-size: 13px;
+  padding: 5px 15px;
+}
+.all-cards-wrapper .base-select-wrapper .select-wrapper {
+  max-width: none;
+}
+
+.all-cards-wrapper .all-cards-table-wrapper .all-cards-select-wrapper .base-select-wrapper {
+  display: flex;
+  justify-content: end;
+  padding: 5px 10px;
+}
+
+.all-cards-wrapper
+  .all-cards-table-wrapper
+  .all-cards-select-wrapper
+  .base-select-wrapper
+  .select-wrapper {
+  max-width: 250px;
+}
+/* ALL CARDS END */
+
 /* RESPONSIVE START */
 @media (max-width: 1400px) {
   .home-transactions-wrapper .transactions-item-wrapper {
@@ -1348,12 +1428,17 @@ body {
     justify-content: center;
   }
   .payers-contact-wrappper .filter-wrapper form,
-  .white-list-wrapper .filter-wrapper .accordion-body form {
+  .white-list-wrapper .filter-wrapper .accordion-body form,
+  .all-cards-wrapper .filter-wrapper .accordion-body form {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .table-wrapper .table-component {
     background: transparent !important;
+  }
+
+  .dark .payers-contact-wrappper .table-wrapper .table-component {
+    background: var(--header-bg) !important;
   }
 
   .table-component table,
@@ -1377,7 +1462,9 @@ body {
   .payers-contract-tab-table .table-component table,
   .payers-contract-tab-table .table-component thead,
   .payers-contract-tab-table .table-component tbody,
-  .autopayment-wrapper .autopayment-table-wrapper tbody {
+  .autopayment-wrapper .autopayment-table-wrapper tbody,
+  .all-cards-wrapper .table-component,
+  tbody {
     padding: 5px 5px 0;
   }
 
@@ -1423,6 +1510,9 @@ body {
   .table-wrapper .table-component .export-wrapper {
     padding: 0.5rem 0;
   }
+  .dark .payers-contact-wrappper .table-wrapper .table-component .export-wrapper {
+    padding: 0.5rem;
+  }
 }
 @media (max-width: 768px) {
   .home-wrapper .home-card-wrapper {
@@ -1462,7 +1552,8 @@ body {
     width: 150px;
   }
   .payers-contact-wrappper .filter-wrapper form,
-  .white-list-wrapper .filter-wrapper .accordion-body form {
+  .white-list-wrapper .filter-wrapper .accordion-body form,
+  .all-cards-wrapper .filter-wrapper .accordion-body form {
     grid-template-columns: repeat(1, 1fr);
   }
   .table-wrapper .table-component .export-wrapper {

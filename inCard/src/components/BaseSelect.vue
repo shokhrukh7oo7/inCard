@@ -1,6 +1,6 @@
 <template>
     <div class="base-select-wrapper">
-        <div class="select-wrapper">
+        <div class="select-wrapper" ref="wrapperRef">
             <!-- Кнопка -->
             <button class="select-trigger" @click="toggleDropdown">
                 <span>{{ selectedLabel || placeholder }}</span>
@@ -39,6 +39,7 @@ const props = defineProps({
 const emit = defineEmits(["update:modelValue"])
 
 const isOpen = ref(false)
+const wrapperRef = ref(null) // 🔹 добавляем локальный ref
 
 const selectedLabel = computed(() => {
     const selected = props.options.find((opt) => opt.value === props.modelValue)
@@ -55,14 +56,15 @@ function selectOption(option) {
 }
 
 function handleClickOutside(e) {
-    const el = document.querySelector(".select-wrapper")
-    if (el && !el.contains(e.target)) isOpen.value = false
+    // const el = document.querySelector(".select-wrapper")
+    // if (el && !el.contains(e.target)) isOpen.value = false
+    if (wrapperRef.value && !wrapperRef.value.contains(e.target)) {
+        isOpen.value = false
+    }
 }
 
 onMounted(() => document.addEventListener("click", handleClickOutside))
 onBeforeUnmount(() => document.removeEventListener("click", handleClickOutside))
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

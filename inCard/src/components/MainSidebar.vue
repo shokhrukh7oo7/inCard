@@ -80,22 +80,22 @@ const payments = [
             {
                 label: 'Все карты',
                 icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-                route: '/cards/list'
+                route: '/cards/all'
             },
             {
                 label: 'Добавленные карты',
                 icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-                route: '/cards/list'
+                route: '/cards/added'
             },
             {
                 label: 'Отклоненные карты',
                 icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-                route: '/cards/list'
+                route: '/cards/disabled'
             },
             {
                 label: 'Неопознанные карты',
                 icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-                route: '/cards/list'
+                route: '/cards/unidentified'
             }
         ],
     },

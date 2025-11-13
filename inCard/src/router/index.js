@@ -57,6 +57,12 @@ const router = createRouter({
           component: () => import('@/views/payers/WhiteList.vue'),
           props: true,
         },
+        {
+          path: '/cards/all',
+          name: 'AllCards',
+          component: () => import('@/views/payment-cards/AllCards.vue'),
+          props: true,
+        },
       ],
     },
   ],
