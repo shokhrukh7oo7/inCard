@@ -42,13 +42,19 @@ const router = createRouter({
         {
           path: 'payments/autopay',
           name: 'AutoPayers',
-          component: () => import('@/views/autopayers/AutopPayers.vue'),
+          component: () => import('@/views/payers/AutopPayers.vue'),
           props: true,
         },
         {
           path: 'payers/data',
           name: 'PersonalData',
-          component: () => import('@/views/personal-data/PersonalDate.vue'),
+          component: () => import('@/views/personal-data/PersonalData.vue'),
+          props: true,
+        },
+        {
+          path: '/payers/whitelist',
+          name: 'WhiteList',
+          component: () => import('@/views/payers/WhiteList.vue'),
           props: true,
         },
       ],

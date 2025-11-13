@@ -75,18 +75,14 @@ body {
 .dark .sidebar .section .section-title,
 .dark .payer-tabs-wrapper,
 .dark .pay-card-wrapper,
-.dark .payer-details-wrapper .autopayer-content-wrapper {
+.dark .payer-details-wrapper .autopayer-content-wrapper,
+.dark .accordion-body {
   background: var(--header-bg);
 }
 .dark .sidebar .section .section-title p,
 .dark .payers-contact-wrappper .filter-wrapper .accordion .accordion-button,
 .dark .payers-contact-wrappper .filter-wrapper .accordion .accordion-body,
 .dark .payers-contact-wrappper .filter-wrapper .accordion .accordion-button:not(.collapsed),
-.dark
-  .payers-contract-tab-filter-wrapper
-  .filter-wrapper
-  .accordion
-  .accordion-button:not(.collapsed),
 .dark .payers-contract-tab-filter-wrapper .filter-wrapper .accordion .accordion-body,
 .dark .table-wrapper .table-component,
 .dark .payers-contract-tab-table .table-header,
@@ -182,10 +178,20 @@ body {
 }
 .dark .tabs-demo .tab-content .card .card-content .form-wrapper .base-input-wrapper input,
 .dark .payers-contact-wrappper .filter-wrapper form input,
+.dark .white-list-wrapper .white-list-table-wrapper,
+.dark .white-list-wrapper .accordion .accordion-button,
 .dark .payers-contact-wrappper .filter-wrapper form input::placeholder {
   background: var(--header-bg);
   color: var(--white);
 }
+
+.dark .accordion-button::after {
+  filter: brightness(1) invert(1);
+}
+.dark .accordion .accordion-button:not(.collapsed) {
+  filter: brightness(0) invert(0);
+}
+
 .dark .base-card-wrapper .card-wrapper {
   background: var(--header-bg);
   box-shadow:
@@ -389,7 +395,7 @@ body {
 
 .base-select-wrapper .select-wrapper .select-trigger {
   width: 100%;
-  padding: 8px 12px;
+  padding: 5px 12px;
   background: white;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -1214,6 +1220,73 @@ body {
 }
 /* PERSONAL DATE END */
 
+/* WHITE LIST START */
+.white-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.white-list-wrapper .accordion .accordion-button {
+  padding: 0.5rem 1rem 0.7rem;
+  align-items: start;
+  font-weight: 500;
+  font-size: 18px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+.white-list-wrapper .accordion .accordion-button:focus {
+  box-shadow: none !important;
+}
+.white-list-wrapper .accordion .accordion-button:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: none;
+}
+.white-list-wrapper .filter-wrapper .accordion-body form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+.white-list-wrapper .filter-wrapper .accordion form input {
+  font-size: 13px;
+  padding: 5px 15px;
+}
+.white-list-wrapper .white-list-table-wrapper {
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-radius: 6px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+.white-list-wrapper .white-list-table-wrapper .table-select-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 10px;
+  padding: 5px 10px 0;
+}
+.white-list-wrapper .white-list-table-wrapper .table-select-wrapper .base-select-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.white-list-wrapper .white-list-table-wrapper .table-select-wrapper .add-btn {
+  padding: 0 20px;
+  font-size: 13px;
+}
+.white-list-wrapper .white-list-table-wrapper .table-wrapper .table-component table tbody {
+  padding: 5px 5px 0;
+}
+.white-list-table-wrapper .base-select-wrapper .select-wrapper .select-trigger {
+  box-shadow: none;
+}
+/* WHITE LIST END */
+
 /* RESPONSIVE START */
 @media (max-width: 1400px) {
   .home-transactions-wrapper .transactions-item-wrapper {
@@ -1274,7 +1347,8 @@ body {
   .tabs-demo .tab-content .card .card-content .form-btn-wrapper {
     justify-content: center;
   }
-  .payers-contact-wrappper .filter-wrapper form {
+  .payers-contact-wrappper .filter-wrapper form,
+  .white-list-wrapper .filter-wrapper .accordion-body form {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1387,7 +1461,8 @@ body {
   .home-transactions-wrapper .autopayment-wrapper .active-payment-wrapper .active-right #chart {
     width: 150px;
   }
-  .payers-contact-wrappper .filter-wrapper form {
+  .payers-contact-wrappper .filter-wrapper form,
+  .white-list-wrapper .filter-wrapper .accordion-body form {
     grid-template-columns: repeat(1, 1fr);
   }
   .table-wrapper .table-component .export-wrapper {
@@ -1403,6 +1478,12 @@ body {
   .payer-details-wrapper .autopayer-content-wrapper .form-wrapper {
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+  .white-list-wrapper .white-list-table-wrapper .table-select-wrapper {
+    flex-direction: column;
+  }
+  .white-list-wrapper .white-list-table-wrapper .table-select-wrapper .add-btn {
+    padding: 0.3rem 1rem;
   }
 }
 
