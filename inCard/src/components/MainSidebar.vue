@@ -90,7 +90,7 @@ const payments = [
             {
                 label: 'Отклоненные карты',
                 icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-                route: '/cards/disabled'
+                route: '/cards/rejected'
             },
             {
                 label: 'Неопознанные карты',

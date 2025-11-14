@@ -38,6 +38,7 @@ defineProps({
 
                 <tr v-if="!data.length">
                     <td :colspan="columns.length" class="no-data">
+                        <img class="warning-image" src="../assets/images/warning.svg" alt="image">
                         Нет данных для отображения
                     </td>
                 </tr>

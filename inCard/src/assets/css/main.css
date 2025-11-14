@@ -164,7 +164,8 @@ body {
 }
 
 .dark .sidebar .menu-item .menu-link img,
-.dark .sidebar .menu-item .submenu .submenu-link img {
+.dark .sidebar .menu-item .submenu .submenu-link img,
+.dark .warning-image {
   filter: brightness(0) invert(1);
 }
 .dark .sidebar .menu-item .menu-link:hover,
