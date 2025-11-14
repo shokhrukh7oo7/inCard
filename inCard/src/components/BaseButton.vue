@@ -70,4 +70,14 @@ function onClick(event) {
     border-color: var(--white);
     color: var(--white);
 }
+
+.base-btn.red {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+.base-btn.green {
+    background-color: var(--green);
+    color: var(--white);
+}
 </style>

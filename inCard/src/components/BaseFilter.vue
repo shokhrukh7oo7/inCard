@@ -18,6 +18,10 @@ const props = defineProps({
         //   { type: 'select', model: 'company', props: { options: companies, placeholder: 'Выберите компанию' } },
         // ]
     },
+    defaultOpen: {
+        type: Boolean,
+        default: false,
+    }
 })
 
 const emit = defineEmits(['search'])
@@ -52,13 +56,20 @@ const emitSearch = () => {
         <div class="accordion" id="accordionFilter">
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    <!-- <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter">
+                        {{ title }}
+                    </button> -->
+                    <button class="accordion-button" :class="{ collapsed: !defaultOpen }" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#collapseFilter" :aria-expanded="defaultOpen"
+                        aria-controls="collapseFilter">
                         {{ title }}
                     </button>
                 </h2>
 
-                <div id="collapseFilter" class="accordion-collapse collapse" data-bs-parent="#accordionFilter">
+                <!-- <div id="collapseFilter" class="accordion-collapse collapse" data-bs-parent="#accordionFilter"> -->
+                <div id="collapseFilter" class="accordion-collapse collapse" :class="{ show: defaultOpen }"
+                    data-bs-parent="#accordionFilter">
                     <div class="accordion-body">
                         <form @submit.prevent="emitSearch">
                             <component v-for="(field, index) in fields" :key="index" :is="resolveComponent(field.type)"

@@ -1368,6 +1368,74 @@ body {
 }
 /* ALL CARDS END */
 
+/* UNIDENTIFIED CARDS START */
+.all-cards-wrapper .tabs-demo .tabs-list {
+  box-shadow: none;
+}
+.all-cards-wrapper .tab-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem;
+}
+.all-cards-wrapper .tab-header .import-export-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.all-cards-wrapper .tab-header .import-export-wrapper button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0.3rem 1rem;
+  gap: 5px;
+}
+.all-cards-wrapper .tab-header .import-export-wrapper button:disabled {
+  cursor: no-drop;
+}
+.all-cards-wrapper .tab-header .import-export-wrapper button:disabled:hover {
+  background-color: var(--blue);
+  color: var(--white);
+}
+.all-cards-wrapper .tab-header .tab-select-wrapper {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+.all-cards-wrapper .tab-header .tab-select-wrapper .base-select-wrapper {
+  width: 100%;
+  max-width: 250px;
+}
+.all-cards-wrapper .tab-header .tab-select-wrapper .done-btn:disabled {
+  cursor: no-drop;
+}
+.all-cards-wrapper .tab-header .tab-select-wrapper .done-btn:disabled:hover {
+  background-color: var(--green);
+  color: var(--white);
+}
+.all-cards-wrapper .tab-header .tab-select-wrapper .remove-btn:disabled {
+  cursor: no-drop;
+}
+.all-cards-wrapper .tab-header .tab-select-wrapper .remove-btn:disabled:hover {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.all-cards-wrapper .tab-header .import-export-wrapper button img {
+  width: 20px;
+}
+
+/* UNIDENTIFIED CARDS END */
+
 /* RESPONSIVE START */
 @media (max-width: 1400px) {
   .home-transactions-wrapper .transactions-item-wrapper {
@@ -1514,6 +1582,16 @@ body {
   .dark .payers-contact-wrappper .table-wrapper .table-component .export-wrapper {
     padding: 0.5rem;
   }
+  .all-cards-wrapper .tab-header {
+    flex-direction: column;
+  }
+  .all-cards-wrapper .tab-header .tab-select-wrapper {
+    justify-content: center;
+  }
+  .table-component tbody .no-data {
+    justify-content: center;
+    gap: 10px;
+  }
 }
 @media (max-width: 768px) {
   .home-wrapper .home-card-wrapper {
@@ -1576,6 +1654,10 @@ body {
   }
   .white-list-wrapper .white-list-table-wrapper .table-select-wrapper .add-btn {
     padding: 0.3rem 1rem;
+  }
+  .all-cards-wrapper .tabs-demo .tabs-list .tabs-trigger {
+    padding: 0.5rem 1rem;
+    font-size: 11px;
   }
 }
 
