@@ -1618,6 +1618,101 @@ body {
 .dark .transactions-wrapper form input::placeholder {
   color: var(--white) !important;
 }
+
+.transactions-wrapper .transactions-table-wrapper {
+  background-color: var(--white);
+  margin: 15px 0;
+}
+
+.dark .transactions-wrapper .transactions-table-wrapper {
+  background-color: var(--header-bg);
+}
+.dark
+  .transactions-wrapper
+  .transactions-table-wrapper
+  .transactions-filter-wrapper
+  .transaction-left-wrapper
+  p {
+  color: var(--white);
+}
+
+.transactions-wrapper .transactions-table-wrapper .transactions-filter-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  gap: 5px;
+}
+
+.transactions-wrapper
+  .transactions-table-wrapper
+  .transactions-filter-wrapper
+  .transaction-left-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.transactions-wrapper
+  .transactions-table-wrapper
+  .transactions-filter-wrapper
+  .transaction-left-wrapper
+  p {
+  padding: 0 10px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--black);
+  border-right: 1px solid var(--hr-color);
+}
+
+.transactions-wrapper
+  .transactions-table-wrapper
+  .transactions-filter-wrapper
+  .transaction-left-wrapper
+  p:last-child {
+  border: none;
+}
+
+.transactions-wrapper
+  .transactions-table-wrapper
+  .transactions-filter-wrapper
+  .transaction-right-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  width: 27%;
+  gap: 10px;
+}
+
+.transactions-wrapper
+  .transactions-table-wrapper
+  .transactions-filter-wrapper
+  .transaction-right-wrapper
+  .base-select-wrapper {
+  width: 100%;
+  max-width: 250px;
+}
+
+.transactions-wrapper
+  .transactions-table-wrapper
+  .transactions-filter-wrapper
+  .transaction-right-wrapper
+  button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.transactions-wrapper
+  .transactions-table-wrapper
+  .transactions-filter-wrapper
+  .transaction-right-wrapper
+  button
+  img {
+  width: 20px;
+}
 /* TRANSACTIONS END */
 
 /* RESPONSIVE START */
@@ -1776,6 +1871,17 @@ body {
   .table-component tbody .no-data {
     justify-content: center;
     gap: 10px;
+  }
+  .transactions-wrapper .transactions-table-wrapper .transactions-filter-wrapper {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .transactions-wrapper
+    .transactions-table-wrapper
+    .transactions-filter-wrapper
+    .transaction-right-wrapper {
+    justify-content: center;
+    width: 100%;
   }
 }
 @media (max-width: 768px) {
