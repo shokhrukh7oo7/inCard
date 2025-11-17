@@ -81,6 +81,12 @@ const router = createRouter({
           component: () => import('@/views/payment-cards/UnidentifiedCards.vue'),
           props: true,
         },
+        {
+          path: '/imports/files',
+          name: 'ImportFiles',
+          component: () => import('@/views/imports/ImportFiles.vue'),
+          props: true,
+        },
       ],
     },
   ],
