@@ -1,8 +1,9 @@
 <script setup>
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { ref } from 'vue';
 import BaseTabs from '@/components/BaseTabs.vue';
 import BaseButton from '@/components/BaseButton.vue';
 import BaseSelect from '@/components/BaseSelect.vue';
+import BaseDatePicker from '@/components/BaseDatePicker.vue';
 
 const activeTab = ref('files');
 const selectedCompany = ref("");
@@ -13,78 +14,6 @@ const companies = [
 ]
 
 const date = ref("2024-11-14");
-const showPopup = ref(false);
-const popupRef = ref(null);
-
-// Открытие календаря
-const togglePopup = () => {
-    showPopup.value = !showPopup.value;
-};
-
-// Закрытие при клике вне
-const onClickOutside = (e) => {
-    if (!popupRef.value) return;
-    if (!popupRef.value.contains(e.target)) {
-        showPopup.value = false;
-    }
-};
-
-onMounted(() => {
-    document.addEventListener("click", onClickOutside);
-});
-onBeforeUnmount(() => {
-    document.removeEventListener("click", onClickOutside);
-});
-
-// --------- ЛОГИКА КАЛЕНДАРЯ ---------
-const current = new Date();
-const year = ref(current.getFullYear());
-const month = ref(current.getMonth());
-
-// Список дней
-const daysInMonth = computed(() => {
-    const firstDay = new Date(year.value, month.value, 1).getDay();
-    const totalDays = new Date(year.value, month.value + 1, 0).getDate();
-
-    const days = [];
-
-    // пустые ячейки в начале недели
-    for (let i = 0; i < (firstDay === 0 ? 6 : firstDay - 1); i++) {
-        days.push(null);
-    }
-
-    // реальные дни
-    for (let d = 1; d <= totalDays; d++) {
-        days.push(d);
-    }
-
-    return days;
-});
-
-// Выбор дня
-const selectDay = (day) => {
-    if (!day) return;
-    const m = String(month.value + 1).padStart(2, "0");
-    const d = String(day).padStart(2, "0");
-    date.value = `${year.value}-${m}-${d}`;
-    showPopup.value = false;
-};
-
-// Следующий / предыдущий месяц
-const prevMonth = () => {
-    if (month.value === 0) {
-        month.value = 12;
-        year.value--;
-    }
-    month.value--;
-};
-const nextMonth = () => {
-    if (month.value === 11) {
-        month.value = -1;
-        year.value++;
-    }
-    month.value++;
-};
 </script>
 
 <template>
@@ -107,34 +36,7 @@ const nextMonth = () => {
                             <div v-else-if="activeTab === 'archiveFiles'">
                                 <div class="upload-files-archive">
                                     <div class="calendar-wrapper">
-                                        <div class="date-picker" @click.stop>
-                                            <div class="input-wrapper">
-                                                <input v-model="date" class="date-input" readonly />
-
-                                                <button class="icon-btn" @click.stop="togglePopup">📅</button>
-                                            </div>
-
-                                            <!-- POPUP -->
-                                            <div v-if="showPopup" class="calendar-popup" ref="popupRef">
-
-                                                <!-- HEADER -->
-                                                <div class="calendar-header">
-                                                    <button @click="prevMonth">‹</button>
-                                                    <span>{{ year }} - {{ (month + 1).toString().padStart(2, '0')
-                                                        }}</span>
-                                                    <button @click="nextMonth">›</button>
-                                                </div>
-
-                                                <!-- DAYS -->
-                                                <div class="calendar-grid">
-                                                    <span v-for="(day, index) in daysInMonth" :key="index" class="day"
-                                                        :class="{ empty: !day }" @click="selectDay(day)">
-                                                        {{ day || '' }}
-                                                    </span>
-                                                </div>
-
-                                            </div>
-                                        </div>
+                                        <BaseDatePicker v-model="date" />
                                         <BaseButton>Поиск</BaseButton>
                                     </div>
 

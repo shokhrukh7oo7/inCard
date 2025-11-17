@@ -96,7 +96,7 @@ const nextMonth = () => {
 <style scoped>
 .date-picker {
     position: relative;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .input-wrapper {
@@ -105,7 +105,7 @@ const nextMonth = () => {
 
 .date-input {
     width: 100%;
-    padding: 8px 36px 8px 10px;
+    padding: 0.3rem 36px 0.3rem 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
 }
