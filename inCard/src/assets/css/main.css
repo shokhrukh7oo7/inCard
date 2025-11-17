@@ -1762,6 +1762,144 @@ body {
 }
 /* TRANSACTIONS END */
 
+/* OPERATIONS START */
+
+/* refund page start */
+.refund-wrapper {
+  display: flex;
+  align-items: start;
+  gap: 25px;
+}
+.refund-wrapper .refund-left-wrapper {
+  background-color: var(--white);
+  border-radius: 8px;
+  border: 1px solid #9155fd;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+  padding: 20px;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: start;
+  align-items: start;
+}
+
+.dark .refund-wrapper .refund-left-wrapper {
+  background-color: var(--header-bg);
+}
+
+.refund-wrapper .refund-left-wrapper h5 {
+  display: inline;
+  padding: 3px 15px;
+  border-radius: 6px;
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 500;
+  color: var(--blue);
+  background: linear-gradient(0deg, #ffffffe0, #ffffffe0), #9155fd;
+}
+
+.refund-wrapper .refund-left-wrapper ul {
+  margin: 0;
+}
+
+.refund-wrapper .refund-left-wrapper ul li span {
+  font-size: clamp(14px, 1vw, 16px);
+  font-weight: 500;
+  color: var(--grey);
+}
+
+.refund-wrapper .refund-left-wrapper ul li {
+  font-size: clamp(14px, 1vw, 16px);
+  font-weight: 400;
+  color: var(--grey);
+}
+
+.dark .refund-wrapper .refund-left-wrapper ul li span,
+.dark .refund-wrapper .refund-left-wrapper ul li {
+  color: var(--white);
+}
+
+.refund-wrapper .refund-right-wrapper {
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+  gap: 20px;
+  width: 70%;
+}
+
+.dark .refund-wrapper .refund-right-wrapper {
+  background-color: var(--header-bg);
+}
+
+.refund-wrapper .refund-right-wrapper .refund-right-header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+.refund-wrapper .refund-right-wrapper .refund-right-header-wrapper h5 {
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 500;
+  color: var(--black);
+}
+.dark .refund-wrapper .refund-right-wrapper .refund-right-header-wrapper h5 {
+  color: var(--white);
+}
+.refund-wrapper .refund-right-wrapper .refund-right-header-wrapper button {
+  background-color: transparent;
+  padding: 0 5px;
+}
+.refund-wrapper .refund-right-wrapper .refund-right-header-wrapper button img {
+  width: 20px;
+}
+.dark .refund-wrapper .refund-right-wrapper .refund-right-header-wrapper button img {
+  filter: brightness(1) invert(1);
+}
+.refund-wrapper .refund-right-wrapper .refund-right-header-wrapper button:hover {
+  background-color: transparent;
+}
+.refund-wrapper .refund-right-wrapper .refund-right-content-wrapper {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+.refund-wrapper .refund-right-wrapper .refund-right-content-wrapper .base-input-wrapper {
+  width: 100%;
+  max-width: 300px;
+}
+.refund-wrapper .refund-right-wrapper .refund-right-content-wrapper input {
+  font-size: 13px;
+  padding: 10px 15px !important;
+}
+
+.dark .refund-wrapper .refund-right-wrapper .refund-right-content-wrapper input {
+  background-color: var(--header-bg);
+}
+.dark .refund-wrapper .refund-right-wrapper .refund-right-content-wrapper input::placeholder {
+  color: var(--white);
+}
+
+.refund-wrapper .refund-right-wrapper .refund-right-content-wrapper button {
+  width: 100%;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 10px 15px !important;
+  max-width: 300px;
+}
+/* refund page end */
+
+/* OPERATIONS END */
+
 /* RESPONSIVE START */
 @media (max-width: 1400px) {
   .home-transactions-wrapper .transactions-item-wrapper {
@@ -1930,6 +2068,15 @@ body {
     justify-content: center;
     width: 100%;
   }
+  .refund-wrapper {
+    flex-direction: column;
+  }
+  .refund-wrapper .refund-left-wrapper {
+    width: 100%;
+  }
+  .refund-wrapper .refund-right-wrapper {
+    width: 100%;
+  }
 }
 @media (max-width: 768px) {
   .home-wrapper .home-card-wrapper {
@@ -1958,6 +2105,15 @@ body {
   }
   .payer-details-wrapper .autopayer-content-wrapper {
     margin-top: 15px;
+  }
+  .refund-wrapper .refund-right-wrapper .refund-right-content-wrapper {
+    flex-direction: column;
+  }
+  .refund-wrapper .refund-right-wrapper .refund-right-content-wrapper .base-input-wrapper {
+    max-width: 100%;
+  }
+  .refund-wrapper .refund-right-wrapper .refund-right-content-wrapper button {
+    max-width: 100%;
   }
 }
 

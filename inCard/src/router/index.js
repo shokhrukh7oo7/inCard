@@ -93,6 +93,12 @@ const router = createRouter({
           component: () => import('@/views/transactions/TransactionsView.vue'),
           props: true,
         },
+        {
+          path: '/operations/create',
+          name: 'RefundView',
+          component: () => import('@/views/operations/RefundView.vue'),
+          props: true,
+        },
       ],
     },
   ],
