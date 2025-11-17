@@ -1506,25 +1506,25 @@ body {
   max-width: 200px;
 }
 /* calendar in import files start */
-.date-picker {
+.import-files-wrapper .date-picker {
   position: relative;
   width: 260px;
 }
 
-.input-wrapper {
+.import-files-wrapper .input-wrapper {
   display: flex;
   align-items: center;
   position: relative;
 }
 
-.date-input {
+.import-files-wrapper .date-input {
   width: 100%;
   padding: 0.3rem 36px 0.3rem 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
 }
 
-.icon-btn {
+.import-files-wrapper .icon-btn {
   position: absolute;
   right: 8px;
   background: none;
@@ -1533,7 +1533,7 @@ body {
   font-size: 18px;
 }
 
-.calendar-popup {
+.import-files-wrapper .calendar-popup {
   position: absolute;
   top: 50px;
   width: 100%;
@@ -1545,27 +1545,27 @@ body {
   z-index: 50;
 }
 
-.calendar-header {
+.import-files-wrapper .calendar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
 }
 
-.calendar-header button {
+.import-files-wrapper .calendar-header button {
   background: none;
   border: none;
   font-size: 18px;
   cursor: pointer;
 }
 
-.calendar-grid {
+.import-files-wrapper .calendar-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 4px;
 }
 
-.day {
+.import-files-wrapper .day {
   padding: 6px;
   border-radius: 6px;
   text-align: center;
@@ -1573,12 +1573,12 @@ body {
   background: #f3f3f3;
 }
 
-.day:hover {
+.import-files-wrapper .day:hover {
   background: #1976d2;
   color: white;
 }
 
-.day.empty {
+.import-files-wrapper .day.empty {
   background: transparent;
   pointer-events: none;
 }
@@ -1825,7 +1825,7 @@ body {
     margin: 50px 10px 15px;
     flex-direction: column;
   }
-  .date-picker {
+  .import-files-wrapper .date-picker {
     width: 100%;
   }
   .import-files-wrapper .calendar-wrapper .base-btn {
