@@ -3,6 +3,7 @@ import { reactive } from 'vue'
 import BaseInput from '@/components/BaseInput.vue'
 import BaseSelect from '@/components/BaseSelect.vue'
 import BaseButton from '@/components/BaseButton.vue'
+import BaseDatePicker from './BaseDatePicker.vue'
 
 const props = defineProps({
     title: {
@@ -40,6 +41,8 @@ const resolveComponent = type => {
             return BaseInput
         case 'select':
             return BaseSelect
+        case 'date':
+            return BaseDatePicker
         default:
             return BaseInput
     }

@@ -87,6 +87,12 @@ const router = createRouter({
           component: () => import('@/views/imports/ImportFiles.vue'),
           props: true,
         },
+        {
+          path: '/transactions',
+          name: 'TransactionsView',
+          component: () => import('@/views/transactions/TransactionsView.vue'),
+          props: true,
+        },
       ],
     },
   ],

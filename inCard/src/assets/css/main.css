@@ -1585,6 +1585,41 @@ body {
 /* calendar in import files end */
 /* IMPORT FILES END */
 
+/* TRANSACTIONS START */
+.transactions-wrapper .accordion-button {
+  padding: 0.5rem 1rem;
+  align-items: start;
+  font-weight: 500;
+  font-size: 18px;
+}
+.transactions-wrapper .accordion-button:focus {
+  box-shadow: none;
+}
+.transactions-wrapper .accordion-button:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: none;
+}
+.transactions-wrapper form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.transactions-wrapper form .base-select-wrapper .select-wrapper {
+  max-width: 100%;
+}
+.transactions-wrapper form input {
+  font-size: 13px;
+  padding: 5px 15px !important;
+}
+.dark .transactions-wrapper form input {
+  background: var(--header-bg);
+  color: var(--white) !important;
+}
+.dark .transactions-wrapper form input::placeholder {
+  color: var(--white) !important;
+}
+/* TRANSACTIONS END */
+
 /* RESPONSIVE START */
 @media (max-width: 1400px) {
   .home-transactions-wrapper .transactions-item-wrapper {
@@ -1647,7 +1682,8 @@ body {
   }
   .payers-contact-wrappper .filter-wrapper form,
   .white-list-wrapper .filter-wrapper .accordion-body form,
-  .all-cards-wrapper .filter-wrapper .accordion-body form {
+  .all-cards-wrapper .filter-wrapper .accordion-body form,
+  .transactions-wrapper form {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1781,7 +1817,8 @@ body {
   }
   .payers-contact-wrappper .filter-wrapper form,
   .white-list-wrapper .filter-wrapper .accordion-body form,
-  .all-cards-wrapper .filter-wrapper .accordion-body form {
+  .all-cards-wrapper .filter-wrapper .accordion-body form,
+  .transactions-wrapper form {
     grid-template-columns: repeat(1, 1fr);
   }
   .table-wrapper .table-component .export-wrapper {
