@@ -99,6 +99,12 @@ const router = createRouter({
           component: () => import('@/views/operations/RefundView.vue'),
           props: true,
         },
+        {
+          path: '/operations/transactions-abs',
+          name: 'SynchronizationView',
+          component: () => import('@/views/operations/SynchronizationView.vue'),
+          props: true,
+        },
       ],
     },
   ],

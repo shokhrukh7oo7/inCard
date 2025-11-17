@@ -80,4 +80,9 @@ function onClick(event) {
     background-color: var(--green);
     color: var(--white);
 }
+
+.base-btn.orange {
+    background-color: #ffa726;
+    color: var(--white);
+}
 </style>

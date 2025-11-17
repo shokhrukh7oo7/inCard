@@ -123,7 +123,7 @@ const payments = [
             {
                 label: 'Синхронизация ABS',
                 icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-                route: '/operations/archive'
+                route: '/operations/transactions-abs'
             },
         ],
     },
