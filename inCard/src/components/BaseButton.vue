@@ -37,6 +37,11 @@ function onClick(event) {
 }
 
 /* Варианты кнопок */
+.base-btn.default {
+    background-color: var(--white);
+    color: var(--grey);
+}
+
 .base-btn.primary {
     background: var(--blue);
     color: #fff;

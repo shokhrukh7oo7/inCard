@@ -1,6 +1,9 @@
 <template>
     <div class="base-select-wrapper">
+        <!-- LABEL СВЕРХУ -->
+        <label v-if="label" class="select-top-label">{{ label }}</label>
         <div class="select-wrapper" ref="wrapperRef">
+
             <!-- Кнопка -->
             <button class="select-trigger" @click="toggleDropdown">
                 <span>{{ selectedLabel || placeholder }}</span>
@@ -34,6 +37,7 @@ const props = defineProps({
         type: String,
         default: "Select an option",
     },
+    label: String,
 })
 
 const emit = defineEmits(["update:modelValue"])

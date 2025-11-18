@@ -117,6 +117,12 @@ const router = createRouter({
           component: () => import('@/views/organizations/TerminalsView.vue'),
           props: true,
         },
+        {
+          path: '/terminals/:id',
+          name: 'TerminalsItemView',
+          component: () => import('@/views/organizations/TerminalsItemView.vue'),
+          props: true,
+        },
       ],
     },
   ],
