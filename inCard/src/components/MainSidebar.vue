@@ -145,7 +145,7 @@ const system = [
         {
             label: 'Терминалы',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/org/add'
+            route: '/terminals/list'
         },
         {
             label: 'Лимит настройка',
