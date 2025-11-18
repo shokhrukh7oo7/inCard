@@ -105,6 +105,12 @@ const router = createRouter({
           component: () => import('@/views/operations/SynchronizationView.vue'),
           props: true,
         },
+        {
+          path: '/org/list',
+          name: 'OrganizationView',
+          component: () => import('@/views/organizations/OrganizationView.vue'),
+          props: true,
+        },
       ],
     },
   ],
