@@ -150,7 +150,7 @@ const system = [
         {
             label: 'Лимит настройка',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/org/add'
+            route: '/org/limit'
         },
         {
             label: 'Система организации',

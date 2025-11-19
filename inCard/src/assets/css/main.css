@@ -2435,6 +2435,95 @@ body {
   padding: 0.2rem 2rem;
 }
 /* terminals end */
+
+/* org limit start */
+.org-limit-wrapper {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+  padding: 15px 25px;
+  width: 70%;
+}
+
+.dark .org-limit-wrapper {
+  background-color: var(--header-bg);
+}
+.dark .org-limit-wrapper .org-limit-header-wrapper {
+  border-color: var(--white);
+}
+.dark .org-limit-wrapper .org-limit-header-wrapper h5 {
+  color: var(--white);
+}
+.dark .org-limit-wrapper .org-limit-form-wrapper .org-limit-form-item .base-select-wrapper label {
+  color: var(--white);
+}
+.dark .org-limit-wrapper .org-limit-form-wrapper .org-limit-form-item .base-input-wrapper label {
+  color: var(--white);
+}
+.dark .org-limit-wrapper .org-limit-form-wrapper input {
+  background-color: var(--header-bg);
+  color: var(--white);
+}
+.dark
+  .org-limit-wrapper
+  .org-limit-form-wrapper
+  .base-select-wrapper
+  .select-wrapper
+  .select-label {
+  color: var(--white);
+}
+.org-limit-wrapper .org-limit-header-wrapper {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--hr-color);
+}
+.org-limit-wrapper .org-limit-header-wrapper h5 {
+  color: var(--blue);
+  font-weight: 500;
+  font-size: clamp(14px, 1.1vw, 18px);
+}
+
+.org-limit-wrapper .org-limit-form-wrapper .org-limit-form-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+.org-limit-wrapper .org-limit-form-wrapper .org-limit-form-item .base-select-wrapper {
+  width: 100%;
+  max-width: 350px;
+}
+.org-limit-wrapper .org-limit-form-wrapper .org-limit-form-item .base-input-wrapper {
+  width: 100%;
+  max-width: 350px;
+}
+.org-limit-wrapper .org-limit-form-wrapper .org-limit-form-item .select-wrapper {
+  max-width: 350px;
+}
+.org-limit-wrapper .org-limit-form-wrapper label {
+  font-size: clamp(12px, 0.9vw, 15px);
+  color: var(--grey);
+  font-weight: 400;
+}
+.org-limit-wrapper .org-limit-form-wrapper input {
+  font-size: 13px;
+  padding: 5px 15px;
+  width: 100%;
+}
+.org-limit-wrapper .org-limit-form-wrapper .org-limit-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.org-limit-wrapper .org-limit-form-wrapper .org-limit-btn-wrapper button {
+  padding: 0.3rem 2rem;
+}
+
+/* org limit end */
+
 /* ORGANIZATIONS END */
 
 /* RESPONSIVE START */
@@ -2477,6 +2566,9 @@ body {
 
   .header .burger {
     display: block;
+  }
+  .org-limit-wrapper {
+    width: 100%;
   }
 }
 
@@ -2776,6 +2868,18 @@ body {
   .terminals-item-wrapper .terminals-item-content .terminals-item-top-wrapper {
     grid-template-columns: 1fr;
     gap: 5px;
+  }
+  .org-limit-wrapper .org-limit-form-wrapper .org-limit-form-item {
+    flex-direction: column;
+  }
+  .org-limit-wrapper .org-limit-form-wrapper .org-limit-form-item .base-select-wrapper {
+    max-width: 100%;
+  }
+  .org-limit-wrapper .org-limit-form-wrapper .org-limit-form-item .select-wrapper {
+    max-width: 100%;
+  }
+  .org-limit-wrapper .org-limit-form-wrapper .org-limit-form-item .base-input-wrapper {
+    max-width: 100%;
   }
 }
 
