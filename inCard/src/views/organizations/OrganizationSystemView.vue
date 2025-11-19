@@ -33,7 +33,7 @@ console.log('Текущий id терминала:', props.id)
 <template>
     <div class="org-limit-wrapper">
         <div class="org-limit-header-wrapper">
-            <h5>Лимит настройка</h5>
+            <h5>Система организации</h5>
         </div>
 
         <div class="org-limit-form-wrapper">
