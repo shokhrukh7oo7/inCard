@@ -2445,7 +2445,7 @@ body {
     0 2px 2px #00000024,
     0 3px 1px -2px #0000001f;
   padding: 15px 25px;
-  width: 70%;
+  width: 50%;
 }
 
 .dark .org-limit-wrapper {
@@ -2493,14 +2493,14 @@ body {
 }
 .org-limit-wrapper .org-limit-form-wrapper .org-limit-form-item .base-select-wrapper {
   width: 100%;
-  max-width: 350px;
+  max-width: 100%;
 }
 .org-limit-wrapper .org-limit-form-wrapper .org-limit-form-item .base-input-wrapper {
   width: 100%;
-  max-width: 350px;
+  max-width: 100%;
 }
 .org-limit-wrapper .org-limit-form-wrapper .org-limit-form-item .select-wrapper {
-  max-width: 350px;
+  max-width: 100%;
 }
 .org-limit-wrapper .org-limit-form-wrapper label {
   font-size: clamp(12px, 0.9vw, 15px);
@@ -2517,12 +2517,23 @@ body {
   justify-content: center;
   align-items: center;
   gap: 10px;
+  margin-top: 10px;
 }
 .org-limit-wrapper .org-limit-form-wrapper .org-limit-btn-wrapper button {
   padding: 0.3rem 2rem;
 }
-
 /* org limit end */
+
+/* org system start */
+.org-limit-wrapper .org-system-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dark .org-limit-wrapper .org-system-wrapper label {
+  color: var(--white);
+}
+/* org system end */
 
 /* ORGANIZATIONS END */
 

@@ -155,7 +155,7 @@ const system = [
         {
             label: 'Система организации',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/org/add'
+            route: '/org/system'
         },
         {
             label: 'Интеграции по API',

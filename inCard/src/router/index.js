@@ -129,6 +129,12 @@ const router = createRouter({
           component: () => import('@/views/organizations/OrganizationLimitView.vue'),
           props: true,
         },
+        {
+          path: '/org/system',
+          name: 'OrganizationSystemView',
+          component: () => import('@/views/organizations/OrganizationSystemView.vue'),
+          props: true,
+        },
       ],
     },
   ],
