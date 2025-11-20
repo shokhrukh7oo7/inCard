@@ -2,8 +2,11 @@
 import { ref, watch } from 'vue'
 import BaseInput from '@/components/BaseInput.vue'
 import BaseTable from '@/components/BaseTable.vue';
-// import BaseButton from '@/components/BaseButton.vue'
+import BaseButton from '@/components/BaseButton.vue'
 import BaseTabs from '@/components/BaseTabs.vue'
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const activeTab = ref('menu');
 const isActive = ref(true);
@@ -86,6 +89,10 @@ watch(orgFuncTabData, (val) => {
     const allSelected = val.every(i => i.availability === true);
     selectAllFunc.value = allSelected;
 }, { deep: true });
+
+const goBack = () => {
+    router.push('/org/list')
+}
 </script>
 
 <template>
@@ -350,6 +357,10 @@ watch(orgFuncTabData, (val) => {
                     </template>
                 </BaseTabs>
             </div>
+        </div>
+
+        <div class="back-btn-wrapper">
+            <BaseButton @click="goBack" class="back-btn">Назад</BaseButton>
         </div>
     </div>
 </template>

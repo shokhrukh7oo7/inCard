@@ -2832,6 +2832,15 @@ body {
   flex-direction: row-reverse;
   margin-top: 20px;
 }
+.organization-page .back-btn-wrapper {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  margin: 10px 0;
+}
+.organization-page .back-btn-wrapper .back-btn {
+  padding: 0.3rem 2rem;
+}
 /* org-tab-wrapper end */
 
 /* ORGANIZATIONS END */
