@@ -2763,6 +2763,34 @@ body {
   align-items: center;
   gap: 10px;
 }
+.dark .organization-page .func-tab-header-wrapper h4 {
+  color: var(--white);
+}
+.dark .organization-page .func-tab-header-wrapper label {
+  color: var(--white);
+}
+.dark .organization-page .notification-input-wrapper label {
+  color: var(--white);
+}
+.dark .organization-page .notification-input-wrapper input {
+  background-color: var(--header-bg);
+  color: var(--white);
+}
+.dark .text-area-wrapper label {
+  color: var(--white);
+}
+.dark .text-area-wrapper textarea {
+  background-color: var(--header-bg);
+  color: var(--white);
+  border-color: var(--white);
+}
+.dark .organization-page .recvisits-wrapper .recvisits-input-wrapper label {
+  color: var(--white);
+}
+.dark .organization-page .recvisits-wrapper .recvisits-input-wrapper input {
+  background-color: var(--header-bg);
+  color: var(--white);
+}
 /* org-tab-wrapper end */
 
 /* ORGANIZATIONS END */
