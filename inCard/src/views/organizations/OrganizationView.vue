@@ -47,12 +47,12 @@ const organizationData = ref([
 
 
 const showEditModal = ref(false);
-const selectedOrganization = ref(null);
+// const selectedOrganization = ref(null);
 
-function openEditModal(row) {
-    selectedOrganization.value = row;
-    showEditModal.value = true;
-}
+// function openEditModal(row) {
+//     selectedOrganization.value = row;
+//     showEditModal.value = true;
+// }
 </script>
 
 <template>
@@ -72,7 +72,7 @@ function openEditModal(row) {
                 <div class="table-component">
                     <BaseTable :columns="organizationTable" :data="organizationData">
                         <template #actions="{ row }">
-                            <BaseButton class="edit-btn" @click="openEditModal(row)">
+                            <BaseButton class="edit-btn" @click="$router.push(`/org/list/${row.id}`)">
                                 <img src="@/assets/images/pencil.svg" alt="image" />
                             </BaseButton>
                         </template>

@@ -4,7 +4,8 @@
 
         <div class="input-wrapper">
             <input :id="id" :type="showPassword ? 'text' : type" :placeholder="placeholder" class="base-input"
-                :autocomplete="resolvedAutocomplete" :value="model" :disabled="disabled" @input="updateValue" />
+                :autocomplete="resolvedAutocomplete" :value="type === 'checkbox' ? null : model"
+                :checked="type === 'checkbox' ? model : null" :disabled="disabled" @input="updateValue" />
 
             <!-- иконка для типа password -->
             <button v-if="type === 'password'" type="button" class="toggle-password" @click="togglePassword">
@@ -23,6 +24,7 @@ const model = defineModel();
 
 const props = defineProps({
     id: String,
+    name: String,
     label: String,
     type: {
         type: String,
@@ -38,8 +40,14 @@ const props = defineProps({
 })
 
 function updateValue(event) {
-    model.value = event.target.value;
+    // model.value = event.target.value;
+    if (props.type === "checkbox") {
+        model.value = event.target.checked;
+    } else {
+        model.value = event.target.value;
+    }
 }
+
 
 const emit = defineEmits(["update:modelValue"])
 // const model = ref(props.modelValue)
