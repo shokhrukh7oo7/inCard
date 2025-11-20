@@ -140,7 +140,7 @@ const system = [
         {
             label: 'Пользователи',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/org/add'
+            route: '/org/users'
         },
         {
             label: 'Терминалы',

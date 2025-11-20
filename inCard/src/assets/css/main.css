@@ -2843,6 +2843,104 @@ body {
 }
 /* org-tab-wrapper end */
 
+/* org users page start */
+.users-wrapper .filter-wrapper .accordion-button {
+  padding: 0.5rem 1rem;
+  align-items: start;
+  font-weight: 500;
+  font-size: 18px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+.users-wrapper .filter-wrapper .accordion-button:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: none;
+}
+.users-wrapper .filter-wrapper form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+.users-wrapper .filter-wrapper form input {
+  font-size: 13px;
+  padding: 5px 15px;
+}
+.dark .users-wrapper .filter-wrapper form input {
+  background-color: var(--header-bg);
+  color: var(--white);
+}
+.dark .users-wrapper .filter-wrapper form input::placeholder {
+  color: var(--white);
+}
+.users-wrapper .users-table-wrapper {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+  margin-top: 15px;
+}
+.dark .users-wrapper .users-table-wrapper {
+  background-color: var(--header-bg);
+}
+.users-wrapper .users-table-wrapper .users-table-header {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  width: 100%;
+}
+.users-wrapper .users-table-wrapper .users-table-header .base-select-wrapper {
+  width: 100%;
+  max-width: 250px;
+}
+.status-badge {
+  font-weight: 600;
+}
+
+.status-active {
+  color: var(--green);
+}
+
+.status-blocked {
+  color: var(--red);
+}
+.users-wrapper .user-cell {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.users-wrapper .user-cell img {
+  width: 25px;
+}
+.users-wrapper .user-cell .user-info {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+.users-wrapper .user-cell .user-info h6 {
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--black);
+}
+.dark .users-wrapper .user-cell .user-info h6,
+.dark .users-wrapper .user-cell .user-info p {
+  color: var(--white);
+}
+.dark .users-wrapper .user-cell img {
+  filter: brightness(1) invert(1);
+}
+.users-wrapper .user-cell .user-info p {
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--grey);
+}
+/* org users page end */
+
 /* ORGANIZATIONS END */
 
 /* RESPONSIVE START */
@@ -2919,7 +3017,8 @@ body {
   .all-cards-wrapper .filter-wrapper .accordion-body form,
   .transactions-wrapper form,
   .sync-wrapper .sync-filter-wrapper form,
-  .org-terminals-wrapper .filter-wrapper form {
+  .org-terminals-wrapper .filter-wrapper form,
+  .users-wrapper .filter-wrapper form {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -3102,7 +3201,8 @@ body {
   .transactions-wrapper form,
   .sync-wrapper .sync-filter-wrapper form,
   .organizations-wrapper .filter-wrapper form,
-  .org-terminals-wrapper .filter-wrapper form {
+  .org-terminals-wrapper .filter-wrapper form,
+  .users-wrapper .filter-wrapper form {
     grid-template-columns: repeat(1, 1fr);
   }
   .table-wrapper .table-component .export-wrapper {

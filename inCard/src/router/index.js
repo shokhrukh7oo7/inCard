@@ -130,6 +130,12 @@ const router = createRouter({
           props: true,
         },
         {
+          path: 'org/users',
+          name: 'OrganizationUsersView',
+          component: () => import('@/views/organizations/OrganizationUsersView.vue'),
+          props: true,
+        },
+        {
           path: '/org/limit',
           name: 'OrganizationLimitView.vue',
           component: () => import('@/views/organizations/OrganizationLimitView.vue'),
