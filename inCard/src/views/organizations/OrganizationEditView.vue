@@ -101,6 +101,21 @@ watch(orgFuncTabData, (val) => {
                     { name: 'recvisits', label: 'Реквизиты' },
                 ]">
                     <template #default="{ activeTab }">
+
+                        <div class="org-list-tab-header-wrapper">
+                            <h1>Изменить органищацию</h1>
+                            <p>Выберите разделы меню и ключевой функционал</p>
+
+                            <div class="org-list-input-wrapper">
+                                <div class="input-wrapper">
+                                    <BaseInput label="Название организации" />
+                                </div>
+                                <div class="checkbox-wrapper">
+                                    <BaseInput v-model="isActive" type="checkbox" label="Активность" />
+                                </div>
+                            </div>
+                        </div>
+
                         <div v-if="activeTab === 'menu'">
                             <h5>Меню</h5>
 
