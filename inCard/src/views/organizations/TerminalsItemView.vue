@@ -45,13 +45,15 @@ console.log('Текущий id терминала:', props.id)
             </div>
 
             <div class="terminals-item-bottom-wrapper">
-                <p>PSP</p>
+                <p>Garant</p>
                 <div class="terminals-input-wrapper">
-                    <BaseInput v-model="form.psp" id="psp" label="Vendor ID (PSP)" />
+                    <!-- <BaseInput v-model="form.psp" id="psp" label="Vendor ID (PSP)" /> -->
                     <BaseInput v-model="form.uzcardMerchantID" id="uzcardMerchantID" label="UzCard ID Мерчанта" />
                     <BaseInput v-model="form.uzcardTerminalID" id="uzcardTerminalID" label="UzCard ID Терминала" />
                     <BaseInput v-model="form.uzcardTerminalID" id="humoMerchantID" label="Humo ID Мерчанта" />
                     <BaseInput v-model="form.uzcardTerminalID" id="humoTerminalID" label="Humo ID Терминала" />
+                    <BaseInput v-model="form.uzcardTerminalID" id="loginGarant" label="Логин (Garant)" />
+                    <BaseInput v-model="form.uzcardTerminalID" id="passwordGarant" label="Пароль (Garant)" />
                 </div>
             </div>
         </div>
