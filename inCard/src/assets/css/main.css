@@ -3138,6 +3138,17 @@ body {
   .organization-page .table-wrapper .table-component table tbody tr td .base-input-wrapper {
     margin: 0;
   }
+  .users-wrapper .table-wrapper .table-component table tbody tr td:last-child {
+    display: grid;
+    grid-template-columns: repeat(17, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+  .users-wrapper .table-wrapper .table-component table tbody tr td button:first-child {
+    grid-column-start: 16;
+  }
+  .users-wrapper .table-wrapper .table-component table tbody tr td button:last-child {
+    grid-column-start: 17;
+  }
 }
 @media (max-width: 768px) {
   .home-wrapper .home-card-wrapper {
@@ -3262,7 +3273,8 @@ body {
     flex-direction: column;
     justify-content: center;
   }
-  .organizations-wrapper .organization-table-wrapper .organization-table-header {
+  .organizations-wrapper .organization-table-wrapper .organization-table-header,
+  .users-wrapper .users-table-wrapper .users-table-header {
     flex-direction: column;
     gap: 10px;
   }
@@ -3311,6 +3323,12 @@ body {
   }
   .org-limit-wrapper .org-limit-form-wrapper .org-limit-form-item .base-input-wrapper {
     max-width: 100%;
+  }
+  .users-wrapper .users-table-wrapper .users-table-header .base-select-wrapper {
+    max-width: 100%;
+  }
+  .users-wrapper .users-table-wrapper .users-table-header .add-users {
+    width: 100%;
   }
 }
 
