@@ -2939,8 +2939,126 @@ body {
   font-size: 11px;
   color: var(--grey);
 }
+.users-wrapper .edit-user-btn,
+.users-wrapper .edit-password-btn {
+  background-color: transparent !important;
+}
 /* org users page end */
-
+/* ================================================ */
+/* MODAL START */
+/* add user modal start */
+.modal-container {
+  background-color: var(--white);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 650px;
+  margin: 10px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+.modal-container .modal-header {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.modal-container .modal-header .close-btn-wrapper {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  width: 100%;
+}
+.modal-container .modal-header .close-btn-wrapper button {
+  background-color: var(--white);
+  padding: 0.5rem;
+}
+.modal-container .modal-header .close-btn-wrapper button:hover {
+  background-color: transparent;
+}
+.modal-container .modal-header .modal-header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  text-align: center;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.modal-container .modal-header .modal-header-content h2 {
+  font-size: clamp(16px, 1.5vw, 22px);
+  font-weight: 500;
+  color: var(--black);
+}
+.modal-container .modal-header .modal-header-content p {
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-weight: 400;
+  color: var(--grey);
+}
+.modal-container .modal-body {
+  display: flex;
+  gap: 25px;
+}
+.modal-container .modal-body .modal-body-left-wrapper {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  gap: 5px;
+  flex-direction: row;
+}
+.modal-container .modal-body .modal-body-left-wrapper img {
+  width: 25px;
+  padding-top: 5px;
+}
+.modal-container .modal-body .modal-body-left-wrapper h6 {
+  font-size: clamp(15px, 1.2vw, 18px);
+  font-weight: 500;
+  color: var(--black);
+}
+.modal-container .modal-body .modal-body-left-wrapper p {
+  font-size: clamp(13px, 1vw, 15px);
+  font-weight: 400;
+  color: var(--grey);
+  text-wrap: nowrap;
+}
+.modal-container .modal-body .modal-body-right-wrapper {
+  width: 100%;
+}
+.modal-container .modal-body .modal-body-right-wrapper form {
+  display: grid;
+  gap: 5px;
+}
+.modal-container .modal-body .modal-body-right-wrapper form .base-input-wrapper {
+  gap: 0;
+  flex-direction: row;
+}
+.modal-container .modal-body .modal-body-right-wrapper form input {
+  font-size: 12px;
+  padding: 5px 15px;
+}
+.modal-container .modal-body .modal-body-right-wrapper form label {
+  font-size: 12px;
+}
+.modal-container .modal-body .modal-body-right-wrapper form .input-wrapper {
+  width: 100%;
+}
+.modal-container .modal-body .modal-body-right-wrapper form .input-wrapper input[type='checkbox'] {
+  width: 100%;
+  max-width: 30px;
+}
+.modal-container .modal-body .modal-body-right-wrapper form .select-wrapper {
+  max-width: 100%;
+}
+.modal-container .modal-body .modal-body-right-wrapper form .checkbox-item {
+  flex-direction: row;
+}
+/* .modal-container .modal-body .modal-body-right-wrapper form .base-input-wrapper {
+  flex-direction: row;
+} */
+/* add user modal end */
+/* MODAL END */
+/* ================================================ */
 /* ORGANIZATIONS END */
 
 /* RESPONSIVE START */
@@ -3190,6 +3308,15 @@ body {
   .terminals-item-wrapper .terminals-item-content .terminals-item-top-wrapper {
     grid-template-columns: 1fr 1fr;
     gap: 5px;
+  }
+  .modal-container .modal-body {
+    flex-direction: column;
+  }
+  .modal-container .modal-body .modal-body-left-wrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 }
 

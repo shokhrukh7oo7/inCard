@@ -5,7 +5,7 @@
         <div class="select-wrapper" ref="wrapperRef">
 
             <!-- Кнопка -->
-            <button class="select-trigger" @click="toggleDropdown">
+            <button class="select-trigger" @click="toggleDropdown" type="button">
                 <span>{{ selectedLabel || placeholder }}</span>
                 <span class="arrow" :class="{ open: isOpen }">▼</span>
             </button>
