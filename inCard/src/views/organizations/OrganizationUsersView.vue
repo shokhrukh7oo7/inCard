@@ -241,14 +241,29 @@ function handeEsc(e) {
         <!-- edit password modal start -->
         <div v-if="showEditPasswordModal" class="modal-backdrop" @click.self="showEditPasswordModal = false">
             <div class="modal-container">
-                <div class="modal-header">
-                    <p>edit password</p>
-                    <BaseButton @click="closeEditPassword(row)">
-                        <img src="../../assets/images/x.svg" alt="image">
-                    </BaseButton>
+                <div class="modal-header change-password-wrapper">
+                    <div class="close-btn-wrapper">
+                        <p>Изменить пароль</p>
+                        <BaseButton @click="closeEditPassword(row)">
+                            <img src="../../assets/images/x.svg" alt="image">
+                        </BaseButton>
+                    </div>
                 </div>
                 <div class="modal-body">
-                    <p>edit password</p>
+                    <div class="modal-body-right-wrapper">
+                        <form @submit.prevent>
+                            <div class="form-modal-wrapper">
+                                <BaseInput id="user-password" v-model="changeNewPasswordModal"
+                                    placeholder="Новый пароль" type="password" autocomplete="new-password" />
+                                <BaseInput id="user-password" v-model="confirmNewPasswordModal"
+                                    placeholder="Подтвердите пароль" type="password" autocomplete="new-password" />
+                            </div>
+                            <div class="modal-body-btn-wrapper">
+                                <BaseButton class="cancel-btn" @click="closeEditPassword(row)">Отменить</BaseButton>
+                                <BaseButton class="change-btn">Изменить</BaseButton>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

@@ -65,6 +65,10 @@ body {
   background: var(--bg-main);
 }
 
+.dark .toggle-password img {
+  filter: brightness(1) invert(1);
+}
+
 /* DARK MODE START */
 .dark .sidebar .logo-wrapper,
 .dark .sidebar,
@@ -2962,7 +2966,7 @@ body {
     0 2px 2px #00000024,
     0 3px 1px -2px #0000001f;
 }
-.modal-container {
+.dark .modal-container {
   background-color: var(--header-bg);
   box-shadow:
     0 1px 5px #fff,
@@ -3061,10 +3065,12 @@ body {
 }
 .modal-container .modal-body .modal-body-right-wrapper form .base-input-wrapper {
   gap: 0;
+  align-items: start;
 }
 .modal-container .modal-body .modal-body-right-wrapper form .checkbox-box {
   flex-direction: row;
 }
+
 .modal-container .modal-body .modal-body-right-wrapper form input {
   font-size: 12px;
   padding: 5px 15px;
@@ -3075,7 +3081,12 @@ body {
 .modal-container .modal-body .modal-body-right-wrapper form .input-wrapper {
   width: 100%;
 }
-.modal-container .modal-body .modal-body-right-wrapper form .input-wrapper input[type='checkbox'] {
+.modal-container .modal-body .modal-body-right-wrapper form .checkbox-box,
+.modal-container .modal-body .modal-body-right-wrapper form .checkbox-item {
+  align-items: center;
+}
+.modal-container .modal-body .modal-body-right-wrapper form .checkbox-box .input-wrapper,
+.modal-container .modal-body .modal-body-right-wrapper form .checkbox-item .input-wrapper {
   width: 100%;
   max-width: 30px;
 }
@@ -3085,9 +3096,42 @@ body {
 .modal-container .modal-body .modal-body-right-wrapper form .checkbox-item {
   flex-direction: row;
 }
-/* .modal-container .modal-body .modal-body-right-wrapper form .base-input-wrapper {
-  flex-direction: row;
-} */
+.modal-container .change-password-wrapper .close-btn-wrapper {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.modal-container .change-password-wrapper .close-btn-wrapper p {
+  font-weight: 500;
+  color: var(--black);
+}
+.dark .modal-container .change-password-wrapper .close-btn-wrapper p {
+  color: var(--white);
+}
+.modal-container .form-modal-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.modal-container .form-modal-wrapper .base-input-wrapper {
+  justify-content: center;
+  align-items: center !important;
+}
+.modal-container form .form-modal-wrapper .input-wrapper {
+  max-width: 450px;
+}
+.modal-container .modal-body-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.modal-container .modal-body-btn-wrapper .cancel-btn {
+  background-color: var(--white) !important;
+  color: var(--grey) !important;
+  border-color: var(--grey);
+}
 /* add user modal end */
 /* MODAL END */
 /* ================================================ */
