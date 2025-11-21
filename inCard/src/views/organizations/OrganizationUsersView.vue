@@ -187,7 +187,7 @@ function handeEsc(e) {
                             <BaseInput placeholder="Имя" />
                             <BaseInput placeholder="Фамилия" />
                             <BaseInput placeholder="Номер телефона" />
-                            <BaseInput v-model="isActive" type="checkbox" label="Активный" />
+                            <BaseInput class="checkbox-box" v-model="isActive" type="checkbox" label="Активный" />
                             <BaseButton class="add-user-confirm-btn">Подтвердить</BaseButton>
                         </form>
                     </div>

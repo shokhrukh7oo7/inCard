@@ -1004,6 +1004,9 @@ body {
 .table-component table tbody img {
   width: 20px;
 }
+.dark .table-component table tbody img {
+  filter: brightness(1) invert(1);
+}
 /* PAYER AND CONTRACTS END */
 
 /* PAYER DETAIL START */
@@ -2959,6 +2962,13 @@ body {
     0 2px 2px #00000024,
     0 3px 1px -2px #0000001f;
 }
+.modal-container {
+  background-color: var(--header-bg);
+  box-shadow:
+    0 1px 5px #fff,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
 .modal-container .modal-header {
   display: flex;
   flex-direction: column;
@@ -2971,8 +2981,11 @@ body {
   width: 100%;
 }
 .modal-container .modal-header .close-btn-wrapper button {
-  background-color: var(--white);
+  background-color: transparent;
   padding: 0.5rem;
+}
+.dark .modal-container .modal-header .close-btn-wrapper button img {
+  filter: brightness(1) invert(1);
 }
 .modal-container .modal-header .close-btn-wrapper button:hover {
   background-color: transparent;
@@ -2990,6 +3003,23 @@ body {
   font-size: clamp(16px, 1.5vw, 22px);
   font-weight: 500;
   color: var(--black);
+}
+.dark .modal-container .modal-header .modal-header-content h2,
+.dark .modal-container .modal-header .modal-header-content p,
+.dark .modal-container .modal-body .modal-body-left-wrapper h6,
+.dark .modal-container .modal-body .modal-body-left-wrapper p,
+.dark .modal-container .modal-body .modal-body-right-wrapper form label {
+  color: var(--white);
+}
+.dark .modal-container .modal-body .modal-body-left-wrapper img {
+  filter: brightness(1) invert(1);
+}
+.dark .modal-container .modal-body .modal-body-right-wrapper form input {
+  background-color: var(--header-bg);
+  color: var(--white);
+}
+.dark .modal-container .modal-body .modal-body-right-wrapper form input::placeholder {
+  color: var(--white);
 }
 .modal-container .modal-header .modal-header-content p {
   font-size: clamp(14px, 1.2vw, 16px);
@@ -3031,6 +3061,8 @@ body {
 }
 .modal-container .modal-body .modal-body-right-wrapper form .base-input-wrapper {
   gap: 0;
+}
+.modal-container .modal-body .modal-body-right-wrapper form .checkbox-box {
   flex-direction: row;
 }
 .modal-container .modal-body .modal-body-right-wrapper form input {
