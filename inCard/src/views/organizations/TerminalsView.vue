@@ -62,7 +62,9 @@ const terminalsData = ref([
         <div class="terminal-content-wrapper">
             <div class="organization-table-header">
                 <BaseSelect v-model="selectedCompany" :options="companies" placeholder="Все" />
-                <BaseButton>Добавить терминал</BaseButton>
+                <router-link to="/terminals/list">
+                    <BaseButton>Добавить терминал</BaseButton>
+                </router-link>
             </div>
 
             <div class="table-wrapper">

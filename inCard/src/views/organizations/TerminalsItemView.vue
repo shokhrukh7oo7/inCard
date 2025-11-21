@@ -1,9 +1,12 @@
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import BaseInput from '@/components/BaseInput.vue'
 import BaseSelect from '@/components/BaseSelect.vue'
 import BaseButton from '@/components/BaseButton.vue'
 import { defineProps } from 'vue'
+
+const router = useRouter()
 
 const props = defineProps({
     id: String, // или Number
@@ -27,6 +30,10 @@ const companies = [
     { value: "Mandarin bank", label: "Mandarin bank" },
 ]
 
+function cancel() {
+    router.push('/terminals/list')
+}
+
 // Если нужно, можешь получать id и подгружать данные терминала
 console.log('Текущий id терминала:', props.id)
 </script>
@@ -47,19 +54,16 @@ console.log('Текущий id терминала:', props.id)
             <div class="terminals-item-bottom-wrapper">
                 <p>Garant</p>
                 <div class="terminals-input-wrapper">
-                    <!-- <BaseInput v-model="form.psp" id="psp" label="Vendor ID (PSP)" /> -->
                     <BaseInput v-model="form.uzcardMerchantID" id="uzcardMerchantID" label="UzCard ID Мерчанта" />
                     <BaseInput v-model="form.uzcardTerminalID" id="uzcardTerminalID" label="UzCard ID Терминала" />
                     <BaseInput v-model="form.uzcardTerminalID" id="humoMerchantID" label="Humo ID Мерчанта" />
                     <BaseInput v-model="form.uzcardTerminalID" id="humoTerminalID" label="Humo ID Терминала" />
-                    <BaseInput v-model="form.uzcardTerminalID" id="loginGarant" label="Логин (Garant)" />
-                    <BaseInput v-model="form.uzcardTerminalID" id="passwordGarant" label="Пароль (Garant)" />
                 </div>
             </div>
         </div>
 
         <div class="terminals-item-btn-wrapper">
-            <BaseButton variant="default">Отменить</BaseButton>
+            <BaseButton variant="default" @click="cancel">Отменить</BaseButton>
             <BaseButton variant="primary">Добавить</BaseButton>
         </div>
     </div>
