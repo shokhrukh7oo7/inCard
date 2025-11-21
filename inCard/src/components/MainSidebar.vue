@@ -160,7 +160,7 @@ const system = [
         {
             label: 'Интеграции по API',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/org/add'
+            route: '/org/integration-api'
         },
         {
             label: 'Телеграм-бот',

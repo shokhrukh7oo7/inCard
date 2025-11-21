@@ -147,6 +147,12 @@ const router = createRouter({
           component: () => import('@/views/organizations/OrganizationSystemView.vue'),
           props: true,
         },
+        {
+          path: 'org/integration-api',
+          name: 'IntegrationApiView',
+          component: () => import('@/views/organizations/IntegrationApiView.vue'),
+          props: true,
+        },
       ],
     },
   ],

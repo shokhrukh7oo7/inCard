@@ -3137,6 +3137,78 @@ body {
 /* add user modal end */
 /* MODAL END */
 /* ================================================ */
+
+/* integration api start */
+.integration-api-wrapper .filter-wrapper .accordion .accordion-button {
+  padding: 0.5rem 1rem;
+  align-items: start;
+  font-weight: 500;
+  font-size: 18px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+.dark .integration-api-wrapper .filter-wrapper .accordion .accordion-button {
+  background-color: var(--header-bg);
+  color: var(--white);
+}
+.integration-api-wrapper .filter-wrapper .accordion .accordion-button:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: none;
+}
+.integration-api-wrapper .filter-wrapper form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+.integration-api-wrapper .filter-wrapper form input {
+  font-size: 13px;
+  padding: 5px 15px;
+}
+.dark .integration-api-wrapper .filter-wrapper form input {
+  background-color: var(--header-bg);
+  color: var(--white);
+}
+.dark .integration-api-wrapper .filter-wrapper form input::placeholder {
+  color: var(--white);
+}
+.integration-api-wrapper .integration-api-table-wrapper {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+  margin-top: 15px;
+}
+.dark .integration-api-wrapper .integration-api-table-wrapper {
+  background-color: var(--header-bg);
+}
+.integration-api-wrapper .integration-api-table-wrapper .integration-table-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  width: 100%;
+}
+.integration-api-wrapper
+  .integration-api-table-wrapper
+  .integration-table-header
+  .base-select-wrapper {
+  width: 100%;
+  max-width: 250px;
+}
+.integration-api-wrapper .integration-api-table-wrapper .table-wrapper .table-component button {
+  background-color: transparent;
+}
+.integration-api-wrapper .integration-api-table-wrapper .table-wrapper .table-component a button {
+  background-color: transparent;
+}
+/* integration api end */
+
 /* ORGANIZATIONS END */
 
 /* RESPONSIVE START */
@@ -3214,7 +3286,8 @@ body {
   .transactions-wrapper form,
   .sync-wrapper .sync-filter-wrapper form,
   .org-terminals-wrapper .filter-wrapper form,
-  .users-wrapper .filter-wrapper form {
+  .users-wrapper .filter-wrapper form,
+  .integration-api-wrapper .filter-wrapper form {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -3418,7 +3491,8 @@ body {
   .sync-wrapper .sync-filter-wrapper form,
   .organizations-wrapper .filter-wrapper form,
   .org-terminals-wrapper .filter-wrapper form,
-  .users-wrapper .filter-wrapper form {
+  .users-wrapper .filter-wrapper form,
+  .integration-api-wrapper .filter-wrapper form {
     grid-template-columns: repeat(1, 1fr);
   }
   .table-wrapper .table-component .export-wrapper {
@@ -3479,7 +3553,8 @@ body {
     justify-content: center;
   }
   .organizations-wrapper .organization-table-wrapper .organization-table-header,
-  .users-wrapper .users-table-wrapper .users-table-header {
+  .users-wrapper .users-table-wrapper .users-table-header,
+  .integration-api-wrapper .integration-api-table-wrapper .integration-table-header {
     flex-direction: column;
     gap: 10px;
   }
@@ -3529,10 +3604,18 @@ body {
   .org-limit-wrapper .org-limit-form-wrapper .org-limit-form-item .base-input-wrapper {
     max-width: 100%;
   }
-  .users-wrapper .users-table-wrapper .users-table-header .base-select-wrapper {
+  .users-wrapper .users-table-wrapper .users-table-header .base-select-wrapper,
+  .integration-api-wrapper
+    .integration-api-table-wrapper
+    .integration-table-header
+    .base-select-wrapper {
     max-width: 100%;
   }
   .users-wrapper .users-table-wrapper .users-table-header .add-users {
+    width: 100%;
+  }
+  .org-terminals-wrapper .terminal-content-wrapper .organization-table-header a,
+  .integration-api-wrapper .integration-api-table-wrapper .integration-table-header button {
     width: 100%;
   }
 }
