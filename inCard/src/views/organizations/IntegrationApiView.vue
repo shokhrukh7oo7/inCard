@@ -48,7 +48,8 @@ const filterFields = [
         <div class="integration-api-table-wrapper">
             <div class="integration-table-header">
                 <BaseSelect v-model="selectedCompany" :options="companies" placeholder="Все" />
-                <BaseButton class="add-integration" id="add-integration">Добавить</BaseButton>
+                <BaseButton class="add-integration" id="add-integration"
+                    @click="$router.push('/org/integration-api-add')">Добавить</BaseButton>
             </div>
 
             <div class="table-wrapper">

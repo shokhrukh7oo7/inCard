@@ -7,6 +7,11 @@
                 :autocomplete="resolvedAutocomplete" :value="type === 'checkbox' ? null : model"
                 :checked="type === 'checkbox' ? model : null" :disabled="disabled" @input="updateValue" />
 
+            <!-- Генерация -->
+            <button v-if="type === 'password'" type="button" class="generate-password" @click="$emit('generate')">
+                <img src="../assets/images/gear.svg" alt="image">
+            </button>
+
             <!-- иконка для типа password -->
             <button v-if="type === 'password'" type="button" class="toggle-password" @click="togglePassword">
                 <img v-if="showPassword" src="../assets/images/input/eye-open.svg" alt="Hide password" />

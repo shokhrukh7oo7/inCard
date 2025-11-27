@@ -153,6 +153,12 @@ const router = createRouter({
           component: () => import('@/views/organizations/IntegrationApiView.vue'),
           props: true,
         },
+        {
+          path: '/org/integration-api-add',
+          name: 'IntegrationApiAdd',
+          component: () => import('@/views/organizations/IntegrationApiAdd.vue'),
+          props: true,
+        },
       ],
     },
   ],

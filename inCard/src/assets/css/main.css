@@ -3207,6 +3207,100 @@ body {
 .integration-api-wrapper .integration-api-table-wrapper .table-wrapper .table-component a button {
   background-color: transparent;
 }
+
+.int-api-add-wrapper {
+  background-color: var(--white);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+.dark .int-api-add-wrapper {
+  background-color: var(--header-bg);
+}
+.int-api-add-wrapper form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+.int-api-add-wrapper form input {
+  font-size: 13px;
+  padding: 5px 15px !important;
+}
+.int-api-add-wrapper .int-form-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  width: 100%;
+}
+.int-api-add-wrapper .int-add-wrapper .int-add-header {
+  border-bottom: 1px solid var(--hr-color);
+  padding: 0 0 10px;
+}
+.int-api-add-wrapper .int-add-wrapper .int-add-header h5 {
+  font-size: clamp(16px, 1.2vw, 20px);
+  font-weight: 500;
+  color: var(--blue);
+}
+.dark .int-api-add-wrapper .int-add-wrapper .int-add-header h5 {
+  color: var(--white);
+}
+.dark .int-api-add-wrapper .int-add-wrapper .int-add-header {
+  border-color: var(--white);
+}
+.dark .int-api-add-wrapper .int-add-wrapper label {
+  color: var(--white);
+}
+.dark .int-api-add-wrapper .range-top {
+  color: var(--white);
+}
+.int-api-add-wrapper .int-add-wrapper .range-wrapper input {
+  width: 100%;
+  margin-top: 8px;
+}
+.generate-password {
+  position: absolute;
+  right: 40px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.int-api-add-wrapper .range-top {
+  font-size: 14px;
+  color: var(--grey);
+}
+
+.int-api-add-wrapper .int-add-checkbox .base-input-wrapper {
+  flex-direction: row-reverse;
+  gap: 10px;
+}
+.int-api-add-wrapper .int-add-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.int-api-add-wrapper .int-add-actions .cancel-btn {
+  background-color: var(--white) !important;
+  color: var(--grey) !important;
+  border-color: var(--grey);
+}
+.int-api-add-wrapper .int-add-actions .save-btn {
+  background-color: var(--blue) !important;
+  color: var(--white);
+  border-color: var(--blue);
+}
+.int-api-add-wrapper .int-add-actions .save-btn:hover {
+  background-color: var(--blue);
+}
 /* integration api end */
 
 /* ORGANIZATIONS END */
@@ -3468,6 +3562,9 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+  }
+  .int-api-add-wrapper .int-form-wrapper {
+    grid-template-columns: 1fr;
   }
 }
 
