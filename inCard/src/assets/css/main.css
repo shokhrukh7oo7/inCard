@@ -3371,6 +3371,85 @@ body {
 }
 /* telegram bot end */
 
+/* telegram bot add start */
+.telegram-bot-add-wrapper {
+  background-color: var(--white);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+.dark .telegram-bot-add-wrapper {
+  background-color: var(--header-bg);
+}
+.telegram-bot-add-wrapper .telegram-bot-add-header {
+  border-bottom: 1px solid var(--hr-color);
+  padding: 0 0 10px;
+}
+.dark .telegram-bot-add-wrapper .telegram-bot-add-header {
+  border-color: var(--white);
+}
+.telegram-bot-add-wrapper .telegram-bot-add-header h5 {
+  font-size: clamp(16px, 1.2vw, 20px);
+  font-weight: 500;
+  color: var(--blue);
+}
+.dark .telegram-bot-add-wrapper .telegram-bot-add-header h5 {
+  color: var(--white);
+}
+.telegram-bot-add-wrapper .telegram-bot-add-content form {
+  margin-top: 15px;
+}
+.telegram-bot-add-wrapper .telegram-bot-add-content form .telegram-bot-input-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+.telegram-bot-add-wrapper .telegram-bot-add-content form label {
+  font-size: 14px;
+  color: var(--grey);
+}
+.dark .telegram-bot-add-wrapper .telegram-bot-add-content form label {
+  color: var(--white);
+}
+.telegram-bot-add-wrapper .telegram-bot-add-content form input {
+  font-size: 13px;
+  padding: 5px 15px !important;
+}
+.dark .telegram-bot-add-wrapper .telegram-bot-add-content form input {
+  background-color: var(--header-bg);
+  color: var(--white);
+}
+.telegram-bot-add-wrapper .telegram-bot-add-content form .select-wrapper {
+  max-width: 100%;
+}
+.telegram-bot-add-wrapper .telegram-bot-add-content form .checkbox-wrapper .base-input-wrapper {
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.telegram-bot-add-wrapper .telegram-bot-add-content form .telegram-bot-add-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+.telegram-bot-add-wrapper
+  .telegram-bot-add-content
+  form
+  .telegram-bot-add-button-wrapper
+  .cancel-btn {
+  background-color: var(--white) !important;
+  color: var(--grey) !important;
+  border-color: var(--grey);
+}
+/* telegram bot add end */
+
 /* ORGANIZATIONS END */
 
 /* RESPONSIVE START */
@@ -3792,6 +3871,10 @@ body {
   }
   .telegram-bot-wrapper .telegram-table-wrapper .telegram-table-header button {
     width: 100%;
+  }
+  .telegram-bot-add-wrapper .telegram-bot-add-content form .telegram-bot-input-wrapper {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
   }
 }
 

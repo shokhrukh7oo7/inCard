@@ -50,7 +50,7 @@ const telegramData = ref([
         <div class="telegram-table-wrapper">
             <div class="telegram-table-header">
                 <BaseSelect v-model="selectedCompany" :options="companies" placeholder="Все" />
-                <BaseButton>Добавить</BaseButton>
+                <BaseButton @click="$router.push('/org/telegram-bot-add')">Добавить</BaseButton>
             </div>
 
             <div class="table-wrapper">

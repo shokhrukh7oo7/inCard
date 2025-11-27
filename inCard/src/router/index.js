@@ -165,6 +165,12 @@ const router = createRouter({
           component: () => import('@/views/organizations/TelegramBotView.vue'),
           props: true,
         },
+        {
+          path: '/org/telegram-bot-add',
+          name: 'TelegramBotAddView',
+          component: () => import('@/views/organizations/TelegramBotAdd.vue'),
+          props: true,
+        },
       ],
     },
   ],
