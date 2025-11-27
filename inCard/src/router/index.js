@@ -156,7 +156,13 @@ const router = createRouter({
         {
           path: '/org/integration-api-add',
           name: 'IntegrationApiAdd',
-          component: () => import('@/views/organizations/IntegrationApiAdd.vue'),
+          component: () => import('@/views/organizations/IntegrationApiAddView.vue'),
+          props: true,
+        },
+        {
+          path: '/org/telegram-bot',
+          name: 'TelegramBotView',
+          component: () => import('@/views/organizations/TelegramBotView.vue'),
           props: true,
         },
       ],

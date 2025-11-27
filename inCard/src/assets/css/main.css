@@ -3303,6 +3303,74 @@ body {
 }
 /* integration api end */
 
+/* telegram bot start */
+.telegram-bot-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.telegram-bot-wrapper .filter-wrapper .accordion-button {
+  padding: 0.5rem 1rem;
+  align-items: start;
+  font-weight: 500;
+  font-size: 18px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+.telegram-bot-wrapper .filter-wrapper .accordion-button:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: none;
+}
+.telegram-bot-wrapper .filter-wrapper form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+.telegram-bot-wrapper .filter-wrapper form input {
+  font-size: 13px;
+  padding: 5px 15px;
+}
+.dark .telegram-bot-wrapper .filter-wrapper form input {
+  background-color: var(--header-bg);
+  color: var(--white);
+}
+.telegram-bot-wrapper .filter-wrapper form input::placeholder {
+  color: var(--white);
+}
+.telegram-bot-wrapper .telegram-table-wrapper {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+.dark .telegram-bot-wrapper .telegram-table-wrapper {
+  background-color: var(--header-bg);
+}
+.telegram-bot-wrapper .telegram-table-wrapper .telegram-table-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  gap: 15px;
+  padding: 0.5rem 1rem;
+}
+.telegram-bot-wrapper .telegram-table-wrapper .telegram-table-header .base-select-wrapper {
+  width: 100%;
+  max-width: 270px;
+}
+.telegram-bot-wrapper
+  .telegram-table-wrapper
+  .telegram-table-header
+  .base-select-wrapper
+  .select-wrapper {
+  max-width: 100%;
+}
+/* telegram bot end */
+
 /* ORGANIZATIONS END */
 
 /* RESPONSIVE START */
@@ -3460,7 +3528,7 @@ body {
     padding-top: 10px;
   } */
   .table-wrapper .table-component .export-wrapper {
-    padding: 0.5rem 0;
+    padding: 0.5rem 1rem;
   }
   .dark .payers-contact-wrappper .table-wrapper .table-component .export-wrapper {
     padding: 0.5rem;
@@ -3713,6 +3781,16 @@ body {
   }
   .org-terminals-wrapper .terminal-content-wrapper .organization-table-header a,
   .integration-api-wrapper .integration-api-table-wrapper .integration-table-header button {
+    width: 100%;
+  }
+  .telegram-bot-wrapper .telegram-table-wrapper .telegram-table-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .telegram-bot-wrapper .telegram-table-wrapper .telegram-table-header .base-select-wrapper {
+    max-width: 100%;
+  }
+  .telegram-bot-wrapper .telegram-table-wrapper .telegram-table-header button {
     width: 100%;
   }
 }

@@ -165,7 +165,7 @@ const system = [
         {
             label: 'Телеграм-бот',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/org/add'
+            route: '/org/telegram-bot'
         },
         ]
     },
