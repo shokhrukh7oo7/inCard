@@ -23,10 +23,8 @@ const companies = [
 const telegramTable = [
     { key: 'id', label: '№' },
     { key: 'organization', label: 'Организация' },
-    { key: 'bank', label: 'Банк' },
-    { key: 'group', label: 'Группа' },
-    { key: 'uzcard', label: 'Uzcard' },
-    { key: 'humo', label: 'Humo' },
+    { key: 'chanelId', label: 'Канал ID' },
+    { key: 'status', label: 'Активный' },
     { key: 'date', label: 'Дата' },
     { key: 'actions', label: 'Действие' },
 ]
@@ -34,12 +32,10 @@ const telegramTable = [
 const telegramData = ref([
     {
         id: 1,
-        organization: 'Positive solutions',
-        bank: 'Garant Bank',
-        group: 'positive group',
-        uzcard: 'M: 900828506 ; T: 91600285',
-        humo: 'M: 900828479 ; T: 91600283',
-        date: '21.10.2024 04:49:57',
+        organization: "ALSKOM SUG'URTA АО",
+        chanelId: '-1002792327577',
+        status: 'Активный',
+        date: '2025-06-05 08:48:36',
     },
 ]);
 </script>
@@ -60,6 +56,17 @@ const telegramData = ref([
             <div class="table-wrapper">
                 <div class="table-component">
                     <BaseTable :columns="telegramTable" :data="telegramData">
+                        <!-- status slot -->
+                        <template #status="{ value }">
+                            <span :class="[
+                                'status-badge',
+                                value === 'Активный' ? 'status-active' :
+                                    value === 'Заблокировано' ? 'status-blocked' : ''
+                            ]">
+                                {{ value }}
+                            </span>
+                        </template>
+
                         <template #actions="{ row }">
                             <BaseButton class="edit-btn" @click="$router.push(`/org/list/${row.id}`)">
                                 <img src="@/assets/images/pencil.svg" alt="image" />
