@@ -196,7 +196,7 @@ const system = [
         children: [{
             label: 'Список событий',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/events'
+            route: '/events/list'
         }]
     },
     {

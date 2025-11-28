@@ -195,6 +195,12 @@ const router = createRouter({
           component: () => import('@/views/requests/RequestsSettingAddView.vue'),
           props: true,
         },
+        {
+          path: '/events/list',
+          name: 'EventListView',
+          component: () => import('@/views/event/EventListView.vue'),
+          props: true,
+        },
       ],
     },
   ],
