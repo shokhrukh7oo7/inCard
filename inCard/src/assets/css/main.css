@@ -3458,11 +3458,41 @@ body {
   gap: 5px;
   cursor: no-drop;
 }
+
 .request-wrapper .tab-right-wrapper .export-btn:hover {
   background-color: var(--blue) !important;
 }
+
 .request-wrapper .tab-right-wrapper button img {
   width: 20px;
+}
+
+.request-setting-wrapper {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+  margin-top: 15px;
+}
+
+.dark .request-setting-wrapper {
+  background-color: var(--header-bg);
+}
+
+.request-setting-wrapper .request-setting-header {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  width: 100%;
+}
+
+.request-setting-wrapper .request-setting-header .base-select-wrapper {
+  width: 100%;
+  max-width: 250px;
 }
 /* REQUEST END */
 
@@ -3889,6 +3919,16 @@ body {
   .telegram-bot-add-wrapper .telegram-bot-add-content form .telegram-bot-input-wrapper {
     grid-template-columns: repeat(1, 1fr);
     gap: 10px;
+  }
+  .request-setting-wrapper .request-setting-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .request-setting-wrapper .request-setting-header .base-select-wrapper {
+    max-width: 100%;
+  }
+  .request-setting-wrapper .request-setting-header button {
+    width: 100%;
   }
 }
 

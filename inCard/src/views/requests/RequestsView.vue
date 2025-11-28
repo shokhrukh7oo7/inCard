@@ -67,9 +67,7 @@ const handleSearch = filters => {
 
                 <div class="table-wrapper">
                     <div class="table-component">
-                        <BaseTable :columns="requestTable" :data="requestData">
-
-                        </BaseTable>
+                        <BaseTable :columns="requestTable" :data="requestData"></BaseTable>
                     </div>
                 </div>
             </div>
