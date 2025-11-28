@@ -3505,15 +3505,23 @@ body {
     0 2px 2px #00000024,
     0 3px 1px -2px #0000001f;
 }
-
+.dark .request-setting-add-wrapper {
+  background-color: var(--header-bg);
+}
 .request-setting-add-wrapper .request-setting-add-header {
   border-bottom: 1px solid var(--hr-color);
   padding: 0 0 10px;
+}
+.dark .request-setting-add-wrapper .request-setting-add-header {
+  border-color: var(--white);
 }
 .request-setting-add-wrapper .request-setting-add-header h5 {
   font-size: clamp(16px, 1.2vw, 20px);
   font-weight: 500;
   color: var(--blue);
+}
+.dark .request-setting-add-wrapper .request-setting-add-header h5 {
+  color: var(--white);
 }
 .request-setting-add-wrapper .request-setting-add-body form {
   display: flex;
@@ -3536,17 +3544,29 @@ body {
   font-size: 14px;
   color: var(--grey);
 }
+.dark .request-setting-add-wrapper .request-setting-add-body form .form-item label {
+  color: var(--white);
+}
+
 .request-setting-add-wrapper .request-setting-add-body form .form-item input {
   font-size: 13px;
   padding: 5px 15px !important;
 }
-
+.dark .request-setting-add-wrapper .request-setting-add-body form .form-item input {
+  background-color: var(--header-bg);
+  color: var(--white);
+}
+.dark .request-setting-add-wrapper .request-setting-add-body form .form-item input::placeholder {
+  color: var(--white);
+}
 .request-setting-add-wrapper .request-setting-add-body .checkbox-item {
   display: flex;
   align-items: center;
   gap: 20px;
 }
-
+.dark .request-setting-add-wrapper .request-setting-add-body .checkbox-item label {
+  color: var(--white);
+}
 .request-setting-add-wrapper .request-setting-add-body .checkbox-item .base-input-wrapper {
   flex-direction: row-reverse;
   align-items: center;
