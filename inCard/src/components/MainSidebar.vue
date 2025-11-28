@@ -182,12 +182,12 @@ const system = [
         children: [{
             label: 'Запросы',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/requests'
+            route: '/requests/paid'
         },
         {
             label: 'Настройки',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/requests'
+            route: '/requests/settings'
         }
         ]
     },

@@ -3449,8 +3449,22 @@ body {
   border-color: var(--grey);
 }
 /* telegram bot add end */
-
 /* ORGANIZATIONS END */
+
+/* REQUEST START */
+.request-wrapper .tab-right-wrapper .export-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: no-drop;
+}
+.request-wrapper .tab-right-wrapper .export-btn:hover {
+  background-color: var(--blue) !important;
+}
+.request-wrapper .tab-right-wrapper button img {
+  width: 20px;
+}
+/* REQUEST END */
 
 /* RESPONSIVE START */
 @media (max-width: 1400px) {

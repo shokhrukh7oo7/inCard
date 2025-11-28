@@ -177,6 +177,18 @@ const router = createRouter({
           component: () => import('@/views/bank/BankUserView.vue'),
           props: true,
         },
+        {
+          path: '/requests/paid',
+          name: 'RequestsView',
+          component: () => import('@/views/requests/RequestsView.vue'),
+          props: true,
+        },
+        {
+          path: '/requests/settings',
+          name: 'RequestsSettingsView',
+          component: () => import('@/views/requests/RequestsSettingsView.vue'),
+          props: true,
+        },
       ],
     },
   ],
