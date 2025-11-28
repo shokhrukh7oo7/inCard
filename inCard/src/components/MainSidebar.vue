@@ -217,7 +217,8 @@ const system = [
         label: 'Настройки', icon: new URL('../assets/images/sidebar/settings.svg', import.meta.url).href,
         children: [{
             label: 'Интеграции систем',
-            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href, route: '/settings/system'
+            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
+            route: '/settings/system'
         }, {
             label: 'Администраторы',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,

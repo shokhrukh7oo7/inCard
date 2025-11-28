@@ -3836,6 +3836,35 @@ body {
 }
 /* EVENT END */
 
+/* SETTING START */
+.integration-system-wrapper {
+  background-color: var(--white);
+  border-radius: 8px;
+  width: 100%;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+.dark .integration-system-wrapper {
+  background-color: var(--header-bg);
+}
+.integration-system-wrapper .integration-system-header {
+  padding: 0.5rem 1rem;
+}
+.integration-system-wrapper .integration-system-header h5 {
+  font-size: clamp(16px, 1.2vw, 20px);
+  font-weight: 500;
+  color: var(--black);
+  border-right: 1px solid var(--hr-color);
+  display: inline-block;
+  padding-right: 10px;
+}
+.dark .integration-system-wrapper .integration-system-header h5 {
+  color: var(--white);
+  border-color: var(--white);
+}
+/* SETTING END */
 /* RESPONSIVE START */
 @media (max-width: 1400px) {
   .home-transactions-wrapper .transactions-item-wrapper {
