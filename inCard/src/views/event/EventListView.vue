@@ -1,8 +1,5 @@
 <script setup>
-import { ref } from 'vue';
 import BaseSelect from '@/components/BaseSelect.vue';
-// import BaseButton from '@/components/BaseButton.vue';
-import BaseTable from '@/components/BaseTable.vue';
 import BaseFilter from '@/components/BaseFilter.vue';
 
 const allCompanies = [
