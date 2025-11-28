@@ -3494,6 +3494,72 @@ body {
   width: 100%;
   max-width: 250px;
 }
+
+.request-setting-add-wrapper {
+  background-color: var(--white);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+
+.request-setting-add-wrapper .request-setting-add-header {
+  border-bottom: 1px solid var(--hr-color);
+  padding: 0 0 10px;
+}
+.request-setting-add-wrapper .request-setting-add-header h5 {
+  font-size: clamp(16px, 1.2vw, 20px);
+  font-weight: 500;
+  color: var(--blue);
+}
+.request-setting-add-wrapper .request-setting-add-body form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+.request-setting-add-wrapper .request-setting-add-body form .form-item {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  width: 100%;
+}
+.request-setting-add-wrapper .request-setting-add-body form .form-item .select-wrapper {
+  max-width: 100%;
+}
+.request-setting-add-wrapper .request-setting-add-body form .form-item label {
+  font-size: 14px;
+  color: var(--grey);
+}
+.request-setting-add-wrapper .request-setting-add-body form .form-item input {
+  font-size: 13px;
+  padding: 5px 15px !important;
+}
+
+.request-setting-add-wrapper .request-setting-add-body .checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.request-setting-add-wrapper .request-setting-add-body .checkbox-item .base-input-wrapper {
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.request-setting-add-wrapper .request-setting-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
 /* REQUEST END */
 
 /* RESPONSIVE START */
@@ -3756,6 +3822,11 @@ body {
   }
   .int-api-add-wrapper .int-form-wrapper {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .request-setting-add-wrapper .request-setting-add-body form .form-item {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 }
 
@@ -3929,6 +4000,11 @@ body {
   }
   .request-setting-wrapper .request-setting-header button {
     width: 100%;
+  }
+  .request-setting-add-wrapper .request-setting-add-body .checkbox-item {
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
   }
 }
 

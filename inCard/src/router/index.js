@@ -189,6 +189,12 @@ const router = createRouter({
           component: () => import('@/views/requests/RequestsSettingsView.vue'),
           props: true,
         },
+        {
+          path: '/requests/settings/add',
+          name: 'RequestsSettingAddView',
+          component: () => import('@/views/requests/RequestsSettingAddView.vue'),
+          props: true,
+        },
       ],
     },
   ],

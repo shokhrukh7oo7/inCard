@@ -57,8 +57,8 @@ const requestSettingData = [
                         </span>
                     </template>
 
-                    <template #actions="{ row }">
-                        <BaseButton class="edit-btn" @click="$router.push(`/org/list/${row.id}`)">
+                    <template #actions="{ }">
+                        <BaseButton class="edit-btn" @click="$router.push('/requests/settings/add')">
                             <img src="@/assets/images/pencil.svg" alt="image" />
                         </BaseButton>
                     </template>
