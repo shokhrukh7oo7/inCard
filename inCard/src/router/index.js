@@ -171,6 +171,12 @@ const router = createRouter({
           component: () => import('@/views/organizations/TelegramBotAdd.vue'),
           props: true,
         },
+        {
+          path: '/bank/users',
+          name: 'BankUsersView',
+          component: () => import('@/views/bank/BankUserView.vue'),
+          props: true,
+        },
       ],
     },
   ],

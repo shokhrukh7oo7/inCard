@@ -47,8 +47,8 @@ function generatePassword() {
                     <div class="int-form-wrapper">
                         <BaseInput v-model="form.login" id="login" label="Логин" />
                         <BaseInput v-model="form.organization" id="organization" label="Организация" />
-                        <BaseInput v-model="form.intPassword" id="password" label="Пароль" type="password"
-                            autocomplete="new-password" @generate="generatePassword" />
+                        <BaseInput id="user-password" v-model="form.intPassword" type="password" label="Пароль"
+                            autocomplete="new-password" :generate="true" @generate="generatePassword" />
                         <!-- RANGE -->
                         <div class="range-wrapper">
                             <div class="range-top">
@@ -65,7 +65,8 @@ function generatePassword() {
 
 
                     <div class="int-add-actions">
-                        <BaseButton class="cancel-btn btn">Отмена</BaseButton>
+                        <BaseButton class="cancel-btn btn" @click="$router.push('/org/integration-api')">Отмена
+                        </BaseButton>
                         <BaseButton class="save-btn btn">Добавить</BaseButton>
                     </div>
                 </form>

@@ -174,7 +174,7 @@ const system = [
         children: [{
             label: 'Пользователи',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/bank/accounts'
+            route: '/bank/users'
         }]
     },
     {

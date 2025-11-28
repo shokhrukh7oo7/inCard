@@ -66,8 +66,9 @@ const filterFields = [
                             </span>
                         </template>
                         <!-- actions slot -->
-                        <template #actions="{ row }">
-                            <BaseButton class="integration-api-table-btn" @click="$router.push(`/org/list/${row.id}`)">
+                        <template #actions="{ }">
+                            <BaseButton class="integration-api-table-btn"
+                                @click="$router.push(`/org/integration-api-add`)">
                                 <img src="@/assets/images/pencil.svg" alt="image" />
                             </BaseButton>
                         </template>

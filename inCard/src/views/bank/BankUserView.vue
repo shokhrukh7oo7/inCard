@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import BaseFilter from '@/components/BaseFilter.vue';
 import BaseSelect from '@/components/BaseSelect.vue';
 import BaseButton from '@/components/BaseButton.vue';
 import BaseTable from '@/components/BaseTable.vue';
@@ -13,15 +12,17 @@ const selectedUser = ref(null);
 
 const addUserModalPassword = ref('');
 const isActive = ref(true);
-const isBlock = ref(false);
+
+const changeNewPasswordModal = ref('');
+const confirmNewPasswordModal = ref('');
 
 // ==========================================================================================
 // filter select 
 const selectedCompany = ref("");
 const companies = [
-    { value: "ACCENT LINE OOO (BOSCH)", label: "ACCENT LINE OOO (BOSCH)" },
-    { value: "ACCENT LINE OOO (BOSCH)", label: "ACCENT LINE OOO (BOSCH)" },
-    { value: "ACCENT LINE OOO (BOSCH)", label: "ACCENT LINE OOO (BOSCH)" },
+    { value: "Agro bank", label: "Agro bank" },
+    { value: "Kapital bank", label: "Kapital bank)" },
+    { value: "Orient finans bank", label: "Orient finans bank" },
 ]
 // ==========================================================================================
 // add user modal select
@@ -32,18 +33,13 @@ const addUserModalSelectCompanies = [
     { value: "ACCENT LINE OOO (BOSCH)", label: "ACCENT LINE OOO (BOSCH)" },
 ]
 // ==========================================================================================
-// filter
-const filterFields = [
-    { type: 'input', model: 'search', props: { id: 'search', placeholder: 'Поиск' } },
-]
 
 // table
 const usersTable = [
     { key: 'user', label: 'Пользователь' },
     { key: 'phoneNumber', label: 'Номер телефона' },
     { key: 'role', label: 'Роль' },
-    { key: 'organization', label: 'Организация' },
-    { key: 'filial', label: 'Филиал' },
+    { key: 'bank', label: 'Банк' },
     { key: 'status', label: 'Статус' },
     { key: 'actions', label: 'Действие' },
 ]
@@ -52,9 +48,8 @@ const usersTableData = ref([
     {
         user: 'Begzod Khudoyarov',
         phoneNumber: '+998 (33) 278-82-87',
-        role: 'Admin',
-        organization: 'POSITIVE SOLUTIONS',
-        filial: 'Головной офис',
+        role: 'Bank Admin',
+        bank: 'Yangi bank',
         status: 'Активный',
         extra: 'Bekhzod_admin'
     }
@@ -102,14 +97,9 @@ function handeEsc(e) {
 
 <template>
     <div class="users-wrapper">
-        <div class="filter-wrapper">
-            <BaseFilter :fields="filterFields" title="Фильтры поиска"
-                @search="data => console.log('Результаты фильтра:', data)" />
-        </div>
-
         <div class="users-table-wrapper">
             <div class="users-table-header">
-                <BaseSelect v-model="selectedCompany" :options="companies" placeholder="Все" />
+                <BaseSelect v-model="selectedCompany" :options="companies" placeholder="Банк" />
                 <BaseButton class="add-users" id="add-users" @click="showAddUserModal = true">Добавить пользователя
                 </BaseButton>
             </div>
@@ -227,10 +217,7 @@ function handeEsc(e) {
                             <BaseInput label="Имя" />
                             <BaseInput label="Фамилия" />
                             <BaseInput label="Номер телефона" />
-                            <BaseInput label="Филиал" />
-                            <BaseInput label="Роль" />
                             <BaseInput class="checkbox-item" v-model="isActive" type="checkbox" label="Активный" />
-                            <BaseInput class="checkbox-item" v-model="isBlock" type="checkbox" label="Блокировка" />
                             <BaseButton class="add-user-confirm-btn">Подтвердить</BaseButton>
                         </form>
                     </div>
@@ -254,9 +241,9 @@ function handeEsc(e) {
                     <div class="modal-body-right-wrapper">
                         <form @submit.prevent>
                             <div class="form-modal-wrapper">
-                                <BaseInput id="user-password" v-model="changeNewPasswordModal"
-                                    placeholder="Новый пароль" type="password" autocomplete="new-password" />
-                                <BaseInput id="user-password" v-model="confirmNewPasswordModal"
+                                <BaseInput id="new-password" v-model="changeNewPasswordModal" placeholder="Новый пароль"
+                                    type="password" autocomplete="new-password" />
+                                <BaseInput id="confirm-password" v-model="confirmNewPasswordModal"
                                     placeholder="Подтвердите пароль" type="password" autocomplete="new-password" />
                             </div>
                             <div class="modal-body-btn-wrapper">

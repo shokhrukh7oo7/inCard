@@ -8,7 +8,8 @@
                 :checked="type === 'checkbox' ? model : null" :disabled="disabled" @input="updateValue" />
 
             <!-- Генерация -->
-            <button v-if="type === 'password'" type="button" class="generate-password" @click="$emit('generate')">
+            <button v-if="type === 'password' && props.generate" type="button" class="generate-password"
+                @click="$emit('generate')">
                 <img src="../assets/images/gear.svg" alt="image">
             </button>
 
@@ -42,6 +43,10 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    generate: {
+        type: Boolean,
+        default: false,
+    }
 })
 
 function updateValue(event) {
