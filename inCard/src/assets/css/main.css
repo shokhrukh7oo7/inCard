@@ -3864,7 +3864,18 @@ body {
   color: var(--white);
   border-color: var(--white);
 }
+/* admins start */
+.integration-system-wrapper .admins-header {
+  display: flex;
+  justify-content: space-between;
+}
+.integration-system-wrapper .admins-header h5 {
+  line-height: 1.6;
+}
+
+/* admins end */
 /* SETTING END */
+
 /* RESPONSIVE START */
 @media (max-width: 1400px) {
   .home-transactions-wrapper .transactions-item-wrapper {
@@ -4064,16 +4075,21 @@ body {
   .organization-page .table-wrapper .table-component table tbody tr td .base-input-wrapper {
     margin: 0;
   }
-  .users-wrapper .table-wrapper .table-component table tbody tr td:last-child {
+  .users-wrapper .table-wrapper .table-component table tbody tr td:last-child,
+  .integration-system-wrapper .table-wrapper .table-component table tbody tr td:last-child {
     display: grid;
     grid-template-columns: repeat(17, 1fr);
     grid-template-rows: repeat(1, 1fr);
   }
-  .users-wrapper .table-wrapper .table-component table tbody tr td button:first-child {
+  .users-wrapper .table-wrapper .table-component table tbody tr td button:first-child,
+  .integration-system-wrapper .table-wrapper .table-component table tbody tr td button:first-child {
     grid-column-start: 16;
   }
   .users-wrapper .table-wrapper .table-component table tbody tr td button:last-child {
     grid-column-start: 17;
+  }
+  .integration-system-wrapper .table-wrapper .table-component table tbody tr td button:first-child {
+    grid-column-start: 16;
   }
   .event-wrapper .event-right-wrapper {
     margin-top: 20px;
@@ -4338,6 +4354,16 @@ body {
     .evenet-header-wrapper
     .base-select-wrapper {
     width: 100%;
+  }
+  .integration-system-wrapper .admins-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .integration-system-wrapper .integration-system-header h5 {
+    border-right: none;
+    border-bottom: 1px solid var(--hr-color);
+    padding-bottom: 10px;
+    text-align: center;
   }
 }
 

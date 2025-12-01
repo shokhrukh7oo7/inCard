@@ -208,6 +208,12 @@ const router = createRouter({
           component: () => import('@/views/setting/IntegrationSystemView.vue'),
           props: true,
         },
+        {
+          path: '/settings/admins',
+          name: 'AdminsView',
+          component: () => import('@/views/setting/AdminsView.vue'),
+          props: true,
+        },
       ],
     },
   ],

@@ -222,7 +222,7 @@ const system = [
         }, {
             label: 'Администраторы',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/settings/access'
+            route: '/settings/admins'
         }]
     },
 ]
