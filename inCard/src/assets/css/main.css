@@ -3876,6 +3876,71 @@ body {
 /* admins end */
 /* SETTING END */
 
+/* PARTNER START */
+.partner-wrapper .filter-wrapper .accordion-button {
+  padding: 0.5rem 1rem;
+  align-items: start;
+  font-weight: 500;
+  font-size: 18px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+
+.partner-wrapper .filter-wrapper .accordion-button:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: none;
+}
+.partner-wrapper .filter-wrapper form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+.partner-wrapper .filter-wrapper form input {
+  font-size: 13px;
+  padding: 5px 15px;
+}
+
+.dark .partner-wrapper .filter-wrapper form input {
+  background-color: var(--header-bg);
+  color: var(--white);
+}
+.dark .partner-wrapper .filter-wrapper form input::placeholder {
+  color: var(--white);
+}
+
+.partner-wrapper .partner-table-wrapper {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+  margin-top: 15px;
+}
+
+.partner-wrapper .partner-table-wrapper .partner-btn-wrapper {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  width: 100%;
+}
+
+.partner-wrapper .partner-table-wrapper .edit-user-btn {
+  background-color: var(--white) !important;
+}
+.dark .partner-wrapper .partner-table-wrapper {
+  background-color: var(--header-bg);
+}
+
+.dark .partner-wrapper .partner-table-wrapper .edit-user-btn {
+  background-color: transparent !important;
+}
+/* PARTNER END */
+
 /* RESPONSIVE START */
 @media (max-width: 1400px) {
   .home-transactions-wrapper .transactions-item-wrapper {
@@ -4093,6 +4158,9 @@ body {
   }
   .event-wrapper .event-right-wrapper {
     margin-top: 20px;
+  }
+  .partner-wrapper .filter-wrapper form {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 768px) {
@@ -4367,6 +4435,9 @@ body {
   }
   .integration-system-wrapper .modal-backdrop form .form-item-wrapper {
     grid-template-columns: 1fr !important;
+  }
+  .partner-wrapper .filter-wrapper form {
+    grid-template-columns: 1fr;
   }
 }
 

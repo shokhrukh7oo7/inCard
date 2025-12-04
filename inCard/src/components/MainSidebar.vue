@@ -231,14 +231,11 @@ const partner = [
     {
         label: 'Партнеры', icon: new URL('../assets/images/sidebar/partner.svg', import.meta.url).href,
         children: [{
-            label: 'Список партнёров',
+            label: 'Интеграция по API',
             icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/partners/list'
-        }, {
-            label: 'Добавить партнёра',
-            icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
-            route: '/partners/add'
-        }]
+            route: '/partners/api-integration'
+        },
+        ]
     },
 ]
 </script>

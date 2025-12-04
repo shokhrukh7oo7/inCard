@@ -214,6 +214,18 @@ const router = createRouter({
           component: () => import('@/views/setting/AdminsView.vue'),
           props: true,
         },
+        {
+          path: '/partners/api-integration',
+          name: 'IntegrationForApiView',
+          component: () => import('@/views/partners/IntegrationForApiView.vue'),
+          props: true,
+        },
+        {
+          path: '/partners/api-integration-add',
+          name: 'IntegrationForApiAddView',
+          component: () => import('@/views/partners/IntegrationFroApiAddView.vue'),
+          props: true,
+        },
       ],
     },
   ],
