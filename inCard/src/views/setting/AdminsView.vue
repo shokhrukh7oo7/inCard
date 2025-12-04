@@ -180,31 +180,26 @@ function handeEsc(e) {
                         </BaseButton>
                     </div>
                     <div class="modal-header-content">
-                        <h2>Добавить пользователя</h2>
-                        <p>Ползователь добавляется только в головной офис</p>
+                        <h2>Изменить Администраторы</h2>
                     </div>
                 </div>
                 <div class="modal-body">
-                    <div class="modal-body-left-wrapper">
-                        <img src="../../assets/images/clipboard.svg" alt="image">
-                        <div class="modal-body-left-content-wrapper">
-                            <h6>Данные</h6>
-                            <p>Данные пользователя</p>
-                        </div>
-                    </div>
                     <div class="modal-body-right-wrapper">
                         <form @submit.prevent>
-                            <BaseSelect v-model="addUserModalSelect" :options="addUserModalSelectCompanies"
-                                placeholder="Все" />
-                            <BaseInput label="Логин" />
-                            <BaseInput label="Имя" />
-                            <BaseInput label="Фамилия" />
-                            <BaseInput label="Номер телефона" />
-                            <BaseInput label="Филиал" />
-                            <BaseInput label="Роль" />
-                            <BaseInput class="checkbox-item" v-model="isActive" type="checkbox" label="Активный" />
-                            <BaseInput class="checkbox-item" v-model="isBlock" type="checkbox" label="Блокировка" />
-                            <BaseButton class="add-user-confirm-btn">Подтвердить</BaseButton>
+                            <div class="form-item-wrapper">
+                                <BaseInput label="Логин" />
+                                <BaseInput label="Имя" />
+                                <BaseInput label="Фамилия" />
+                                <BaseInput label="Номер телефона" />
+                            </div>
+                            <div class="form-checkbox-wrapper">
+                                <BaseInput class="checkbox-item" v-model="isActive" type="checkbox" label="Активный" />
+                                <BaseInput class="checkbox-item" v-model="isBlock" type="checkbox" label="Блокировка" />
+                            </div>
+                            <div class="form-btn-wrapper">
+                                <BaseButton class="add-user-cancel-btn">Отменить</BaseButton>
+                                <BaseButton class="add-user-confirm-btn">Добавить</BaseButton>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -276,5 +271,17 @@ function handeEsc(e) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+}
+
+.integration-system-wrapper .modal-backdrop form .form-checkbox-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.integration-system-wrapper .modal-backdrop form .checkbox-item {
+    flex-direction: row-reverse;
+    gap: 5px;
+    margin: 5px 0;
 }
 </style>
