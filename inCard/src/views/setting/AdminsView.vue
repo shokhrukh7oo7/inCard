@@ -160,7 +160,8 @@ function handeEsc(e) {
                             </div>
                             <BaseInput class="checkbox-box" v-model="isActive" type="checkbox" label="Активный" />
                             <div class="form-btn-wrapper">
-                                <BaseButton class="add-user-cancel-btn">Отменить</BaseButton>
+                                <BaseButton class="add-user-cancel-btn" @click="closeEditUser(row)">Отменить
+                                </BaseButton>
                                 <BaseButton class="add-user-confirm-btn">Добавить</BaseButton>
                             </div>
                         </form>
@@ -197,7 +198,8 @@ function handeEsc(e) {
                                 <BaseInput class="checkbox-item" v-model="isBlock" type="checkbox" label="Блокировка" />
                             </div>
                             <div class="form-btn-wrapper">
-                                <BaseButton class="add-user-cancel-btn">Отменить</BaseButton>
+                                <BaseButton class="add-user-cancel-btn" @click="closeEditUser(row)">Отменить
+                                </BaseButton>
                                 <BaseButton class="add-user-confirm-btn">Добавить</BaseButton>
                             </div>
                         </form>
@@ -283,5 +285,11 @@ function handeEsc(e) {
     flex-direction: row-reverse;
     gap: 5px;
     margin: 5px 0;
+}
+
+.integration-system-wrapper .modal-backdrop form .form-btn-wrapper .add-user-cancel-btn {
+    background-color: var(--white) !important;
+    color: var(--grey) !important;
+    border-color: var(--grey);
 }
 </style>
