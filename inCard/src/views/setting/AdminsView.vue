@@ -1,7 +1,14 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import BaseTable from '@/components/BaseTable.vue';
+import BaseInput from '@/components/BaseInput.vue';
 import BaseButton from '@/components/BaseButton.vue';
+
+const showAddUserModal = ref(false);
+const showEditUserModal = ref(false);
+const showEditPasswordModal = ref(false);
+const addUserModalPassword = ref('');
+const selectedUser = ref(null);
 
 const integrationSystemTable = [
     { key: 'id', label: '№' },
@@ -34,6 +41,39 @@ const integrationSystemTableData = ref([
     },
 ]);
 
+// ========================================================================
+// function for modals
+function openEditUser(row) {
+    selectedUser.value = row;
+    showEditUserModal.value = true;
+}
+function openEditPassword(row) {
+    selectedUser.value = row;
+    showEditPasswordModal.value = true;
+}
+// for close modal
+function closeEditUser(row) {
+    selectedUser.value = row;
+    showEditUserModal.value = false;
+}
+function closeEditPassword(row) {
+    selectedUser.value = row;
+    showEditPasswordModal.value = false;
+}
+onMounted(() => {
+    window.addEventListener('keydown', handeEsc);
+});
+onUnmounted(() => {
+    window.addEventListener('keydown', handeEsc);
+})
+function handeEsc(e) {
+    if (e.key === "Escape") {
+        showAddUserModal.value = false;
+        showEditUserModal.value = false;
+        showEditPasswordModal.value = false;
+    }
+}
+// ========================================================================
 </script>
 
 <template>
@@ -41,7 +81,7 @@ const integrationSystemTableData = ref([
         <div class="integration-system-header admins-header">
             <h5>Системные администраторы</h5>
 
-            <BaseButton class="add-integration-btn" @click="$router.push('/settings/system/add')">
+            <BaseButton class="add-integration-btn" @click="showAddUserModal = true">
                 Добавить администратора
             </BaseButton>
         </div>
@@ -82,7 +122,7 @@ const integrationSystemTableData = ref([
                     </template>
 
                     <template #actions="{ }">
-                        <BaseButton class="edit-btn" @click="$router.push('/requests/settings/add')">
+                        <BaseButton class="edit-btn" @click="openEditUser(row)">
                             <img src="@/assets/images/pencil.svg" alt="image" />
                         </BaseButton>
                         <BaseButton class="edit-btn" @click="openEditPassword(row)">
@@ -92,7 +132,149 @@ const integrationSystemTableData = ref([
                 </BaseTable>
             </div>
         </div>
+
+        <!-- ========================================================= -->
+        <!-- add user modal start -->
+        <div v-if="showAddUserModal" class="modal-backdrop" @click.self="showAddUserModal = false">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <div class="close-btn-wrapper">
+                        <BaseButton @click="showAddUserModal = false">
+                            <img src="../../assets/images/x.svg" alt="image">
+                        </BaseButton>
+                    </div>
+                    <div class="modal-header-content">
+                        <h2>Добавить Администраторы</h2>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body-right-wrapper">
+                        <form>
+                            <div class="form-item-wrapper">
+                                <BaseInput placeholder="Логин" />
+                                <BaseInput id="user-password" v-model="addUserModalPassword" placeholder="Пароль"
+                                    type="password" autocomplete="new-password" />
+                                <BaseInput placeholder="Имя" />
+                                <BaseInput placeholder="Фамилия" />
+                                <BaseInput placeholder="Номер телефона" />
+                            </div>
+                            <BaseInput class="checkbox-box" v-model="isActive" type="checkbox" label="Активный" />
+                            <div class="form-btn-wrapper">
+                                <BaseButton class="add-user-cancel-btn">Отменить</BaseButton>
+                                <BaseButton class="add-user-confirm-btn">Добавить</BaseButton>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- add user modal end -->
+        <!-- ========================================================= -->
+        <!-- edit user modal start -->
+        <div v-if="showEditUserModal" class="modal-backdrop" @click.self="showEditUserModal = false">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <div class="close-btn-wrapper">
+                        <BaseButton @click="closeEditUser(row)">
+                            <img src="../../assets/images/x.svg" alt="image">
+                        </BaseButton>
+                    </div>
+                    <div class="modal-header-content">
+                        <h2>Добавить пользователя</h2>
+                        <p>Ползователь добавляется только в головной офис</p>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body-left-wrapper">
+                        <img src="../../assets/images/clipboard.svg" alt="image">
+                        <div class="modal-body-left-content-wrapper">
+                            <h6>Данные</h6>
+                            <p>Данные пользователя</p>
+                        </div>
+                    </div>
+                    <div class="modal-body-right-wrapper">
+                        <form @submit.prevent>
+                            <BaseSelect v-model="addUserModalSelect" :options="addUserModalSelectCompanies"
+                                placeholder="Все" />
+                            <BaseInput label="Логин" />
+                            <BaseInput label="Имя" />
+                            <BaseInput label="Фамилия" />
+                            <BaseInput label="Номер телефона" />
+                            <BaseInput label="Филиал" />
+                            <BaseInput label="Роль" />
+                            <BaseInput class="checkbox-item" v-model="isActive" type="checkbox" label="Активный" />
+                            <BaseInput class="checkbox-item" v-model="isBlock" type="checkbox" label="Блокировка" />
+                            <BaseButton class="add-user-confirm-btn">Подтвердить</BaseButton>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- edit user modal end -->
+        <!-- ========================================================= -->
+        <!-- edit password modal start -->
+        <div v-if="showEditPasswordModal" class="modal-backdrop" @click.self="showEditPasswordModal = false">
+            <div class="modal-container">
+                <div class="modal-header change-password-wrapper">
+                    <div class="close-btn-wrapper">
+                        <p>Изменить пароль</p>
+                        <BaseButton @click="closeEditPassword(row)">
+                            <img src="../../assets/images/x.svg" alt="image">
+                        </BaseButton>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body-right-wrapper">
+                        <form @submit.prevent>
+                            <div class="form-modal-wrapper">
+                                <BaseInput id="user-password" v-model="changeNewPasswordModal"
+                                    placeholder="Новый пароль" type="password" autocomplete="new-password" />
+                                <BaseInput id="user-password" v-model="confirmNewPasswordModal"
+                                    placeholder="Подтвердите пароль" type="password" autocomplete="new-password" />
+                            </div>
+                            <div class="modal-body-btn-wrapper">
+                                <BaseButton class="cancel-btn" @click="closeEditPassword(row)">Отменить</BaseButton>
+                                <BaseButton class="change-btn">Изменить</BaseButton>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- edit password modal end -->
+        <!-- ========================================================= -->
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.integration-system-wrapper .modal-backdrop form .form-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.integration-system-wrapper .modal-backdrop form .checkbox-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.integration-system-wrapper .modal-backdrop form .form-item-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+</style>

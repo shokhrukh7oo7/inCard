@@ -4365,6 +4365,9 @@ body {
     padding-bottom: 10px;
     text-align: center;
   }
+  .integration-system-wrapper .modal-backdrop form .form-item-wrapper {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 @media (max-width: 475px) {
