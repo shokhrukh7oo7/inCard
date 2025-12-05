@@ -65,17 +65,19 @@ const tariffsTableData = ref([
 
                     <!-- action slot -->
                     <template #action="{ row }">
-                        <BaseButton class="edit-user-btn" @click="openEditUser(row)">
+                        <BaseButton class="report-btn" @click="openEditUser(row)">
                             <img src="@/assets/images/eye.svg" alt="image" />
                         </BaseButton>
                     </template>
 
                     <!-- actions slot -->
-                    <template #actions="{ row }">
-                        <BaseButton class="edit-user-btn" @click="$router.push('/balance/tariffs-edit')">
+                    <template #actions="{ }">
+                        <BaseButton class="edit-btn"
+                            @click="$router.push('/balance/tariffs-edit')">
                             <img src="@/assets/images/pencil.svg" alt="image" />
                         </BaseButton>
-                        <BaseButton class="edit-password-btn" @click="openEditPassword(row)">
+                        <BaseButton class="history-btn"
+                            @click="$router.push('/balance/tariffs-history')">
                             <img src="@/assets/images/clipboard.svg" alt="image" />
                         </BaseButton>
                     </template>

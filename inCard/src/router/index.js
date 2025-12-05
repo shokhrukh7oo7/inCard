@@ -220,6 +220,12 @@ const router = createRouter({
           props: true,
         },
         {
+          path: '/balance/tariffs-history',
+          name: 'TariffsHistoryView',
+          component: () => import('@/views/mutual-settlement/TariffsHistoryView.vue'),
+          props: true,
+        },
+        {
           path: '/settings/system',
           name: 'IntegrationSystemView',
           component: () => import('@/views/setting/IntegrationSystemView.vue'),
