@@ -4075,6 +4075,10 @@ body {
     0 3px 1px -2px #0000001f;
   margin-top: 15px;
 }
+.dark .tariffs-history-wrapper {
+  background-color: var(--header-bg);
+  color: var(--white);
+}
 .tariffs-history-wrapper .tariffs-header-wrapper {
   padding: 10px 0 15px;
   text-align: center;
