@@ -4091,6 +4091,28 @@ body {
 /* TARIFFS END */
 
 /* REPORT START */
+.report-wrapper .filter-wrapper .accordion .accordion-button {
+  padding: 0.5rem 1rem;
+  align-items: start;
+  font-weight: 500;
+  font-size: 18px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+.report-wrapper .filter-wrapper .accordion .accordion-button:not(.collapsed) {
+  background-color: transparent;
+  box-shadow: none;
+}
+.report-wrapper .filter-wrapper form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+.report-wrapper .filter-wrapper .select-wrapper {
+  max-width: 100%;
+}
 
 /* REPORT END */
 /* .report-wrapper .table-component table {
@@ -4617,6 +4639,9 @@ body {
   .tariffs-wrapper .tariffs-table-header button {
     width: 100%;
     max-width: 576px;
+  }
+  .report-wrapper .filter-wrapper form {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
