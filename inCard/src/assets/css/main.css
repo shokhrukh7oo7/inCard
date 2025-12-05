@@ -4090,6 +4090,17 @@ body {
 
 /* TARIFFS END */
 
+/* REPORT START */
+
+/* REPORT END */
+/* .report-wrapper .table-component table {
+  table-layout: fixed;
+} */
+/* .report-wrapper .base-table th,
+.report-wrapper .base-table td {
+  border: 1px solid #e5e5e5 !important;
+} */
+
 /* RESPONSIVE START */
 @media (max-width: 1400px) {
   .home-transactions-wrapper .transactions-item-wrapper {

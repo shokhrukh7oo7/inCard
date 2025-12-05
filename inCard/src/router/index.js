@@ -226,6 +226,12 @@ const router = createRouter({
           props: true,
         },
         {
+          path: '/balance/reports',
+          name: 'ReportView',
+          component: () => import('@/views/mutual-settlement/ReportView.vue'),
+          props: true,
+        },
+        {
           path: '/settings/system',
           name: 'IntegrationSystemView',
           component: () => import('@/views/setting/IntegrationSystemView.vue'),

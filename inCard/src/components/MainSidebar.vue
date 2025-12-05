@@ -207,6 +207,7 @@ const system = [
                 icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
                 route: '/balance/debts'
             },
+            
             {
                 label: 'Отчеты',
                 icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
