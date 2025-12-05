@@ -203,10 +203,11 @@ const system = [
         label: 'Взаимо расчет', icon: new URL('../assets/images/sidebar/diagram.svg', import.meta.url).href,
         children: [
             {
-                label: 'Отчеты',
+                label: 'Тарифы',
                 icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
                 route: '/balance/debts'
-            }, {
+            },
+            {
                 label: 'Отчеты',
                 icon: new URL('../assets/images/sidebar/circle.svg', import.meta.url).href,
                 route: '/balance/reports'

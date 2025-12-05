@@ -3836,6 +3836,45 @@ body {
 }
 /* EVENT END */
 
+/* MUTUAL SETTLEMENT START */
+.tariffs-wrapper {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+  margin-top: 15px;
+}
+.dark .tariffs-wrapper {
+  background-color: var(--header-bg);
+}
+.tariffs-wrapper .tariffs-table-header {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-direction: row;
+  gap: 15px;
+  padding: 10px;
+  width: 100%;
+}
+.tariffs-wrapper .tariffs-table-header .base-select-wrapper {
+  max-width: 250px;
+  width: 100%;
+}
+.tariffs-wrapper .table-wrapper button {
+  background-color: transparent !important;
+}
+
+.tariffs-wrapper .table-wrapper .table-component table tbody tr td:last-child {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.tariffs-wrapper .table-wrapper .table-component table tbody tr td button {
+  padding: 0.3rem 0.5rem;
+}
+/* MUTUAL SETTLEMENT END */
+
 /* SETTING START */
 .integration-system-wrapper {
   background-color: var(--white);
@@ -3940,6 +3979,93 @@ body {
   background-color: transparent !important;
 }
 /* PARTNER END */
+
+/* TARIFFS START */
+.tariffs-add-wrapper {
+  background-color: var(--white);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow:
+    0 1px 5px #0003,
+    0 2px 2px #00000024,
+    0 3px 1px -2px #0000001f;
+}
+.dark .tariffs-add-wrapper {
+  background-color: var(--header-bg);
+  color: var(--white);
+}
+.tariffs-add-wrapper .tariffs-add-header {
+  border-bottom: 1px solid var(--hr-color);
+  padding: 0 0 10px;
+}
+.dark .tariffs-add-wrapper .tariffs-add-header {
+  border-color: var(--white);
+}
+.tariffs-add-wrapper .tariffs-add-header h5 {
+  font-size: clamp(16px, 1.2vw, 20px);
+  font-weight: 500;
+  color: var(--blue);
+}
+.dark .tariffs-add-wrapper .tariffs-add-header h5 {
+  color: var(--white);
+}
+.tariffs-add-wrapper .tariffs-add-body form .form-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.tariffs-add-wrapper .tariffs-add-body form .form-item .checkbox-box {
+  flex-direction: row-reverse;
+  justify-content: start;
+  gap: 10px;
+  margin-top: 20px;
+}
+.tariffs-add-wrapper .tariffs-add-body form .form-item {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+.tariffs-add-wrapper .tariffs-add-body form .form-item label {
+  font-size: 14px;
+  color: var(--grey);
+}
+.dark .tariffs-add-wrapper .tariffs-add-body form .form-item label {
+  color: var(--white);
+}
+.tariffs-add-wrapper .tariffs-add-body form .form-item input {
+  font-size: 13px;
+  padding: 5px 15px !important;
+}
+.dark .tariffs-add-wrapper .tariffs-add-body form .form-item input {
+  background-color: var(--header-bg);
+  color: var(--white);
+}
+.dark .tariffs-add-wrapper .tariffs-add-body form .form-item input::placeholder {
+  color: var(--white);
+}
+
+.tariffs-add-wrapper .tariffs-add-body form .form-item .select-wrapper {
+  max-width: 100%;
+}
+.tariffs-add-wrapper .tariffs-add-body .form-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+.tariffs-add-wrapper .tariffs-add-body .form-btn-wrapper .cancel-btn {
+  background-color: var(--white) !important;
+  color: var(--grey) !important;
+  border-color: var(--grey);
+}
+
+.tariffs-system h6 {
+  color: var(--black);
+  font-size: clamp(16px, 1.2vw, 20px);
+  padding-bottom: 10px !important;
+}
+/* TARIFFS END */
 
 /* RESPONSIVE START */
 @media (max-width: 1400px) {
@@ -4141,15 +4267,18 @@ body {
     margin: 0;
   }
   .users-wrapper .table-wrapper .table-component table tbody tr td:last-child,
-  .integration-system-wrapper .table-wrapper .table-component table tbody tr td:last-child {
+  .integration-system-wrapper .table-wrapper .table-component table tbody tr td:last-child,
+  .tariffs-wrapper .table-wrapper .table-component table tbody tr td:last-child {
     display: grid;
     grid-template-columns: repeat(17, 1fr);
     grid-template-rows: repeat(1, 1fr);
   }
   .users-wrapper .table-wrapper .table-component table tbody tr td button:first-child,
-  .integration-system-wrapper .table-wrapper .table-component table tbody tr td button:first-child {
+  .integration-system-wrapper .table-wrapper .table-component table tbody tr td button:first-child,
+  .tariffs-wrapper .table-wrapper .table-component table tbody tr td button:first-child {
     grid-column-start: 16;
   }
+
   .users-wrapper .table-wrapper .table-component table tbody tr td button:last-child {
     grid-column-start: 17;
   }
@@ -4161,6 +4290,10 @@ body {
   }
   .partner-wrapper .filter-wrapper form {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .table-wrapper .table-component table thead tr th,
+  .table-wrapper .table-component table tbody tr td {
+    text-align: end;
   }
 }
 @media (max-width: 768px) {
@@ -4233,6 +4366,9 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
+  }
+  .tariffs-add-wrapper .tariffs-add-body form .form-item {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -4438,6 +4574,15 @@ body {
   }
   .partner-wrapper .filter-wrapper form {
     grid-template-columns: 1fr;
+  }
+  .tariffs-wrapper .tariffs-table-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .tariffs-wrapper .tariffs-table-header .base-select-wrapper,
+  .tariffs-wrapper .tariffs-table-header button {
+    width: 100%;
+    max-width: 576px;
   }
 }
 

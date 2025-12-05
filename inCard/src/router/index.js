@@ -201,7 +201,24 @@ const router = createRouter({
           component: () => import('@/views/event/EventListView.vue'),
           props: true,
         },
-
+        {
+          path: '/balance/debts',
+          name: 'TariffsView',
+          component: () => import('@/views/mutual-settlement/TariffsView.vue'),
+          props: true,
+        },
+        {
+          path: '/balance/tariffs-add',
+          name: 'TariffsAddView',
+          component: () => import('@/views/mutual-settlement/TariffsAddView.vue'),
+          props: true,
+        },
+        {
+          path: '/balance/tariffs-edit',
+          name: 'TariffsEditView',
+          component: () => import('@/views/mutual-settlement/TariffsEditView.vue'),
+          props: true,
+        },
         {
           path: '/settings/system',
           name: 'IntegrationSystemView',
